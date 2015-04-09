@@ -142,7 +142,7 @@ $(".sim-row-edit").hover(
 	  $(this).parent().parent().slideUp(500)
 
 
-	  $img.attr("src", '/media/ajax_loader.gif');
+	  $img.attr("src", '/media/ajax-loader.gif');
 	  fn = function(data){
             var code = data[0];
             if(code == '200'){
