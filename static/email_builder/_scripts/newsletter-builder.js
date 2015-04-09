@@ -132,8 +132,7 @@ $(".sim-row-edit").hover(
 	//edit image
 	if(big_parent.attr("data-type")=='image'){
 	
-	var $img = big_parent.children('img');
-	$("#sim-edit-image .image").val($img.attr("src"));
+	$("#sim-edit-image .image").val(big_parent.children('img').attr("src"));
 	$("#sim-edit-image").fadeIn(500);
 	$("#sim-edit-image .sim-edit-box").slideDown(500);
 	
@@ -142,11 +141,11 @@ $(".sim-row-edit").hover(
 	  $(this).parent().parent().slideUp(500)
 
 
-	  $img.attr("src", '/media/ajax-loader.gif');
+	  big_parent.children('img').attr("src", '/media/ajax-loader.gif');
 	  fn = function(data){
             var code = data[0];
             if(code == '200'){
-                $img.attr("src",data[1]);
+                big_parent.children('img').attr("src",data[1]);
             }
             else{
             	alert('Произошла ошибка при загрузке изображения.');
