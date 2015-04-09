@@ -5,12 +5,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="shortcut icon" href="http://simbyone.com/wp-content/uploads/2014/04/3455e6f65c33232a060c28829a49b1cb.png">
 <title>Email-конструктор</title>
-<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic" rel="stylesheet" type="text/css">
+<!--<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic" rel="stylesheet" type="text/css">
+-->
 <link rel="stylesheet" href="{% static 'email_builder/_css/font-awesome.min.css' %}">
 <link href="{% static 'email_builder/_css/Icomoon/style.css' %}" rel="stylesheet" type="text/css">
 <link href="{% static 'email_builder/_css/newsletter-builder.css' %}" rel="stylesheet" type="text/css">
 <link href="{% static 'email_builder/_scripts/jquery-ui/jquery-ui.min.css' %}" rel="stylesheet" type="text/css">
-
+<link rel="stylesheet" media="screen" type="text/css" href="{% static 'js/colorpicker/css/colorpicker.css' %}" />
 
 <script type="text/javascript" src="{% static 'email_builder/_scripts/jquery/jquery-2.0.2.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'email_builder/_scripts/jquery/jquery-ui-1.10.4.min.js' %}"></script>
@@ -27,6 +28,7 @@
 <script type="text/javascript" src="{% static 'email_builder/_scripts/tinymce/tinymce.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'email_builder/_scripts/constructor_init.js' %}"></script>
 
+<script type="text/javascript" src="{% static 'js/colorpicker/js/colorpicker.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/csrf_ajax.js' %}"></script>
 
 
@@ -364,8 +366,22 @@
       </div>
       </div>
 
+<div class="sim-row" data-id="18" style="width: 800px;float: left;font-family: 'Source Sans Pro', sans-serif;position: relative;">
+      <div class="sim-row-content14 resize" style="float: left;width: 100%;background-color: rgba(53,57,70,1);padding-top: 25px;padding-bottom: 25px;">
+      <div class="sim-row-content14-center" style="float: left;width: 600px;margin-left: 100px;">
+      <div class="sim-row-content14-center-left" style="float: left;width: 290px;">
 
-      <div class="sim-row" data-id="18" style="width: 800px;float: left;font-family: 'Source Sans Pro', sans-serif;position: relative;">
+      <div class="sim-row-content14-center-left-text sim-row-edit draggable-block block-resize" data-type="text" style="color: #b9bcc5;font-size: 14px;line-height: 24px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eliam corias</div>
+      </div>
+      <div class="sim-row-content15-center-left sim-row-edit draggable-block ui-draggable ui-resizable" style="float: right;width: 200px;overflow: hidden;">
+        <img src="http://127.0.0.1:8080/media/logo.png" style="height: 80px;width: auto;">
+      </div>
+      </div>
+      </div>
+      </div>
+      </div>
+
+      <!--<div class="sim-row" data-id="18" style="width: 800px;float: left;font-family: 'Source Sans Pro', sans-serif;position: relative;">
       <div class="sim-row-content15 resize" style="background-color: rgba(53,57,70,1);float: left;width: 100%;height: 80px;">
       <div class="sim-row-content15-center" style="float: left;width: 600px;margin-left: 100px;">
       <div class="sim-row-content15-center-left sim-row-edit draggable-block" data-type="image" style="float: left;width: 200px;overflow: hidden;"><img src="http://{{domain}}/media/logo.png" style="height: 80px;width: auto;"></div>
@@ -375,7 +391,7 @@
 
       </div>
       </div>
-      </div>
+      </div>-->
 
       
       <!--<div class="sim-row" data-id="18" style="width: 800px;float: left;font-family: 'Source Sans Pro', sans-serif;position: relative;">
@@ -433,9 +449,9 @@
 <div class="sim-edit-box-content-text">
     <!--<div>
         Цвет кнопки: <input type="color" id="inp_color_btn_link" value="#966fb1">
-    </div>-->
+    </div>
     <div style="margin-top: 2ex;">
-        Цвет ссылки: <input type="color" id="inp_color_text_link" value="#ffffff"></div>
+        Цвет ссылки: <input class="color" id="inp_color_text_link" value="#ffffff"></div>-->
     </div>
 
 </div>
@@ -1754,11 +1770,14 @@
     <div id="newsletter-builder-sidebar-buttons">
       <!--<div id="newsletter-builder-sidebar-buttons-abutton">Download Template</div>-->
         <div style="margin-left: 5ex;">
-            Цвет фона: <input type="color" id="inp_bg_color" value="#C3CCD5">
-        </div>
-        <div style="margin-left: 5ex;margin-top: 2ex;">
-            Изображение для фона: <input type="file" id="inp_bg_img" accept="image/*">
-        </div>
+            Цвет фона: <input class="bg-color" id="inp_bg_color" value="#C3CCD5">
+          </div>
+          <div style="margin-left: 5ex;margin-top: 2ex;">
+              Изображение для фона: <input type="file" id="inp_bg_img" accept="image/*">
+              <div id='div_load_bg_message' style="margin-top: 2ex;">
+                
+              </div>
+          </div>
       <div id="newsletter-builder-sidebar-buttons-bbutton" style="margin-top: 2ex;">
           Экспорт
       </div>
@@ -1800,6 +1819,7 @@
       </div>
       
       </div>
+      
       <!--<div id="newsletter-builder-area-center-frame-buttons-reset"><a href="index.html"><i class="icon-reload-CCW"></i>&nbsp;&nbsp;Сбросить шаблон</a></div>
       </div>-->
       <div id="newsletter-builder-area-center-frame-content">
@@ -1807,8 +1827,8 @@
           <!-- header1 -->
       <div class="sim-row" style="width: 800px;float: left;font-family: 'Source Sans Pro', sans-serif;position: relative;">
       <div class="sim-row-header1" style="width: 100%;float: left;">
-              <div class="sim-row-header1-nav resize" style="width: 100%;float: left;background-color: rgba(255,255,255,1.00);height: 80px;">
-                  <div class="sim-row-header1-nav-logo sim-row-edit draggable-block" data-type="image" style="float: left;text-align: center;margin-left: 50px;overflow: hidden;"><img src="http://{{ domain }}/media/logo.png" style="height: 80px;width: auto;"></div>
+              <div class="sim-row-header1-nav resize" style="width: 100%;float: left;background-color: rgba(255,255,255,1.00);height: 100px;">
+                  <div class="sim-row-header1-nav-logo sim-row-edit draggable-block" data-type="image" style="float: left;text-align: center;margin-left: 50px;overflow: hidden;"><img src="http://{{ domain }}/media/logo.png" style="width: 140px;"></div>
                       <div class="sim-row-header1-slider-left-text sim-row-edit draggable-block resize" data-type="text" style="color: #000000;float: right;width: 340px;margin-right: 50px;margin-top: 25px;font-size: 16px;line-height: 24px;font-weight: 300;">
                           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                           Mauris vitae ullamcorper orci.
@@ -1911,6 +1931,26 @@
        </div>
        </div>
 
+
+
+
+
+<div class="sim-row" style="width: 800px;float: left;font-family: 'Source Sans Pro', sans-serif;position: relative;">
+      <div class="sim-row-content14 resize" style="float: left;width: 100%;background-color: rgba(53,57,70,1);padding-top: 25px;padding-bottom: 25px;">
+      <div class="sim-row-content14-center" style="float: left;width: 600px;margin-left: 100px;">
+      <div class="sim-row-content14-center-left" style="float: left;width: 290px;">
+
+      <div class="sim-row-content14-center-left-text sim-row-edit draggable-block block-resize" data-type="text" style="color: #b9bcc5;font-size: 14px;line-height: 24px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eliam corias</div>
+      </div>
+      <div class="sim-row-content15-center-left sim-row-edit draggable-block ui-draggable ui-resizable" style="float: right;width: 200px;overflow: hidden;">
+        <img src="http://127.0.0.1:8080/media/logo.png" style="height: 80px;width: auto;">
+      </div>
+      </div>
+      </div>
+      </div>
+      </div>
+
+
        
       <div class="sim-row" style="width: 800px;float: left;font-family: 'Source Sans Pro', sans-serif;position: relative;">
       <div class="sim-row-content14 resize" style="float: left;width: 100%;background-color: rgba(53,57,70,1);padding-top: 25px;padding-bottom: 25px;">
@@ -1930,22 +1970,6 @@
       </div>
       </div>
       </div>
-      
-      
-      <div class="sim-row" style="width: 800px;float: left;font-family: 'Source Sans Pro', sans-serif;position: relative;">
-      <div class="sim-row-content15 resize" style="background-color: rgba(53,57,70,1);float: left;width: 100%;height: 80px;">
-      <div class="sim-row-content15-center" style="float: left;width: 600px;margin-left: 100px;">
-      <div class="sim-row-content15-center-left sim-row-edit draggable-block" data-type="image" style="float: left;width: 200px;overflow: hidden;"><img src="http://{{domain}}/media/logo.png" style="height: 80px;width: auto;"></div>
-
-      <div class="sim-row-content2-right-text sim-row-edit draggable-block block-resize" data-type="text" style="color: #656565;float: rigth;width: 300px;margin-left: 400px;margin-top: 10px;font-size: 16px;line-height: 24px;font-weight: 300;">Lorem ipsum dolor sit amet, consectetur adipscing.
-      </div>
-
-      </div>
-      </div>
-      </div>
-      
-      
-      
       
       
       

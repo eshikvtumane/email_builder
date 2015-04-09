@@ -132,8 +132,8 @@ $(".sim-row-edit").hover(
 	//edit image
 	if(big_parent.attr("data-type")=='image'){
 	
-	
-	$("#sim-edit-image .image").val(big_parent.children('img').attr("src"));
+	var $img = big_parent.children('img');
+	$("#sim-edit-image .image").val($img.attr("src"));
 	$("#sim-edit-image").fadeIn(500);
 	$("#sim-edit-image .sim-edit-box").slideDown(500);
 	
@@ -141,12 +141,15 @@ $(".sim-row-edit").hover(
 	  $(this).parent().parent().parent().fadeOut(500)
 	  $(this).parent().parent().slideUp(500)
 
+
+	  $img.attr("src", '/media/ajax_loader.gif');
 	  fn = function(data){
             var code = data[0];
             if(code == '200'){
-                big_parent.children('img').attr("src",data[1]);
+                $img.attr("src",data[1]);
             }
             else{
+            	alert('Произошла ошибка при загрузке изображения.');
                 var message = 'Произошла ошибка при загрузке изображения.';
             }
         }
@@ -283,8 +286,7 @@ $(".sim-row").draggable({
 //Delete and palette
 function add_delete(){
 	$(".sim-row").append('<div class="sim-row-delete"><i class="fa fa-times" ></i></div>');
-	$(".sim-row").append('<div class="sim-row-palette"><input type="color" class="bg_block_color" value="#FFFFFF"></i></div>');
-	$(".sim-row").append('<div class="sim-row-palette"><input type="color" class="bg_block_color" value="#FFFFFF"></i></div>');
+	$(".sim-row").append('<div class="sim-row-palette"><input class="color" class="bg_block_color" value="#FFFFFF"></i></div>');
 	}
 add_delete();
 
@@ -296,15 +298,16 @@ function perform_delete(){
 }
 perform_delete();
 
-function perform_change_color(){
+/*function perform_change_color(){
     $(".bg_block_color").change(function() {
+    	console.log('111')
       $(this).parent().parent().find('[class*="sim-row-header"]').css('background-color', $(this).val());
       $(this).parent().parent().find('[class*="sim-row-content"]').css('background-color', $(this).val());
     });
 }
 
 perform_change_color();
-
+*/
 // Скачивание шаблона
  $("#newsletter-builder-sidebar-buttons-abutton").click(function(){
 	 
@@ -333,27 +336,24 @@ $("#newsletter-builder-sidebar-buttons-bbutton").click(function(){
 	$("#newsletter-preloaded-export").html($("#newsletter-builder-area-center-frame-content").html());
 	$("#newsletter-preloaded-export .sim-row-delete").remove();
 	$("#newsletter-preloaded-export .sim-row-palette").remove();
-	$("#newsletter-preloaded-export .sim-row").removeClass("ui-draggable");
+	//$("#newsletter-preloaded-export .sim-row").removeClass("ui-draggable");
 	$("#newsletter-preloaded-export .sim-row-edit").removeAttr("data-type");
-	$("#newsletter-preloaded-export .sim-row-edit").removeClass("sim-row-edit");
+	//$("#newsletter-preloaded-export .sim-row-edit").removeClass("sim-row-edit");
 
-	$("#newsletter-preloaded-export").removeClass("resize");
+	$("#newsletter-preloaded-export").removeAttr("class");
+	//$("div").removeClass("ui-resizable-handle").removeClass("ui-resizable-se").removeClass('ui-resizable').removeClass('resize').removeClass('ui-resizable-s');
 	
 	preload_export_html = $("#newsletter-preloaded-export").html();
-
+	//preload_export_html.find('div').removeClass("ui-resizable-handle").removeClass("ui-resizable-se").removeClass('ui-resizable').removeClass('resize').removeClass('ui-resizable-s');
 	var bg_style = '';
 
     // bg_url - глобальная переменная из constructor_init.js
-    if(bg_url){
-        bg_style = 'background-image:' + bg_url;
-    }
-    else{
-        email_bg_color = $('#email_bg_color').val();
-        bg_style = 'background-color:' + email_bg_color;
-    }
 
-	var sim_wrapper_style = 'style="float: left;height: auto;width: 100%;margin: 0px;padding-top: 50px;padding-right: 0px;padding-bottom: 50px;padding-left: 0px;' + bg_style + '"'
-export_content = '<div id="sim-wrapper" ' + sim_wrapper_style + '><div id="sim-wrapper-newsletter">'+preload_export_html+'</div></div>';
+    var doctype = '';
+	var sim_wrapper_style = 'float: left;height: auto;width: 100%;margin: 0px;padding-top: 50px;padding-right: 0px;padding-bottom: 50px;padding-left: 0px;' + bg_url;
+    var doctype = '<DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">';
+    var export_content = doctype + '<html><body style="margin: 0px;padding: 0px;"><div id="sim-wrapper" style="' + sim_wrapper_style + '"><div id="sim-wrapper-newsletter" style="margin-right: auto;margin-left: auto;height: auto;width: 800px;">'+preload_export_html+'</div></div>';
+    export_content += '</body></html>'
 	$("#sim-edit-export .text").val(export_content);
 
 	
