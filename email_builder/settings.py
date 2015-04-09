@@ -51,6 +51,12 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.core.context_processors.csrf',
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.debug',
+)
+
 ROOT_URLCONF = 'email_builder.urls'
 
 WSGI_APPLICATION = 'email_builder.wsgi.application'
