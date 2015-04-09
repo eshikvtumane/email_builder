@@ -54,3 +54,4 @@ class SavingImageAjax(View, SavingImages):
             full_url = ''.join(['http://', get_current_site(request).domain, url])
             result = json.dumps(['200', full_url])
             return HttpResponse(result, content_type='application/json')
+        
