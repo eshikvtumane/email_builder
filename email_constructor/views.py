@@ -48,10 +48,9 @@ class SavingImages():
 
 
 class SavingImageAjax(View, SavingImages):
-    def post(self, request):
+    def get(self, request):
         if request.is_ajax():
             url = self.savingImage(request.FILES['img'], 'email_images')
             full_url = ''.join(['http://', get_current_site(request).domain, url])
             result = json.dumps(['200', full_url])
             return HttpResponse(result, content_type='application/json')
-        
