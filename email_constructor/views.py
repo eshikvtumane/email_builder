@@ -3,6 +3,7 @@ from django.shortcuts import render_to_response
 from django.http import HttpResponse
 from django.views.generic import View
 from django.template import RequestContext
+from django.core.context_processors import csrf
 
 from datetime import datetime
 import json
@@ -20,6 +21,7 @@ class EmailConstructorView(View):
     template = 'email_constructor/builder.html'
     def get(self, request):
         args = {}
+        args.update(csrf(request))
         args['domain'] = get_current_site(request).domain
         rc = RequestContext(request, args)
         return render_to_response(self.template, rc)
@@ -48,7 +50,7 @@ class SavingImages():
 
 
 class SavingImageAjax(View, SavingImages):
-    def get(self, request):
+    def post(self, request):
         if request.is_ajax():
             url = self.savingImage(request.FILES['img'], 'email_images')
             full_url = ''.join(['http://', get_current_site(request).domain, url])

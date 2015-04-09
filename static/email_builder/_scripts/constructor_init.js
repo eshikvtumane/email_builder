@@ -54,7 +54,7 @@ function saveImageOnServer(img, fn){
         var form_data = new FormData();
         form_data.append('img', img);
         $.ajax({
-            type: 'GET',
+            type: 'POST',
             url: '/save_img/',
             data: form_data,
             processData: false,
