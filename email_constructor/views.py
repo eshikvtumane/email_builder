@@ -15,6 +15,8 @@ from django.core.files.base import ContentFile
 
 from django.contrib.sites.models import get_current_site
 
+from models import Template
+
 
 # Create your views here.
 class EmailConstructorView(View):
@@ -23,6 +25,7 @@ class EmailConstructorView(View):
         args = {}
         args.update(csrf(request))
         args['domain'] = get_current_site(request).domain
+        args['templates'] = Template.objects.all().values('id', 'template_name')
         rc = RequestContext(request, args)
         return render_to_response(self.template, rc)
 
@@ -56,3 +59,46 @@ class SavingImageAjax(View, SavingImages):
             full_url = ''.join(['http://', get_current_site(request).domain, url])
             result = json.dumps(['200', full_url])
             return HttpResponse(result, content_type='application/json')
+
+class SavingTinyMCEImage(View, SavingImages):
+    def post(self, request):
+        print 'FFFFFFF'
+        url = self.savingImage(request.FILES['file'], 'email_images')
+        full_url = ''.join(['http://', get_current_site(request).domain, url])
+        print 'FFFFFFF1'
+        result_dict = {"error":False,"path":full_url}
+        print 'FFFFFFF2'
+        serialized_instance = json.dumps(result_dict,)
+        print 'FFFFFFF3'
+        return HttpResponse(serialized_instance, content_type='application/json')
+
+# сохранение шаблона письма
+class SavingTemplatesAjax(View):
+    def post(self, request):
+        name = request.POST['name']
+        html = request.POST['html']
+        print html
+
+        try:
+            st = Template(template_name = name, template_html = html)
+            st.save()
+
+            result = json.dumps(['200', st.id])
+        except:
+            result = json.dumps(['500'])
+
+        return HttpResponse(result, content_type='application/json')
+
+# получение шаблона
+class LoadTemplateAjax(View):
+    def get(self, request):
+        print 'id', request.GET['id']
+        try:
+            template = Template.objects.get(pk=request.GET['id'])
+            result = json.dumps(['200', template.template_html])
+        except:
+            result = json.dumps(['500'])
+        return HttpResponse(result, content_type='application/json')
+
+
+

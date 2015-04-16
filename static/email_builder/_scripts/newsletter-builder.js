@@ -285,7 +285,7 @@ $(".sim-row").draggable({
 //Delete and palette
 function add_delete(){
 	$(".sim-row").append('<div class="sim-row-delete"><i class="fa fa-times" ></i></div>');
-	$(".sim-row").append('<div class="sim-row-palette"><input class="color" class="bg_block_color" value="#FFFFFF"></i></div>');
+	$(".sim-row").append('<div class="sim-row-palette"><input class="color" class="bg_block_color" value="#FFFFFF"></i></div> ');
 	}
 add_delete();
 
@@ -319,8 +319,10 @@ perform_change_color();
 	
 	export_content = $("#newsletter-preloaded-export").html();
 	
-	$("#export-textarea").val(export_content)
-	$( "#export-form" ).submit();
+	$("#export-textarea").val(export_content);
+	//$(this).href = 
+	window.location.href = 'data:text/html;charset=utf-8,' + encodeURIComponent(generateEmail(export_content));
+	//$( "#export-form" ).submit();
 	$("#export-textarea").val(' ');
 	 
 });
@@ -331,7 +333,6 @@ $("#newsletter-builder-sidebar-buttons-bbutton").click(function(){
 	
 	$("#sim-edit-export").fadeIn(500);
 	$("#sim-edit-export .sim-edit-box").slideDown(500);
-	
 	$("#newsletter-preloaded-export").html($("#newsletter-builder-area-center-frame-content").html());
 	$("#newsletter-preloaded-export .sim-row-delete").remove();
 	$("#newsletter-preloaded-export .sim-row-palette").remove();
@@ -344,19 +345,18 @@ $("#newsletter-builder-sidebar-buttons-bbutton").click(function(){
 	
 	preload_export_html = $("#newsletter-preloaded-export").html();
 	//preload_export_html.find('div').removeClass("ui-resizable-handle").removeClass("ui-resizable-se").removeClass('ui-resizable').removeClass('resize').removeClass('ui-resizable-s');
-	var bg_style = '';
+	
+	var generate_result = generateEmail(preload_export_html);
+	document.getElementById('link').onclick = function(code) {
+        this.href = 'data:text/plain;charset=utf-8,'
+          + encodeURIComponent(generate_result);
+      };
 
-    // bg_url - глобальная переменная из constructor_init.js
-
-    var doctype = '';
-	var sim_wrapper_style = 'float: left;height: auto;width: 100%;margin: 0px;padding-top: 50px;padding-right: 0px;padding-bottom: 50px;padding-left: 0px;' + bg_url;
-    var doctype = '<DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">';
-    var export_content = doctype + '<html><body style="margin: 0px;padding: 0px;"><div id="sim-wrapper" style="' + sim_wrapper_style + '"><div id="sim-wrapper-newsletter" style="margin-right: auto;margin-left: auto;height: auto;width: 800px;">'+preload_export_html+'</div></div>';
-    export_content += '</body></html>'
-	$("#sim-edit-export .text").val(export_content);
+	$("#sim-edit-export .text").val(generate_result);
 
 	
 	$("#newsletter-preloaded-export").html(' ');
+	
 	
 	});
 
@@ -364,3 +364,19 @@ $("#newsletter-builder-sidebar-buttons-bbutton").click(function(){
 
 
 });
+
+
+function generateEmail(html){
+	var bg_style = '';
+
+    // bg_url - глобальная переменная из constructor_init.js
+
+    var preload_export_html = html;
+    var doctype = '';
+	var sim_wrapper_style = 'float: left;height: auto;width: 100%;margin: 0px;padding-top: 50px;padding-right: 0px;padding-bottom: 50px;padding-left: 0px;' + bg_url;
+    var doctype = '<DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">';
+    var export_content = doctype + '<html><body style="margin: 0px;padding: 0px;"><div id="sim-wrapper" style="' + sim_wrapper_style + '"><div id="sim-wrapper-newsletter" style="margin-right: auto;margin-left: auto;height: auto;width: 800px;">'+preload_export_html+'</div></div>';
+    export_content += '</body></html>'
+	
+	return export_content
+}

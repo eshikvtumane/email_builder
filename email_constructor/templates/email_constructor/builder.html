@@ -8,6 +8,10 @@
 <!--<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic" rel="stylesheet" type="text/css">
 -->
 <link rel="stylesheet" href="{% static 'email_builder/_css/font-awesome.min.css' %}">
+<script type="text/javascript">
+  var csrf_token = "{{ csrf_token }}";
+</script>
+
 <link href="{% static 'email_builder/_css/Icomoon/style.css' %}" rel="stylesheet" type="text/css">
 <link href="{% static 'email_builder/_css/newsletter-builder.css' %}" rel="stylesheet" type="text/css">
 <link href="{% static 'email_builder/_scripts/jquery-ui/jquery-ui.min.css' %}" rel="stylesheet" type="text/css">
@@ -27,6 +31,10 @@
 <script src="//cdn.ckeditor.com/4.4.7/full/ckeditor.js"></script>-->
 <script type="text/javascript" src="{% static 'email_builder/_scripts/tinymce/tinymce.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'email_builder/_scripts/constructor_init.js' %}"></script>
+<script type="text/javascript" src="{% static 'email_builder/_scripts/tinymce/plugins/imageupload/iframe-post-form-master/jquery.iframe-post-form.js' %}"></script>
+
+<!-- модальное окно -->
+<script type="text/javascript" src="{% static 'js/easyModal/jquery.easyModal.js' %}"></script>
 
 <script type="text/javascript" src="{% static 'js/colorpicker/js/colorpicker.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/csrf_ajax.js' %}"></script>
@@ -61,7 +69,7 @@
 <div id="newsletter-preloaded-rows">
 
       <div class="sim-row" data-id="1" style="width: 800px;float: left;font-family: 'Source Sans Pro', sans-serif;position: relative;">
-          <div class="sim-row-header1" style="width: 100%;float: left;">
+          <div class="sim-row-header1" style="width: 100%;float: left;background-color: rgba(255,255,255,1.00);">
               <div class="sim-row-header1-nav" style="width: 100%;float: left;background-color: rgba(255,255,255,1.00);height: 80px;">
                   <div class="sim-row-header1-nav-logo sim-row-edit" data-type="image" style="float: left;text-align: center;margin-left: 50px;overflow: hidden;"><img src="http://{{ domain }}/media/logo.png" style="height: 80px;width: auto;"></div>
                       <div class="sim-row-header1-slider-left-text sim-row-edit" data-type="text" style="color: #000000;float: right;width: 340px;margin-right: 50px;margin-top: 25px;font-size: 16px;line-height: 24px;font-weight: 300;">
@@ -76,7 +84,7 @@
       
       
       <div class="sim-row" data-id="2" style="width: 800px;float: left;font-family: 'Source Sans Pro', sans-serif;position: relative;">
-          <div class="sim-row-header1" style="width: 100%;float: left;">
+          <div class="sim-row-header1" style="width: 100%;float: left;background-color: rgba(255,255,255,1.00);">
               <div class="sim-row-header1-nav resize" style="width: 100%;float: center;background-color: rgba(255,255,255,1.00);height: 80px;">
                   <div class="sim-row-header1-nav-logo sim-row-edit" data-type="image" style="float: center;text-align: center;overflow: hidden;">
                       <img src="http://{{ domain }}/media/logo.png" style="height: 80px;width: auto;">
@@ -87,9 +95,9 @@
 
 
     <div class="sim-row" data-id="3" style="width: 800px;float: left;font-family: 'Source Sans Pro', sans-serif;position: relative;">
-       <div class="sim-row-content2" style="background-color: rgba(242,244,250,1);float: left;width: 100%;">
-        <div class="sim-row-header2-nav-logo sim-row-edit" data-type="image" style="width: 100%; height: 212px; float: left;text-align: center;overflow: hidden;">
-                      <img src="http://{{ domain }}/media/logo.png">
+       <div class="sim-row-content2" style="background-color: rgba(242,244,250,1);float: left;width: 100%;background-color: rgba(255,255,255,1.00);">
+        <div class="sim-row-header2-nav-logo sim-row-edit" data-type="image" style="width: 800px; height: 100%; float: left;text-align: center;overflow: hidden;">
+                      <img style="width: 800px; height: 100%;" src="http://{{ domain }}/media/logo.png">
                   </div>
 
        </div>
@@ -252,10 +260,17 @@
       </div>
       </div>
       -->
+
+      <div class="sim-row" data-id="12" style="width: 800px;float: left;font-family: 'Source Sans Pro', sans-serif;position: relative;">
+      <div class="sim-row-content5" style="background-color: rgba(255,255,255,1);float: left;width: 100%;">
+       
+       <div class="sim-row-content5-right sim-row-edit" data-type="image" style="float: left;width: 600px;height: auto; margin-top: 10px; margin-left:12ex; text-align: left;overflow: hidden;" ><img src="/static/email_builder/img/placeholder.png" style="height: auto;width: 600px;"></div>
+       </div>
+       </div>
      
       
       
-       <div class="sim-row" data-id="13" style="width: 800px;float: left;font-family: 'Source Sans Pro', sans-serif;position: relative;">
+       <<div class="sim-row" data-id="13" style="width: 800px;float: left;font-family: 'Source Sans Pro', sans-serif;position: relative;">
        <div class="sim-row-content10" style="background-color: rgba(130,207,204,1);float: left;width: 100%;padding-top: 75px;padding-bottom: 75px;">
        <div class="sim-row-content10-title sim-row-edit" data-type="title" style="float: left;width: 700px;margin-left: 50px;font-size: 26px;text-align: center;color: #FFFFFF;">Заголовок</div>
        <div class="sim-row-content10-center" style="float: left;width: 600px;margin-left: 100px;margin-top: 40px;">
@@ -416,9 +431,45 @@
 </div>
 <div class="sim-edit-box-buttons">
 <div class="sim-edit-box-buttons-cancel" style="margin-left:0px;">Убрать</div>
+
+
+<div style="float: right; margin-left: 5ex;">
+  <a href="" id="link" download="email.html">Скачать файл</a>
+</div>
+
+<!--<a href="" id="link" download="email.html">
+  <div id="newsletter-builder-sidebar-buttons-abutton">
+      Скачать файл
+  </div>
+</a>-->
+</div>
+
+
 </div>
 </div>
+
+<div class="easy_modal" id="modal1">
+  <div class="easy-modal-inner" style="width: 900px; background-color: #FFFFFF; padding: 30px 30px 30px 30px;" align="center">
+    <h2>Шаблоны</h2>
+      <table id='tbl_templates'>
+      {% for template in templates %}
+          <tr>
+              <td width="80%">
+                {{ template.template_name }}
+              </td>
+              <td>
+                  <button class="load-template" value="{{ template.id }}">Выбрать</button>
+              </td>
+          </tr>
+      {% empty %}
+        <h3>Нет шаблонов</h3>
+      {% endfor %}
+    </table>
+
+    <button class="easy-modal-close">Закрыть</button>
+  </div>
 </div>
+
 
 <div class="sim-edit" id="sim-edit-image">
 <div class="sim-edit-box" style="height:230px;">
@@ -1771,16 +1822,34 @@
       <!--<div id="newsletter-builder-sidebar-buttons-abutton">Download Template</div>-->
         <div style="margin-left: 5ex;">
             Цвет фона: <input class="bg-color" id="inp_bg_color" value="#C3CCD5">
+        </div>
+        <div style="margin-left: 5ex;margin-top: 2ex;">
+            Изображение для фона: <input type="file" id="inp_bg_img" accept="image/*">
+            <div id='div_load_bg_message' style="margin-top: 2ex;">
+              
+            </div>
+        </div>
+
+        <div style="margin-left: 5ex;margin-top: 2ex;">
+          <div>
+            <label>Название шаблона:</label>
+            <input type="text" id="template_name">
           </div>
-          <div style="margin-left: 5ex;margin-top: 2ex;">
-              Изображение для фона: <input type="file" id="inp_bg_img" accept="image/*">
-              <div id='div_load_bg_message' style="margin-top: 2ex;">
-                
-              </div>
+          <div style="margin-top: 2ex;">
+            <button id="btn_save_template">Сохранить шаблон</button>
           </div>
+          
+          
+        </div>
+        <div style="margin-left: 5ex;margin-top: 2ex;">
+          <button class="easy-modal-open" href="#modal1">Все шаблоны</button>
+        </div>
+
       <div id="newsletter-builder-sidebar-buttons-bbutton" style="margin-top: 2ex;">
           Экспорт
       </div>
+
+
     </div>
   </div>
   
@@ -1803,13 +1872,14 @@
       <div class="newsletter-builder-area-center-frame-buttons-content-tab" data-type="content" data-id="4"><img src="{% static 'email_builder/_row_thumbs/sim-row-thumb_4.png' %}"></div>
       <div class="newsletter-builder-area-center-frame-buttons-content-tab" data-type="content" data-id="5"><img src="{% static 'email_builder/_row_thumbs/sim-row-thumb_5.png' %}"></div>
       <!--<div class="newsletter-builder-area-center-frame-buttons-content-tab" data-type="content" data-id="6"><img src="{% static 'email_builder/_row_thumbs/sim-row-thumb_6.png' %}"></div>-->
+      <div class="newsletter-builder-area-center-frame-buttons-content-tab" data-type="content" data-id="12"><img src="{% static 'email_builder/_row_thumbs/sim-row-thumb_12.png' %}"></div>
       <div class="newsletter-builder-area-center-frame-buttons-content-tab" data-type="content" data-id="7"><img src="{% static 'email_builder/_row_thumbs/sim-row-thumb_7.png' %}"></div>
       <div class="newsletter-builder-area-center-frame-buttons-content-tab" data-type="content" data-id="8"><img src="{% static 'email_builder/_row_thumbs/sim-row-thumb_8.png' %}"></div>
       <div class="newsletter-builder-area-center-frame-buttons-content-tab" data-type="content" data-id="9"><img src="{% static 'email_builder/_row_thumbs/sim-row-thumb_9.png' %}"></div>
       <div class="newsletter-builder-area-center-frame-buttons-content-tab" data-type="content" data-id="10"><img src="{% static 'email_builder/_row_thumbs/sim-row-thumb_10.png' %}"></div>
       <div class="newsletter-builder-area-center-frame-buttons-content-tab" data-type="content" data-id="11"><img src="{% static 'email_builder/_row_thumbs/sim-row-thumb_11.png' %}"></div>
-      <!--<div class="newsletter-builder-area-center-frame-buttons-content-tab" data-type="content" data-id="12"><img src="{% static 'email_builder/_row_thumbs/sim-row-thumb_12.png' %}"></div>
-      <div class="newsletter-builder-area-center-frame-buttons-content-tab" data-type="content" data-id="13"><img src="{% static 'email_builder/_row_thumbs/sim-row-thumb_13.png' %}"></div>-->
+      
+      <!--<div class="newsletter-builder-area-center-frame-buttons-content-tab" data-type="content" data-id="13"><img src="{% static 'email_builder/_row_thumbs/sim-row-thumb_13.png' %}"></div>-->
       <div class="newsletter-builder-area-center-frame-buttons-content-tab" data-type="content" data-id="14"><img src="{% static 'email_builder/_row_thumbs/sim-row-thumb_14.png' %}"></div>
       <!--<div class="newsletter-builder-area-center-frame-buttons-content-tab" data-type="content" data-id="15"><img src="{% static 'email_builder/_row_thumbs/sim-row-thumb_15.png' %}"></div>-->
       <div class="newsletter-builder-area-center-frame-buttons-content-tab" data-type="footer" data-id="16"><img src="{% static 'email_builder/_row_thumbs/sim-row-thumb_16.png' %}"></div>
@@ -1826,7 +1896,7 @@
 
           <!-- header1 -->
       <div class="sim-row" style="width: 800px;float: left;font-family: 'Source Sans Pro', sans-serif;position: relative;">
-      <div class="sim-row-header1" style="width: 100%;float: left;">
+      <div class="sim-row-header1" style="width: 100%;float: left;;background-color: rgba(255,255,255,1.00);">
               <div class="sim-row-header1-nav resize" style="width: 100%;float: left;background-color: rgba(255,255,255,1.00);height: 100px;">
                   <div class="sim-row-header1-nav-logo sim-row-edit draggable-block" data-type="image" style="float: left;text-align: center;margin-left: 50px;overflow: hidden;"><img src="http://{{ domain }}/media/logo.png" style="width: 140px;"></div>
                       <div class="sim-row-header1-slider-left-text sim-row-edit draggable-block resize" data-type="text" style="color: #000000;float: right;width: 340px;margin-right: 50px;margin-top: 25px;font-size: 16px;line-height: 24px;font-weight: 300;">
