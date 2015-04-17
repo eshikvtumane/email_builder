@@ -30,8 +30,10 @@
 <!--<script src="//cdn.ckeditor.com/4.4.7/standard/ckeditor.js"></script>
 <script src="//cdn.ckeditor.com/4.4.7/full/ckeditor.js"></script>-->
 <script type="text/javascript" src="{% static 'email_builder/_scripts/tinymce/tinymce.min.js' %}"></script>
+<script src="{% static 'email_builder/_scripts/tinymce/plugins/placeholder/plugin.js' %}"></script>
+
 <script type="text/javascript" src="{% static 'email_builder/_scripts/constructor_init.js' %}"></script>
-<script type="text/javascript" src="{% static 'email_builder/_scripts/tinymce/plugins/imageupload/iframe-post-form-master/jquery.iframe-post-form.js' %}"></script>
+<!--<script type="text/javascript" src="{% static 'email_builder/_scripts/tinymce/plugins/imageupload/iframe-post-form-master/jquery.iframe-post-form.js' %}"></script>-->
 
 <!-- модальное окно -->
 <script type="text/javascript" src="{% static 'js/easyModal/jquery.easyModal.js' %}"></script>
@@ -44,6 +46,7 @@
 <body style="margin: 0px;padding: 0px;font-family: 'Source Sans Pro', sans-serif;">
 
 {% csrf_token %}
+
 
 <div id="header">
 <div id="header-left">
@@ -451,20 +454,24 @@
 <div class="easy_modal" id="modal1">
   <div class="easy-modal-inner" style="width: 900px; background-color: #FFFFFF; padding: 30px 30px 30px 30px;" align="center">
     <h2>Шаблоны</h2>
-      <table id='tbl_templates'>
-      {% for template in templates %}
+      <div style="overflow-y: scroll; height: 500px;">
+        <table id='tbl_templates'>
+        {% for template in templates %}
+            <tr>
+                <td width="80%">
+                  {{ template.template_name }}
+                </td>
+                <td>
+                    <button class="load-template" value="{{ template.id }}">Выбрать</button>
+                </td>
+            </tr>
+        {% empty %}
           <tr>
-              <td width="80%">
-                {{ template.template_name }}
-              </td>
-              <td>
-                  <button class="load-template" value="{{ template.id }}">Выбрать</button>
-              </td>
+            <h3>Нет шаблонов</h3>
           </tr>
-      {% empty %}
-        <h3>Нет шаблонов</h3>
-      {% endfor %}
-    </table>
+        {% endfor %}
+      </table>
+    </div>
 
     <button class="easy-modal-close">Закрыть</button>
   </div>
@@ -514,12 +521,12 @@
 </div>
 
 <div class="sim-edit" id="sim-edit-title">
-<div class="sim-edit-box" style="width: 900px; height:400px;">
+<div class="sim-edit-box" style="width: 900px; height:500px;">
 <div class="sim-edit-box-title">Редактировать заголовок</div>
 
 <div class="sim-edit-box-content">
     <!-- <input type="text" class="sim-edit-box-content-field-input title"/> -->
-<div class="sim-edit-box-content-field"><textarea id="editor" type="text" class="sim-edit-box-content-field-input title"></textarea></div>
+<div class="sim-edit-box-content-field"><textarea id="editor" type="text" class="sim-edit-box-content-field-input title" placeholder="Введите заголовок"></textarea></div>
 </div>
 <div class="sim-edit-box-buttons">
 <div class="sim-edit-box-buttons-save">Сохранить</div>
@@ -534,7 +541,17 @@
 <div class="sim-edit-box-title">Редактировать текст</div>
 
 <div class="sim-edit-box-content">
-<div class="sim-edit-box-content-field"><textarea name="editor2" id="editor2" rows="5" class="sim-edit-box-content-field-textarea text"></textarea></div>
+<div class="sim-edit-box-content-field">
+  <textarea name="editor2" id="editor2" rows="5" class="sim-edit-box-content-field-textarea text"placeholder="Введите текст"></textarea>
+
+  <iframe id="form_target" name="form_target" style="display:none;"></iframe>
+
+  <form id="my_form" action="/save_tinymce_img/" target="form_target" method="post" enctype="multipart/form-data" style="width:0px;height:0;overflow:hidden;">
+    {% csrf_token %}
+    <input name="image" id="upload_image" type="file" accept="image/*">
+  }
+  </form>
+  </div>
 </div>
 <div class="sim-edit-box-buttons">
 <div class="sim-edit-box-buttons-save">Сохранить</div>
@@ -2050,6 +2067,9 @@
    
   </div>
 </div>
-</div></body>
+</div>
+
+
+</body>
 
 </html>

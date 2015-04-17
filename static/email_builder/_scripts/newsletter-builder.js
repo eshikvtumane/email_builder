@@ -1,122 +1,3 @@
-$(function() { 
-// Resize	
-function resize(){
-	$('.resize-height').height(window.innerHeight - 50);
-	$('.resize-width').width(window.innerWidth - 250);
-	//if(window.innerWidth<=1150){$('.resize-width').css('overflow','auto');}
-	
-	}
-$( window ).resize(function() {resize();});
-resize();
-
-	
-	
- 
-//Add Sections
-$("#newsletter-builder-area-center-frame-buttons-add").hover(
-  function() {
-    $("#newsletter-builder-area-center-frame-buttons-dropdown").fadeIn(200);
-  }, function() {
-    $("#newsletter-builder-area-center-frame-buttons-dropdown").fadeOut(200);
-  }
-);
-
-$("#newsletter-builder-area-center-frame-buttons-dropdown").hover(
-  function() {
-    $(".newsletter-builder-area-center-frame-buttons-content").fadeIn(200);
-  }, function() {
-    $(".newsletter-builder-area-center-frame-buttons-content").fadeOut(200);
-  }
-);
-
-
-$("#add-header").hover(function() {
-    $(".newsletter-builder-area-center-frame-buttons-content-tab[data-type='header']").show()
-	$(".newsletter-builder-area-center-frame-buttons-content-tab[data-type='content']").hide()
-	$(".newsletter-builder-area-center-frame-buttons-content-tab[data-type='footer']").hide()
-  });
-  
-$("#add-content").hover(function() {
-    $(".newsletter-builder-area-center-frame-buttons-content-tab[data-type='header']").hide()
-	$(".newsletter-builder-area-center-frame-buttons-content-tab[data-type='content']").show()
-	$(".newsletter-builder-area-center-frame-buttons-content-tab[data-type='footer']").hide()
-  });
-  
-$("#add-footer").hover(function() {
-    $(".newsletter-builder-area-center-frame-buttons-content-tab[data-type='header']").hide()
-	$(".newsletter-builder-area-center-frame-buttons-content-tab[data-type='content']").hide()
-	$(".newsletter-builder-area-center-frame-buttons-content-tab[data-type='footer']").show()
-  });   
-  
-  
-  
- $(".newsletter-builder-area-center-frame-buttons-content-tab").hover(
-  function() {
-    $(this).append('<div class="newsletter-builder-area-center-frame-buttons-content-tab-add" style="z-index: 99999"><i class="fa fa-plus" style="z-index: 99999"></i>&nbsp; Добавить</div>');
-	$('.newsletter-builder-area-center-frame-buttons-content-tab-add').click(function() {
-
-	var $res_clone = $("#newsletter-builder-area-center-frame-content").prepend($("#newsletter-preloaded-rows .sim-row[data-id='"+$(this).parent().attr("data-id")+"']").clone());
-
-    var draggable_classes = [
-        "sim-row-header1-nav-logo",
-        "sim-row-edit",
-        "sim-row-header1-nav-links"
-    ]
-    //"sim-row-header1-nav"
-    var resize_south_classes = [
-        "sim-row-header1-nav",
-        "sim-row-header2-nav",
-        "sim-row-content1-tab",
-        "sim-row-content2-left",
-
-    ]
-
-    for(var i=1; i < 19; i++){
-        resize_south_classes.push('sim-row-content' + i.toString());
-    }
-
-    var resize_classes = [
-        "sim-row-header1-nav-links",
-        "sim-row-header1-slider-left-text",
-        "sim-row-edit",
-        "sim-row-header2-nav-logo",
-        "sim-row-content2-right-text",
-        "sim-row-content4-title",
-        "sim-row-content2-right-text",
-        "sim-row-content2-right-text sim-row-edit ui-draggable",
-        "sim-row-content3",
-        'sim-row-content3-center-tab-image',
-        "sim-row-content4-title sim-row-edit",
-        'sim-row-content4-content sim-row-edit'
-    ]
-
-    for(var i=0; i<resize_classes.length; i++){
-        $res_clone.find('[class*="' + resize_classes[i] + '"]').resizable();
-    }
-
-    for(var i=0; i<draggable_classes.length; i++){
-        $res_clone.find('[class*="' + draggable_classes[i] + '"]').draggable();
-    }
-    for(var i=0; i<resize_south_classes.length; i++){
-        $res_clone.find('[class="' + resize_south_classes[i] + '"]').resizable({
-        handles: 's'
-    });
-
-    }
-
-	hover_edit();
-	perform_delete();
-	perform_change_color();
-
-
-	$("#newsletter-builder-area-center-frame-buttons-dropdown").fadeOut(200);
-		})
-  }, function() {
-    $(this).children(".newsletter-builder-area-center-frame-buttons-content-tab-add").remove();
-  }
-); 
-  
-  
 //Edit
 function hover_edit(){
 
@@ -193,13 +74,21 @@ $(".sim-row-edit").hover(
 	$("#sim-edit-title .sim-edit-box").slideDown(500);
 
 
-	tinyMCE.get('editor').setContent(big_parent.html());
+    
+	// удаление дефолтного текста
+    if(big_parent.html().indexOf('Заголовок') == -1){
+    	big_parent.children('div').remove('div');
+    	tinyMCE.activeEditor.setContent(big_parent.html());
+    }
+    else{
+	    tinyMCE.activeEditor.setContent('');
+    }
 	
 	$("#sim-edit-title .sim-edit-box-buttons-save").click(function() {
 	  $(this).parent().parent().parent().fadeOut(500)
 	  $(this).parent().parent().slideUp(500)
 
-        big_parent.html(tinyMCE.get('editor').getContent());
+        big_parent.html(tinyMCE.activeEditor.getContent());
         big_parent.resizable('destroy');
         big_parent.resizable();
         big_parent.children('.sim-row-edit-hover').remove();
@@ -214,8 +103,19 @@ $(".sim-row-edit").hover(
 	$("#sim-edit-text").fadeIn(500);
 	$("#sim-edit-text .sim-edit-box").slideDown(500);
 
-    //CKEDITOR.instances['editor2'].setData();
-    tinyMCE.activeEditor.setContent(big_parent.html());
+	big_parent.children('div').remove('div');
+	console.log(big_parent.html())
+
+	// удаление дефолтного текста
+    if(big_parent.html().indexOf('Lorem') == -1){
+    	tinyMCE.activeEditor.setContent(big_parent.html());
+    }
+    else{
+	    tinyMCE.activeEditor.setContent('');
+    }
+
+    
+
     $("#sim-edit-text .text").val();
 	
 	$("#sim-edit-text .sim-edit-box-buttons-save").click(function() {
@@ -223,11 +123,12 @@ $(".sim-row-edit").hover(
 	  $(this).parent().parent().slideUp(500)
 
 	    big_parent.html(tinyMCE.get('editor2').getContent());
-
         big_parent.children('.sim-row-edit-hover').remove();
 
         big_parent.resizable('destroy');
         big_parent.resizable();
+
+
 		});
 
 	}
@@ -255,8 +156,164 @@ $(".sim-row-edit").hover(
   }
 );
 }
-hover_edit();
 
+
+// удаление блока
+function perform_delete(){
+    $(".sim-row-delete").click(function() {
+      $(this).parent().remove();
+    });
+}
+
+//Delete and palette
+function add_delete(){
+    $(".sim-row").append('<div class="sim-row-delete"><i class="fa fa-times" ></i></div>');
+    $(".sim-row").append('<div class="sim-row-palette"><input class="color" class="bg_block_color" value="#FFFFFF"></i></div>');
+    }
+
+
+function perform_change_color(){
+    $(".bg_block_color").change(function() {
+        console.log('111')
+      $(this).parent().parent().find('[class*="sim-row-header"]').css('background-color', $(this).val());
+      $(this).parent().parent().find('[class*="sim-row-content"]').css('background-color', $(this).val());
+    });
+}
+
+
+// ---------------------------------------------------
+
+
+$(function() { 
+// Resize	
+function resize(){
+	$('.resize-height').height(window.innerHeight - 50);
+	$('.resize-width').width(window.innerWidth - 250);
+	//if(window.innerWidth<=1150){$('.resize-width').css('overflow','auto');}
+	
+	}
+$( window ).resize(function() {resize();});
+resize();
+
+	
+	
+ 
+//Add Sections
+$("#newsletter-builder-area-center-frame-buttons-add").hover(
+  function() {
+    $("#newsletter-builder-area-center-frame-buttons-dropdown").fadeIn(200);
+  }, function() {
+    $("#newsletter-builder-area-center-frame-buttons-dropdown").fadeOut(200);
+  }
+);
+
+$("#newsletter-builder-area-center-frame-buttons-dropdown").hover(
+  function() {
+    $(".newsletter-builder-area-center-frame-buttons-content").fadeIn(200);
+  }, function() {
+    $(".newsletter-builder-area-center-frame-buttons-content").fadeOut(200);
+  }
+);
+
+
+$("#add-header").hover(function() {
+    $(".newsletter-builder-area-center-frame-buttons-content-tab[data-type='header']").show()
+	$(".newsletter-builder-area-center-frame-buttons-content-tab[data-type='content']").hide()
+	$(".newsletter-builder-area-center-frame-buttons-content-tab[data-type='footer']").hide()
+  });
+  
+$("#add-content").hover(function() {
+    $(".newsletter-builder-area-center-frame-buttons-content-tab[data-type='header']").hide()
+	$(".newsletter-builder-area-center-frame-buttons-content-tab[data-type='content']").show()
+	$(".newsletter-builder-area-center-frame-buttons-content-tab[data-type='footer']").hide()
+  });
+  
+$("#add-footer").hover(function() {
+    $(".newsletter-builder-area-center-frame-buttons-content-tab[data-type='header']").hide()
+	$(".newsletter-builder-area-center-frame-buttons-content-tab[data-type='content']").hide()
+	$(".newsletter-builder-area-center-frame-buttons-content-tab[data-type='footer']").show()
+  });   
+  
+  
+  
+ $(".newsletter-builder-area-center-frame-buttons-content-tab").hover(
+  function() {
+    $(this).append('<div class="newsletter-builder-area-center-frame-buttons-content-tab-add" style="z-index: 99999"><i class="fa fa-plus" style="z-index: 99999"></i>&nbsp; Добавить</div>');
+	$('.newsletter-builder-area-center-frame-buttons-content-tab-add').click(function() {
+
+	var data_id = $(this).parent().attr("data-id");
+	var current_header = $("#newsletter-builder-area-center-frame-content .sim-row [class*='header']").attr('class');
+	
+	// если header уже добавлен, то выдавать ошибку
+	if(current_header != undefined && $("#newsletter-preloaded-rows .sim-row[data-id='"+data_id+"'] [class*='header']").attr('class') != undefined){
+		alert('header уже добавлен');
+	}
+	else{		
+		var $res_clone = $("#newsletter-builder-area-center-frame-content").prepend($("#newsletter-preloaded-rows .sim-row[data-id='"+data_id+"']").clone());
+
+	    var draggable_classes = [
+	        "sim-row-header1-nav-logo",
+	        "sim-row-edit",
+	        "sim-row-header1-nav-links"
+	    ]
+	    //"sim-row-header1-nav"
+	    var resize_south_classes = [
+	        "sim-row-header1-nav",
+	        "sim-row-header2-nav",
+	        "sim-row-content1-tab",
+	        "sim-row-content2-left",
+
+	    ]
+
+	    for(var i=1; i < 19; i++){
+	        resize_south_classes.push('sim-row-content' + i.toString());
+	    }
+
+	    var resize_classes = [
+	        "sim-row-header1-nav-links",
+	        "sim-row-header1-slider-left-text",
+	        "sim-row-edit",
+	        "sim-row-header2-nav-logo",
+	        "sim-row-content2-right-text",
+	        "sim-row-content4-title",
+	        "sim-row-content2-right-text",
+	        "sim-row-content2-right-text sim-row-edit ui-draggable",
+	        "sim-row-content3",
+	        'sim-row-content3-center-tab-image',
+	        "sim-row-content4-title sim-row-edit",
+	        'sim-row-content4-content sim-row-edit'
+	    ]
+
+	    for(var i=0; i<resize_classes.length; i++){
+	        $res_clone.find('[class*="' + resize_classes[i] + '"]').resizable();
+	    }
+
+	    for(var i=0; i<draggable_classes.length; i++){
+	        $res_clone.find('[class*="' + draggable_classes[i] + '"]').draggable();
+	    }
+	    for(var i=0; i<resize_south_classes.length; i++){
+	        $res_clone.find('[class="' + resize_south_classes[i] + '"]').resizable({
+	        handles: 's'
+	    });
+
+	    }
+
+		hover_edit();
+		perform_delete();
+		perform_change_color();
+
+
+		$("#newsletter-builder-area-center-frame-buttons-dropdown").fadeOut(200);
+	}
+		})
+  }, function() {
+    $(this).children(".newsletter-builder-area-center-frame-buttons-content-tab-add").remove();
+  }
+); 
+  
+  
+
+hover_edit();
 
 
 //close edit
@@ -264,8 +321,6 @@ $(".sim-edit-box-buttons-cancel").click(function() {
   $(this).parent().parent().parent().fadeOut(500)
    $(this).parent().parent().slideUp(500)
 });
-   
-
 
 //Drag & Drop
 $("#newsletter-builder-area-center-frame-content").sortable({
@@ -281,32 +336,10 @@ $(".sim-row").draggable({
 });
 
 
-
-//Delete and palette
-function add_delete(){
-	$(".sim-row").append('<div class="sim-row-delete"><i class="fa fa-times" ></i></div>');
-	$(".sim-row").append('<div class="sim-row-palette"><input class="color" class="bg_block_color" value="#FFFFFF"></i></div> ');
-	}
 add_delete();
 
-// удаление блока
-function perform_delete(){
-    $(".sim-row-delete").click(function() {
-      $(this).parent().remove();
-    });
-}
 perform_delete();
 
-/*function perform_change_color(){
-    $(".bg_block_color").change(function() {
-    	console.log('111')
-      $(this).parent().parent().find('[class*="sim-row-header"]').css('background-color', $(this).val());
-      $(this).parent().parent().find('[class*="sim-row-content"]').css('background-color', $(this).val());
-    });
-}
-
-perform_change_color();
-*/
 // Скачивание шаблона
  $("#newsletter-builder-sidebar-buttons-abutton").click(function(){
 	 
@@ -353,7 +386,6 @@ $("#newsletter-builder-sidebar-buttons-bbutton").click(function(){
       };
 
 	$("#sim-edit-export .text").val(generate_result);
-
 	
 	$("#newsletter-preloaded-export").html(' ');
 	

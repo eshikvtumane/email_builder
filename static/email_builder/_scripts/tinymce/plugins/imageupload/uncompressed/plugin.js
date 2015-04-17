@@ -71,7 +71,8 @@
                         // Sending.
                     },
                     complete: function(response){
-
+                        console.log('plugin')
+                        console.log(response)
                         if (typeof response != "object" || response == null || typeof response.error == 'undefined') {
                             removeForeground();
                             showImageUploadError('An error occurred while uploading your image.');
