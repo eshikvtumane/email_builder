@@ -73,6 +73,7 @@ $(document).ready(function(){
 
     $('#upload_image').on('change', function(){
         //var test = $('#my_form').submit();
+        $('.mce-placeholder').append('<div id="load_image_">Идёт загрузка ...</div>')
         var fd = new FormData();
         fd.append('image', document.getElementById('upload_image').files[0]);
 
