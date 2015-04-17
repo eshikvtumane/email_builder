@@ -73,7 +73,7 @@ $(document).ready(function(){
 
     $('#upload_image').on('change', function(){
         //var test = $('#my_form').submit();
-        $('.mce-placeholder').append('<div id="load_image_">Идёт загрузка ...</div>')
+        $('.mce-placeholder').val('Идёт загрузка, не закрывайте окно.');
         var fd = new FormData();
         fd.append('image', document.getElementById('upload_image').files[0]);
 
@@ -92,7 +92,7 @@ $(document).ready(function(){
                     $('.mce-placeholder').val(data[1]);
                 }
                 else{
-                    alert('Ошибка загрузки');
+                    alert('Ошибка загрузки. ' + data[1]);
                 }
             }
         });

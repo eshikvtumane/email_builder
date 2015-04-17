@@ -17,6 +17,8 @@ from django.contrib.sites.models import get_current_site
 
 from models import Template
 
+from random import randint
+
 
 # Create your views here.
 class EmailConstructorView(View):
@@ -45,7 +47,7 @@ class SavingImages():
     def __save(self, file, path, dir):
         original_name, file_extension = os.path.splitext(file.name)
 
-        filename = original_name + '-' + datetime.now().strftime('%Y-%m-%d-%H-%M-%S') + file_extension
+        filename = str(randint(10000, 1000000)) + '-' + datetime.now().strftime('%Y-%m-%d-%H-%M-%S') + file_extension
 
         save_path = default_storage.save(os.path.join(dir, filename), ContentFile(file.read()))
         image_url = os.path.join(path, save_path)
@@ -67,8 +69,8 @@ class SavingTinyMCEImage(View, SavingImages):
             full_url = ''.join(['http://', get_current_site(request).domain, url])
             result_dict = {"error":False,"path":full_url}
             serialized_instance = json.dumps(['200', full_url])
-        except:
-            serialized_instance = json.dumps(['500'])
+        except Exception, e:
+            serialized_instance = json.dumps(['500', e.message])
 
         return HttpResponse(serialized_instance, content_type='application/json')
 
