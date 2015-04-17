@@ -42,12 +42,13 @@ $(document).ready(function(){
 
     tinymce.init({
         height: 250,
-        placeholder: 'ffff',
         selector: "textarea#editor,textarea#editor2",
         theme_advanced_resize_vertical: false,
         language : "ru",
         fontsize_formats: "8pt 10pt 12pt 14pt 18pt 24pt 36pt",
-        csrf: csrf_token,
+        relative_urls : false,
+        remove_script_host : false,
+        convert_urls : true,
         plugins: [
              "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
              "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
@@ -75,7 +76,6 @@ $(document).ready(function(){
         var fd = new FormData();
         fd.append('image', document.getElementById('upload_image').files[0]);
 
-        console.log('1111')
         $.ajax({
             type: 'POST',
             url: '/save_tinymce_img/',
@@ -86,7 +86,7 @@ $(document).ready(function(){
             contentType: false,
             success: function(data){
                 var code = data[0];
-                console.log(data)
+                
                 if(code == '200'){
                     $('.mce-placeholder').val(data[1]);
                 }
