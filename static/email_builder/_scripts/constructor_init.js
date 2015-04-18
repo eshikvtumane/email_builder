@@ -73,7 +73,7 @@ $(document).ready(function(){
 
     $('#upload_image').on('change', function(){
         //var test = $('#my_form').submit();
-        $('#model2').trigger('openModal');
+        $('#modal2').trigger('openModal');
         var fd = new FormData();
         fd.append('image', document.getElementById('upload_image').files[0]);
 
@@ -94,7 +94,7 @@ $(document).ready(function(){
                 else{
                     alert('Ошибка загрузки. ' + data[1]);
                 }
-                $('#model2').trigger('closeModal');
+                $('#modal2').trigger('closeModal');
             }
         });
     });
