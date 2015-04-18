@@ -81,7 +81,7 @@ $(".sim-row-edit").hover(
     	tinyMCE.activeEditor.setContent(big_parent.html());
     }
     else{
-	    tinyMCE.activeEditor.setContent('');
+	    tinyMCE.get('editor').setContent('');
     }
 	
 	$("#sim-edit-title .sim-edit-box-buttons-save").click(function() {
@@ -111,7 +111,7 @@ $(".sim-row-edit").hover(
     	tinyMCE.activeEditor.setContent(big_parent.html());
     }
     else{
-	    tinyMCE.activeEditor.setContent('');
+	    tinyMCE.get('editor2').setContent('');
     }
 
     
