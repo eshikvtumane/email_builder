@@ -49,6 +49,8 @@ $(document).ready(function(){
         relative_urls : false,
         remove_script_host : false,
         convert_urls : true,
+        theme_advanced_link_targets : "_blank",
+        extended_valid_elements : "a[href|target=_blank]",
         plugins: [
              "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
              "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
