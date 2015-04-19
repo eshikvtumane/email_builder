@@ -54,10 +54,10 @@ $(document).ready(function(){
         plugins: [
              "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
              "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
-             "save table contextmenu directionality emoticons template paste textcolor placeholder"
+             "save table contextmenu directionality emoticons template paste textcolor placeholder videothumbnail"
        ],
         toolbar: [
-            "undo redo | styleselect | bold italic | link image | imageupload",
+            "undo redo | styleselect | bold italic | link image | imageupload | videothumbnail",
             "alignleft aligncenter alignright | forecolor backcolor | fontselect |  fontsizeselect | emoticons"
         ],
         file_browser_callback : function(field_name, url, type, win){
