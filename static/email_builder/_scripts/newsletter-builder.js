@@ -105,7 +105,6 @@ $(".sim-row-edit").hover(
 
 	big_parent.children('div').remove('div');
 	console.log(big_parent.html())
-
 	// удаление дефолтного текста
     if(big_parent.html().indexOf('Lorem') == -1){
     	tinyMCE.activeEditor.setContent(big_parent.html());
@@ -168,16 +167,31 @@ function perform_delete(){
 //Delete and palette
 function add_delete(){
     $(".sim-row").append('<div class="sim-row-delete"><i class="fa fa-times" ></i></div>');
-    $(".sim-row").append('<div class="sim-row-palette"><input class="color" class="bg_block_color" value="#FFFFFF"></i></div>');
+    $(".sim-row").append('<div class="sim-row-palette"><input type="color" class="color" value="#FFFFFF"></i></div>');
+    
     }
 
 
 function perform_change_color(){
+	/*$('.sim-row-palette').ColorPicker({
+            onSubmit: function(hsb, hex, rgb, el) {
+                $(el).val(hex);
+                $(el).ColorPickerHide();
+                console.log($(el).parent().parent().attr('class'))
+                $(el).parent().parent().find('[class*="sim-row"]').css('background-color', '#' + hex);
+            },
+            onBeforeShow: function () {
+                $(this).ColorPickerSetColor(this.value);
+            }
+        })
+        .bind('keyup', function(){
+            $(this).ColorPickerSetColor(this.value);
+        })
     $(".bg_block_color").change(function() {
         console.log('111')
       $(this).parent().parent().find('[class*="sim-row-header"]').css('background-color', $(this).val());
       $(this).parent().parent().find('[class*="sim-row-content"]').css('background-color', $(this).val());
-    });
+    });*/
 }
 
 
@@ -301,6 +315,9 @@ $("#add-footer").hover(function() {
 		hover_edit();
 		perform_delete();
 		perform_change_color();
+
+		// функция переопределения элемента из файла constructor_init.js
+		colorpickerInit($res_clone);
 
 
 		$("#newsletter-builder-area-center-frame-buttons-dropdown").fadeOut(200);

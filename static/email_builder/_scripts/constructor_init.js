@@ -9,7 +9,7 @@ $(document).ready(function(){
             $('.easy_modal').trigger('closeModal');
         });
 
-    $('.color').ColorPicker({
+    /*$('.color').ColorPicker({
             onSubmit: function(hsb, hex, rgb, el) {
                 $(el).val(hex);
                 $(el).ColorPickerHide();
@@ -22,23 +22,17 @@ $(document).ready(function(){
         })
         .bind('keyup', function(){
             $(this).ColorPickerSetColor(this.value);
-        })
+        })*/
 
-    $('.bg-color').ColorPicker({
-            onSubmit: function(hsb, hex, rgb, el) {
-                $(el).val(hex);
-                $(el).ColorPickerHide();
-                console.log($(el).parent().parent().attr('class'))
-                $('#newsletter-builder-area').css('background', '#' + hex);
-                bg_url = 'background-color: ' + $(this).val() + ';';
-            },
-            onBeforeShow: function () {
-                $(this).ColorPickerSetColor(this.value);
-            }
-        })
-        .bind('keyup', function(){
-            $(this).ColorPickerSetColor(this.value);
-        })
+    colorpickerClassInit();
+
+    $('.bg-color').change(function(){
+        var color = $(this).val();
+        if(color){
+            $('#newsletter-builder-area').css('background', '#' + color);
+        }
+    });
+
 
     tinymce.init({
         height: 250,
@@ -134,6 +128,7 @@ $(document).ready(function(){
 
             saveImageOnServer(img, fn);
         }
+        $('#div_load_bg_message').html('');
     });
 
     // сохранение шаблона
@@ -177,20 +172,7 @@ $(document).ready(function(){
                 var code = data[0];
                 if(code == '200'){
                     var $template = $('#newsletter-builder-area-center-frame-content').html(data[1]);
-                    $template.find('.color').ColorPicker({
-                        onSubmit: function(hsb, hex, rgb, el) {
-                            $(el).val(hex);
-                            $(el).ColorPickerHide();
-                            console.log($(el).parent().parent().attr('class'))
-                            $(el).parent().parent().find('[class*="sim-row"]').css('background-color', '#' + hex);
-                        },
-                        onBeforeShow: function () {
-                            $(this).ColorPickerSetColor(this.value);
-                        }
-                    })
-                    .bind('keyup', function(){
-                        $(this).ColorPickerSetColor(this.value);
-                    })
+                    colorpickerInit($template);
 
 
                     var draggable_classes = [
@@ -338,6 +320,24 @@ function saveTemplates(){
     });
 }
 
+function colorpickerInit(el){
+    colorpicker(el.find('.color'));
+}
+
+function colorpickerClassInit(){
+    colorpicker($('.color'));
+}
+
+function colorpicker(el){
+    el.change(function(){
+        var color = $(this).val();
+        if(color){
+            console.log($(this).parent().parent().children().attr('class'))
+            console.log(color)
+            $(this).parent().parent().children().css('background-color', '#' + color);
+        }
+    });
+}
 
 hover_edit();
 add_delete();
