@@ -27,6 +27,8 @@ TEMPLATE_DEBUG = True
 CSRF_COOKIE_SECURE = False
 ALLOWED_HOSTS = []
 
+LOGIN_URL = '/login'
+
 
 # Application definition
 

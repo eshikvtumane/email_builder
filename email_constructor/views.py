@@ -25,9 +25,14 @@ import urllib
 from PIL import Image, ImageDraw
 import urllib, cStringIO
 
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
+
 # Create your views here.
 class EmailConstructorView(View):
     template = 'email_constructor/builder.html'
+
+    @method_decorator(login_required)
     def get(self, request):
         args = {}
         args.update(csrf(request))
