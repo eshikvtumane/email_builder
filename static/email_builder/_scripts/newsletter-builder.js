@@ -234,18 +234,28 @@ $("#add-header").hover(function() {
     $(".newsletter-builder-area-center-frame-buttons-content-tab[data-type='header']").show()
 	$(".newsletter-builder-area-center-frame-buttons-content-tab[data-type='content']").hide()
 	$(".newsletter-builder-area-center-frame-buttons-content-tab[data-type='footer']").hide()
+	$(".newsletter-builder-area-center-frame-buttons-content-tab[data-type='without-title']").hide()
   });
   
 $("#add-content").hover(function() {
     $(".newsletter-builder-area-center-frame-buttons-content-tab[data-type='header']").hide()
 	$(".newsletter-builder-area-center-frame-buttons-content-tab[data-type='content']").show()
 	$(".newsletter-builder-area-center-frame-buttons-content-tab[data-type='footer']").hide()
+	$(".newsletter-builder-area-center-frame-buttons-content-tab[data-type='without-title']").hide()
   });
   
 $("#add-footer").hover(function() {
     $(".newsletter-builder-area-center-frame-buttons-content-tab[data-type='header']").hide()
 	$(".newsletter-builder-area-center-frame-buttons-content-tab[data-type='content']").hide()
 	$(".newsletter-builder-area-center-frame-buttons-content-tab[data-type='footer']").show()
+	$(".newsletter-builder-area-center-frame-buttons-content-tab[data-type='without-title']").hide()
+  });   
+
+$("#add-without-title").hover(function() {
+    $(".newsletter-builder-area-center-frame-buttons-content-tab[data-type='header']").hide()
+	$(".newsletter-builder-area-center-frame-buttons-content-tab[data-type='content']").hide()
+	$(".newsletter-builder-area-center-frame-buttons-content-tab[data-type='footer']").hide()
+	$(".newsletter-builder-area-center-frame-buttons-content-tab[data-type='without-title']").show()
   });   
   
   
