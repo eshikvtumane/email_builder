@@ -417,6 +417,9 @@ body {
 .sim-row-edit{
 	position: relative;
 	}
+.sim-row-remove-div{
+	position: relative;
+	}
 
 /* стили для изменения фона у блока */
 .sim-row-palette {
@@ -469,6 +472,86 @@ body {
 	background-color: rgba(0,0,0,0.5);
 	cursor: pointer;
 }
+
+/* remove icon */
+.sim-row-remove-div-hover {
+	height: 100%;
+	width: 70%;
+	left: 0px;
+	top: 0px;
+	cursor: default;
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+	-o-transition: all 0.5s;
+	transition: all 0.5s;
+
+}
+.sim-row-remove-div-hover i{
+	position: absolute;
+	height: 30px;
+	width: 30px;
+	line-height: 30px;
+	left: 80%;
+	top: 50%;
+	text-align: center;
+	margin-top: -15px;
+	margin-left: -15px;
+	color: #fdd5d5;
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+	-o-transition: all 0.5s;
+	transition: all 0.5s;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	border-radius: 50%;
+	font-size: 16px;
+}
+.sim-row-remove-div-hover i:hover {
+	background-color: rgba(0,0,0,0.5);
+	cursor: pointer;
+}
+
+/* ------ */
+
+/* изменение размеров изображения */
+.sim-row-edit-size-hover {
+	height: 100%;
+	width: 70%;
+	left: 0px;
+	top: 0px;
+	cursor: default;
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+	-o-transition: all 0.5s;
+	transition: all 0.5s;
+
+}
+.sim-row-edit-size-hover i{
+	position: absolute;
+	height: 30px;
+	width: 30px;
+	line-height: 30px;
+	left: 80%;
+	top: 50%;
+	text-align: center;
+	margin-top: -15px;
+	margin-left: -15px;
+	color: #fdd5d5;
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+	-o-transition: all 0.5s;
+	transition: all 0.5s;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	border-radius: 50%;
+	font-size: 16px;
+}
+.sim-row-edit-size-hover i:hover {
+	background-color: rgba(0,0,0,0.5);
+	cursor: pointer;
+}
+
+/* ----- */
 
 .sim-edit{
 	height: 100%;

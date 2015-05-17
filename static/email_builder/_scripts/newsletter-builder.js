@@ -1,14 +1,36 @@
 //Edit
 function hover_edit(){
 
-
 $(".sim-row-edit").hover(
   function() {
-    $(this).append('<div class="sim-row-edit-hover"><i class="fa fa-pencil" style="line-height:30px;"></i></div>');
+  	var count_image = 0;
+  	// если блок содержит изображение
+
+  	var $this = $(this);
+  	$(this).each(function(i){
+  		if($(this).find('img').length>0){
+  			count_image += 1
+  		}
+  	});
+
+    $this.append('<div class="sim-row-edit-hover"><i class="fa fa-pencil" style="line-height:30px;"></i></div>');
+    $this.append('<div class="sim-row-remove-div-hover"><i class="fa fa-remove remove-elem-block" style="line-height:30px;"></i></div>');
+    /*if(count_image){
+	  	$this.append('<div class="sim-row-edit-size"><i class="fa fa-pencil" style="line-height:30px;"></i></div>');
+	  }*/
 	$(".sim-row-edit-hover").click(function(e) {e.preventDefault()})
+
+// удаление элемента в блоке
+	$(".remove-elem-block").click(function(){
+		$(this).parent().parent().remove();
+	});
+	
 	$(".sim-row-edit-hover i").click(function(e) {
 	e.preventDefault();
 	big_parent = $(this).parent().parent();
+
+
+
 	
 	//edit image
 	if(big_parent.attr("data-type")=='image'){
@@ -46,12 +68,14 @@ $(".sim-row-edit").hover(
 	if(big_parent.attr("data-type")=='link'){
 
 	// получаем объект кнопки
-	var $div_link = big_parent.parent();
+	var $div_link = big_parent;
 
 	$("#sim-edit-link .title").val(big_parent.text());
 	$("#sim-edit-link .url").val(big_parent.attr("href"));
 	$("#sim-edit-link").fadeIn(500);
 	$("#sim-edit-link .sim-edit-box").slideDown(500);
+
+	$('#inp_color_btn_link').val(rgb2hex($div_link.css("background-color")));
 	
 	$("#sim-edit-link .sim-edit-box-buttons-save").click(function() {
 	  $(this).parent().parent().parent().fadeOut(500)
@@ -138,7 +162,9 @@ $(".sim-row-edit").hover(
 	
 	$("#sim-edit-icon").fadeIn(500);
 	$("#sim-edit-icon .sim-edit-box").slideDown(500);
-	
+	$('#bg_icon_color').val(rgb2hex(big_parent.css("background-color")));
+
+
 	$("#sim-edit-icon i").click(function() {
 	  $(this).parent().parent().parent().parent().fadeOut(500)
 	  $(this).parent().parent().parent().slideUp(500)
@@ -147,14 +173,27 @@ $(".sim-row-edit").hover(
 
 		});
 
-	}//
+	$("#btn_bg_icon").click(function() {
+	  $(this).parent().parent().parent().fadeOut(500)
+	  $(this).parent().parent().slideUp(500)
+
+	    	big_parent.css("background-color",$("#bg_icon_color").val());
+
+		});
+
+	}
+
 	
 	});
   }, function() {
     $(this).children(".sim-row-edit-hover").remove();
+    $(this).children(".sim-row-remove-div-hover").remove();
+    $(this).children(".sim-row-edit-size-hover").remove();
   }
 );
 }
+
+
 
 
 // удаление блока
@@ -438,4 +477,13 @@ function generateEmail(html){
     export_content += '</body></html>'
 	
 	return export_content
+}
+
+function rgb2hex(rgb){
+	rgb = rgb.match(/^rgba?[\s+]?\([\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?/i);
+	return(rgb && rgb.length === 4) ? "#" +
+		('0' + parseInt(rgb[1], 10).toString(16)).slice(-2) +
+		('0' + parseInt(rgb[2], 10).toString(16)).slice(-2) +
+		('0' + parseInt(rgb[3], 10).toString(16)).slice(-2) : '';
+	
 }

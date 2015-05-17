@@ -87,11 +87,14 @@ class SavingTinyMCEImage(View, SavingImages):
 # сохранение шаблона письма
 class SavingTemplatesAjax(View):
     def post(self, request):
-        name = request.POST['name']
-        html = request.POST['html']
+        post = request.POST
+        name = post['name']
+        html = post['html']
+        bg_color = post['bg_image']
+        bg_img = post.get('bg_color' or None)
 
         try:
-            st = Template(template_name = name, template_html = html)
+            st = Template(template_name = name, template_html = html, bg_color=bg_color, bg_image=bg_img)
             st.save()
 
             result = json.dumps(['200', st.id])
@@ -105,7 +108,7 @@ class LoadTemplateAjax(View):
     def get(self, request):
         try:
             template = Template.objects.get(pk=request.GET['id'])
-            result = json.dumps(['200', template.template_html])
+            result = json.dumps(['200', template.template_html, template.bg_color, template.bg_image])
         except:
             result = json.dumps(['500'])
         return HttpResponse(result, content_type='application/json')

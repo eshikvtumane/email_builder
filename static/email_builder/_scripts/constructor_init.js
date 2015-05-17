@@ -9,21 +9,6 @@ $(document).ready(function(){
             $('.easy_modal').trigger('closeModal');
         });
 
-    /*$('.color').ColorPicker({
-            onSubmit: function(hsb, hex, rgb, el) {
-                $(el).val(hex);
-                $(el).ColorPickerHide();
-                console.log($(el).parent().parent().attr('class'))
-                $(el).parent().parent().find('[class*="sim-row"]').css('background-color', '#' + hex);
-            },
-            onBeforeShow: function () {
-                $(this).ColorPickerSetColor(this.value);
-            }
-        })
-        .bind('keyup', function(){
-            $(this).ColorPickerSetColor(this.value);
-        })*/
-
     colorpickerClassInit();
 
     $('.bg-color').change(function(){
@@ -31,6 +16,20 @@ $(document).ready(function(){
         if(color){
             $('#newsletter-builder-area').css('background', '#' + color);
         }
+    });
+
+    $('.sim-row-*').click(function(){
+        console.log('4')
+    })
+
+    $('.sim-row-*').droppable({
+        accept: '.draggable-elem',
+        drop: function(event, ui){
+            $(this).append($(ui.droppable).clone());
+        }
+    });
+    $(".draggable-elem").draggable({
+        helper: 'clone'
     });
 
 
@@ -109,6 +108,7 @@ $(document).ready(function(){
     });
 
     // установить в качестве фона письма изображение
+    var bg_img_url = '';
     $('#inp_bg_img').change(function(){
         var img = 'inp_bg_img';
         $('#div_load_bg_message').html('Идёт загрузка ...');
@@ -117,7 +117,7 @@ $(document).ready(function(){
                var code = data[0];
                 if(code == '200'){
                     var url = 'url(' + data[1] + ')';
-                    console.log(url)
+                    bg_img_url = url;
                     $('#newsletter-builder-area').css('background-image', url);
                     bg_url = 'background-image: ' + url;
 
@@ -134,29 +134,37 @@ $(document).ready(function(){
     // сохранение шаблона
     $('#btn_save_template').click(function(){
             var name = $('#template_name').val();
-            var html = $('#newsletter-builder-area-center-frame-content').html();
 
-            $.ajax({
-                type: 'POST',
-                url: '/save_template/',
-                data: {
-                    'name': name,
-                    'html': html
-                },
-                dataType: 'json',
-                success: function(data){
-                    var code = data[0];
-                    if(code == '200'){
-                        var cells = '<td width="80%">' + name + '</td>' + '<td><button class="get-template-html" value="' + data[1] + '">Выбрать</button></td>'
-                        $("#tbl_templates tr:last").after('<tr>' + cells + '</tr>');
-                        alert('Шаблон успешно добавлен');
-                    }
-                    else{
-                        alert('Произошла ошибка при добавлении шаблона');
-                    }
+            if(name != ''){
+                var html = $('#newsletter-builder-area-center-frame-content').html();
 
-                }
-            });
+                $.ajax({
+                    type: 'POST',
+                    url: '/save_template/',
+                    data: {
+                        'name': name,
+                        'html': html,
+                        'bg_image': bg_img_url,
+                        'bg_color': $('.bg-color').val()
+                    },
+                    dataType: 'json',
+                    success: function(data){
+                        var code = data[0];
+                        if(code == '200'){
+                            var cells = '<td width="80%">' + name + '</td>' + '<td><button class="get-template-html" value="' + data[1] + '">Выбрать</button></td>'
+                            $("#tbl_templates tr:last").after('<tr>' + cells + '</tr>');
+                            alert('Шаблон успешно добавлен');
+                        }
+                        else{
+                            alert('Произошла ошибка при добавлении шаблона');
+                        }
+
+                    }
+                });
+            }
+            else{
+                alert('Введите имя шаблона');
+            }
     });
 
 
@@ -171,6 +179,10 @@ $(document).ready(function(){
             success: function(data){
                 var code = data[0];
                 if(code == '200'){
+                    $('#newsletter-builder-area').css('background', data[3]);
+                    $('#newsletter-builder-area').css('background-image', data[2]);
+                    console.log('Color', data[3])
+
                     var $template = $('#newsletter-builder-area-center-frame-content').html(data[1]);
                     colorpickerInit($template);
 

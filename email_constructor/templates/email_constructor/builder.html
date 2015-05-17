@@ -16,7 +16,8 @@
 <link href="{% static 'email_builder/_css/newsletter-builder.css' %}" rel="stylesheet" type="text/css">
 <link href="{% static 'email_builder/_css/newsletter.css' %}" rel="stylesheet" type="text/css">
 <link href="{% static 'email_builder/_scripts/jquery-ui/jquery-ui.min.css' %}" rel="stylesheet" type="text/css">
-<link rel="stylesheet" media="screen" type="text/css" href="{% static 'js/colorpicker/css/colorpicker.css' %}" />
+
+
 
 <script type="text/javascript" src="{% static 'email_builder/_scripts/jquery/jquery-2.0.2.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'email_builder/_scripts/jquery/jquery-ui-1.10.4.min.js' %}"></script>
@@ -28,9 +29,6 @@
 
 
 
-<!--<script src="//cdn.ckeditor.com/4.4.7/standard/ckeditor.js"></script>
-<script src="//cdn.ckeditor.com/4.4.7/full/ckeditor.js"></script>-->
-<script type="text/javascript" src="{% static 'js/colorpicker/js/colorpicker.js' %}"></script>
 <script type="text/javascript" src="{% static 'email_builder/_scripts/tinymce/tinymce.min.js' %}"></script>
 <script src="{% static 'email_builder/_scripts/tinymce/plugins/placeholder/plugin.js' %}"></script>
 <script src="{% static 'email_builder/_scripts/tinymce/plugins/videothumbnail/plugin.js' %}"></script>
@@ -44,6 +42,7 @@
 <script type="text/javascript" src="{% static 'js/csrf_ajax.js' %}"></script>
 
 
+
 </head>
 <body style="margin: 0px;padding: 0px;font-family: 'Source Sans Pro', sans-serif;">
 
@@ -51,6 +50,12 @@
 
 
 <div id="header">
+
+<div class="elements">
+	<div class="draggable-elem sim-row-content6-center-tab-text sim-row-edit" data-type="title" style="color: rgba(255,255,255,1);font-size: 18px;margin-top: 15px;width: 150px;z-index:9999;">Заголовок</div>
+</div>
+
+
 <div id="header-left">
 
 <!--<div id="header-left-icon"><a href="http://simbyone.com/drag-and-drop-newsletter-builder-using-jquery/"><i class="fa fa-angle-left"></i></a></div>
@@ -613,6 +618,22 @@
             <input type="hidden" class="sim-edit-box-content-field-input image">
             <input type="file" id="input_load_image" accept="image/*">
       </div>
+
+      <div>
+      	<h3>Изменение размеров</h3>
+      	<div>
+      		<label>Длина</label>
+      		<input type="number" min='10' id='width_img'>
+      	</div>
+      	<div>
+      		<label>Ширина</label>
+      		<input type="number" min='10' id='height_img'>
+      	</div>
+      	<div>
+      		<input type="checkbox" id='proportion'>
+      		<label for='proportion'>Пропорционально</label>
+      	</div>
+      </div>
 </div>
 <div class="sim-edit-box-buttons">
 <div class="sim-edit-box-buttons-save">Сохранить</div>
@@ -631,11 +652,9 @@
 <div class="sim-edit-box-content-text">Ссылка:<span>(полный адрес, включая http://)</span></div>
 <div class="sim-edit-box-content-field"><input type="text" class="sim-edit-box-content-field-input url"></div>
 <div class="sim-edit-box-content-text">
-    <!--<div>
-        Цвет кнопки: <input type="color" id="inp_color_btn_link" value="#966fb1">
-    </div>
-    <div style="margin-top: 2ex;">
-        Цвет ссылки: <input class="color" id="inp_color_text_link" value="#ffffff"></div>-->
+	    <div>
+	        Цвет кнопки: <input type="color" id="inp_color_btn_link" value="#966fb1">
+	    </div>
     </div>
 
 </div>
@@ -1945,6 +1964,12 @@
 
 
 </div>
+</div>
+
+<div>
+Выберите цвет фона 
+<input type='color' id='bg_icon_color'>
+<button id='btn_bg_icon'>Применить цвет</button>
 </div>
 <div class="sim-edit-box-buttons">
 <div class="sim-edit-box-buttons-cancel" style="margin-left:0px;">Отмена</div>
