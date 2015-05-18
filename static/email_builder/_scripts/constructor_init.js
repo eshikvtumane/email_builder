@@ -251,6 +251,7 @@ $(document).ready(function(){
 
                     hover_edit();
                     perform_delete();
+                    perform_add();
                     perform_change_color();
 
                     $('.easy_modal').trigger('closeModal');

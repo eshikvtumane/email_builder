@@ -51,11 +51,6 @@
 
 <div id="header">
 
-<div class="elements">
-	<div class="draggable-elem sim-row-content6-center-tab-text sim-row-edit" data-type="title" style="color: rgba(255,255,255,1);font-size: 18px;margin-top: 15px;width: 150px;z-index:9999;">Заголовок</div>
-</div>
-
-
 <div id="header-left">
 
 <!--<div id="header-left-icon"><a href="http://simbyone.com/drag-and-drop-newsletter-builder-using-jquery/"><i class="fa fa-angle-left"></i></a></div>
@@ -608,29 +603,49 @@
   </div>
 </div>
 
+<div class="easy_modal" id="modal3">
+  <div class="easy-modal-inner" style="width: 400px; background-color: #FFFFFF; padding: 30px 30px 30px 30px;" align="center">
+  	<hidden id="to_add"></hidden>
+  	<h2>Выберите элемент</h2>
+
+  	<div>
+  		<button class='add-elem' type='text' title="Текст"><i class="fa fa-font" style='font-size: 40pt;'></i></button>
+    	<button class='add-elem' type='image' title="Изображение"><i class="fa fa-image" style='font-size: 40pt;'></i></button>
+    	<button class='add-elem' type='button' title="Кнопка"><i class="fa fa-link" style='font-size: 40pt;'></i></button>
+    	<button class='add-elem' type='icon' title="Иконка"><i class="fa fa-inbox" style='font-size: 40pt;'></i></button>
+  	</div>
+    
+    <div style="padding-top: 3ex;">
+    	<button class="easy-modal-close">Закрыть</button>
+    </div>
+      
+  </div>
+</div>
+
 
 <div class="sim-edit" id="sim-edit-image">
-<div class="sim-edit-box" style="height:230px;">
+<div class="sim-edit-box" style="height:330px;">
 <div class="sim-edit-box-title">Редактировать изображение</div>
 <div class="sim-edit-box-content">
-<div class="sim-edit-box-content-text">Добавить изображение:</div>
+<div class="sim-edit-box-content-text">Изменить изображение:</div>
       <div class="sim-edit-box-content-field">
             <input type="hidden" class="sim-edit-box-content-field-input image">
             <input type="file" id="input_load_image" accept="image/*">
       </div>
-
-      <div>
+<br>
+      <div style="padding-top: 2ex;">
       	<h3>Изменение размеров</h3>
       	<div>
       		<label>Длина</label>
       		<input type="number" min='10' id='width_img'>
       	</div>
+      	<br>
       	<div>
       		<label>Ширина</label>
       		<input type="number" min='10' id='height_img'>
       	</div>
       	<div>
-      		<input type="checkbox" id='proportion'>
+      		<input type="checkbox" checked id='proportion'>
       		<label for='proportion'>Пропорционально</label>
       	</div>
       </div>

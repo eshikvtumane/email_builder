@@ -1,3 +1,37 @@
+$(document).ready(function(){
+	var text = '<div class="sim-row-content2-right-text sim-row-edit style="color: #656565;float: left;width: 300px;margin-left: 50px;margin-top: 25px;font-size: 16px;line-height: 24px;font-weight: 300;" data-type="text" >Lorem ipsum dolor sit amet, consectetur adipscing elit praesent augue sapien egestas nibh id condimentum accumsan diam eleva corp avera folmo</div>';
+	var img  = '<div class="sim-row-content2-left sim-row-edit" data-type="image" style="float: left;width: 350px;text-align: right;overflow: hidden;margin-top: 70px; margin-left:30px;"><img src="/static/email_builder/img/placeholder.png" style="height: auto;width: 350px;"></div>';
+	var btn  = '<div class="sim-row-content5-left-button" style="float: left;margin-top: 25px;width: 300px;margin-left: 50px;"><a href="#" class="sim-row-edit" data-type="link" style="float: left;background-color: rgba(150,111,177,1);-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;-webkit-transition: background 0.5s;-moz-transition: background 0.5s;-o-transition: background 0.5s;transition: background 0.5s;color: rgba(255,255,255,1);font-size: 15px;line-height: 35px;text-decoration: none;padding-right: 15px;padding-left: 15px;display: block;">Читать далее</a></div>';
+	var icon = '<div class="sim-row-content1-tab" style="float: left;width: 200px;margin-left: 50px;text-align: center;"><div class="sim-row-content1-tab-icon sim-row-edit" data-type="icon" style="background-color: rgba(63,141,191,1);height: 60px;width: 60px;margin-right: auto;margin-left: auto;color: rgba(255,255,255,1);line-height: 60px;-webkit-transition: background 0.5s;-moz-transition: background 0.5s;-o-transition: background 0.5s;transition: background 0.5s;font-size: 30px;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;"><i class="fa fa-life-ring" style="line-height: 60px;"></i></div></div>';
+	$('.add-elem').click(function(){
+		var $type = $(this).attr('type');
+		var class_name = $('.'  + $('#to_add').val().split(' ')[0]);
+
+		if($type == 'text'){
+			class_name.append(text);
+		}
+		if($type == 'image'){
+			class_name.append(img);
+		}
+		if($type == 'button'){
+			class_name.append(btn);
+		}
+		if($type == 'icon'){
+			class_name.append(icon);
+		}
+		
+		hover_edit();
+		console.log($type)
+		elem_init = class_name.find('[class*="sim-row-content"]');
+		elem_init.draggable();
+		elem_init.resizable();
+
+		
+		$('#modal3').trigger('closeModal');
+	})
+});
+
+
 //Edit
 function hover_edit(){
 
@@ -32,37 +66,100 @@ $(".sim-row-edit").hover(
 
 
 	
+	console.log('!!!')
+	console.log(typeof(big_parent.attr("data-type")))
+	console.log(big_parent.attr("data-type"))
 	//edit image
 	if(big_parent.attr("data-type")=='image'){
 	
 	$("#sim-edit-image .image").val(big_parent.children('img').attr("src"));
 	$("#sim-edit-image").fadeIn(500);
 	$("#sim-edit-image .sim-edit-box").slideDown(500);
-	
+
+	var $div_content = $(this).parent().parent();
+	var $img = $div_content.find('img');
+	var path = $(this).parent().parent().find('img').attr('src');
+	//document.getElementById('input_load_image').src = path;
+
+	// очищение file input
+	var img_input = $('#input_load_image');
+	img_input.replaceWith(img_input.val('').clone(true));
+
+	// размеры изображения
+	var $width_image = $('#width_img').val($img.width());
+	var default_img_width = $img.width();
+	var $height_image = $('#height_img').val($img.height());
+
+	// проверка, изменять ли изображение пропорционально
+	$('#proportion').click(function(){
+		// блокировка поля изменения высоты
+		if($(this).prop('checked')){
+			$height_image.prop('disabled', true);
+		}
+		else{
+			$height_image.prop('disabled', false);
+		}
+	});
+
+	if($('#proportion').prop('checked')){
+			$height_image.prop('disabled', true);
+		}
+		else{
+			$height_image.prop('disabled', false);
+		}
+
 	$("#sim-edit-image .sim-edit-box-buttons-save").click(function() {
-	  $(this).parent().parent().parent().fadeOut(500)
-	  $(this).parent().parent().slideUp(500)
+	  
 
+      var input = document.getElementById('input_load_image');
+      var img_size = ($('#input_load_image'))[0].files.length
 
-	  big_parent.children('img').attr("src", '/media/ajax-loader.gif');
-	  fn = function(data){
-            var code = data[0];
-            if(code == '200'){
-                big_parent.children('img').attr("src",data[1]);
-            }
-            else{
-            	alert('Произошла ошибка при загрузке изображения.');
-                var message = 'Произошла ошибка при загрузке изображения.';
-            }
-        }
+      // если размеры не изменены
+      if (img_size != 0) {
+        console.log('upload')
+    	big_parent.children('img').attr("src", '/media/ajax-loader.gif');
+		fn = function(data){
+	            var code = data[0];
+	            if(code == '200'){
+	                big_parent.children('img').attr("src",data[1]);
+	            }
+	            else{
+	            	alert('Произошла ошибка при загрузке изображения.');
+	                var message = 'Произошла ошибка при загрузке изображения.';
+	            }
+	        }
+    	saveImageOnServer('input_load_image', fn);
+      }
+      else{
+      	// проверка на число
+      	var digit_exp = /^\d+$/;
+      	if(digit_exp.test($width_image.val()) && digit_exp.test($height_image.val())){
+	  		if($('#proportion').prop('checked')){
+	  			// если необходимо пропорционально изменить картинку
+	  			$img.width($width_image.val());
+	  			var proportion = $width_image.val() / default_img_width;
+	  			$img.height($height_image.val() * proportion);
+	  		}
+	  		else{
+	  			$img.width($width_image.val());
+	    		$img.height($height_image.val());
+	  		}
 
-        var input = document.getElementById('input_load_image');
-        if (input.files && input.files[0]) {
-            saveImageOnServer('input_load_image', fn);
-           }
-	   });
+	  		// изменяем размеры всплывающего синего окна с кнопками редактирования и уж=даления контента
+	  		$div_content.css('height', $img.height());
+	  		$div_content.css('width', $img.width());
+	  	}
+	  	else{
+	  		alert('Введите корректные размеры');
+	  		return;
+	  	}
+      }
 
-	}
+      $(this).parent().parent().parent().fadeOut(500);
+	  $(this).parent().parent().slideUp(500);
+	});
+
+}
 	
 	//edit link
 	if(big_parent.attr("data-type")=='link'){
@@ -121,7 +218,7 @@ $(".sim-row-edit").hover(
 	}
 	
 	//edit text
-	if(big_parent.attr("data-type")=='text'){
+	if(big_parent.attr("data-type")=='text' || typeof(big_parent.attr("data-type"))==undefined){
 	
 	$("#sim-edit-text .text").val(big_parent.text());
 	$("#sim-edit-text").fadeIn(500);
@@ -203,12 +300,24 @@ function perform_delete(){
     });
 }
 
+
+
+// добавление элементов
+function perform_add(){
+	$(".sim-row-add-element").click(function() {
+		$('#to_add').val($(this).parent().find('div:first').attr('class'));
+      $('#modal3').trigger('openModal');
+    });
+}
+
+
 //Delete and palette
 function add_delete(){
     $(".sim-row").append('<div class="sim-row-delete"><i class="fa fa-times" ></i></div>');
-    $(".sim-row").append('<div class="sim-row-palette"><input type="color" class="color" value="#FFFFFF"></i></div>');
-    
+    $(".sim-row").append('<div class="sim-row-palette"><input type="color" class="color" value="#FFFFFF"></div>');
+    $(".sim-row").append('<div class="sim-row-add-element"><i class="fa fa-plus"></i></div>');
     }
+
 
 
 function perform_change_color(){
@@ -363,6 +472,7 @@ $("#add-without-title").hover(function() {
 
 		hover_edit();
 		perform_delete();
+		perform_add();
 		perform_change_color();
 
 		// функция переопределения элемента из файла constructor_init.js
@@ -405,6 +515,7 @@ $(".sim-row").draggable({
 add_delete();
 
 perform_delete();
+perform_add();
 
 // Скачивание шаблона
  $("#newsletter-builder-sidebar-buttons-abutton").click(function(){
