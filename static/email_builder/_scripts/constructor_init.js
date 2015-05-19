@@ -12,6 +12,7 @@ $(document).ready(function(){
     colorpickerClassInit();
 
     $('.bg-color').change(function(){
+        console.log($(this).val())
         var color = $(this).val();
         if(color){
             $('#newsletter-builder-area').css('background', '#' + color);
@@ -266,9 +267,11 @@ $(document).ready(function(){
                     
 
                     hover_edit();
+                    add_delete();
                     perform_delete();
                     perform_add();
                     perform_change_color();
+                    colorpickerClassInit();
 
                     $('.easy_modal').trigger('closeModal');
                     console.log('Шаблон успешно скачан');

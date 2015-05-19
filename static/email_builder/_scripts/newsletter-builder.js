@@ -1,6 +1,7 @@
 $(document).ready(function(){
+	// добавление элементов в блок
 	var text = '<div class="sim-row-content2-right-text sim-row-edit style="color: #656565;float: left;width: 300px;margin-left: 50px;margin-top: 25px;font-size: 16px;line-height: 24px;font-weight: 300;" data-type="text" >Lorem ipsum dolor sit amet, consectetur adipscing elit praesent augue sapien egestas nibh id condimentum accumsan diam eleva corp avera folmo</div>';
-	var img  = '<div class="sim-row-content2-left sim-row-edit" data-type="image" style="float: left;width: 350px;text-align: right;overflow: hidden;margin-top: 70px; margin-left:30px;"><img src="/static/email_builder/img/placeholder.png" style="height: auto;width: 350px;"></div>';
+	var img  = '<div class="sim-row-content2-left sim-row-edit" data-type="image" style="float: left;width: 350px;text-align: right;overflow: hidden; margin-left:30px;"><img src="/static/email_builder/img/placeholder.png" style="height: auto;width: 350px;"></div>';
 	var btn  = '<div class="sim-row-content5-left-button" style="float: left;margin-top: 25px;width: 300px;margin-left: 50px;"><a href="#" class="sim-row-edit" data-type="link" style="float: left;background-color: rgba(150,111,177,1);-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;-webkit-transition: background 0.5s;-moz-transition: background 0.5s;-o-transition: background 0.5s;transition: background 0.5s;color: rgba(255,255,255,1);font-size: 15px;line-height: 35px;text-decoration: none;padding-right: 15px;padding-left: 15px;display: block;">Читать далее</a></div>';
 	var icon = '<div class="sim-row-content1-tab" style="float: left;width: 200px;margin-left: 50px;text-align: center;"><div class="sim-row-content1-tab-icon sim-row-edit" data-type="icon" style="background-color: rgba(63,141,191,1);height: 60px;width: 60px;margin-right: auto;margin-left: auto;color: rgba(255,255,255,1);line-height: 60px;-webkit-transition: background 0.5s;-moz-transition: background 0.5s;-o-transition: background 0.5s;transition: background 0.5s;font-size: 30px;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;"><i class="fa fa-life-ring" style="line-height: 60px;"></i></div></div>';
 	$('.add-elem').click(function(){
@@ -22,6 +23,7 @@ $(document).ready(function(){
 		
 		hover_edit();
 		console.log($type)
+		class_name.css('height', class_name.css('height') + 30)
 		elem_init = class_name.find('[class*="sim-row-content"]');
 		elem_init.draggable();
 		elem_init.resizable();
