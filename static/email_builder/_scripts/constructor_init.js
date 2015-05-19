@@ -104,6 +104,7 @@ $(document).ready(function(){
     // смена фона у письма
     $('#inp_bg_color').change(function(){
         $('#newsletter-builder-area').css('background', $(this).val());
+        // запись значения для экспорта
         bg_url = 'background-color: ' + $(this).val() + ';';
     });
 
@@ -179,10 +180,25 @@ $(document).ready(function(){
             success: function(data){
                 var code = data[0];
                 if(code == '200'){
-                    $('#newsletter-builder-area').css('background', data[3]);
-                    $('#newsletter-builder-area').css('background-image', data[2]);
-                    console.log('Color', data[3])
+                    // смена фона письма
+                    // установка цвета
+                    $('#newsletter-builder-area').css('background', data[3]); 
+                    // установка изображения 
+                    $('#newsletter-builder-area').css('background-image', data[2]); 
 
+                    // установка значений для экспорта шаблона
+                    // если установлено изображение, то записываем его
+                    if(data[2]){
+                        bg_url = 'background-image: ' + data[2] + ';'
+                    }
+                    else{
+                        $('#inp_bg_color').val(data[3]);
+                        bg_url = 'background-color: ' + data[3] + ';';
+                    }
+                    
+                    
+
+                    // отображение кода на странице и инициализация drop and resize
                     var $template = $('#newsletter-builder-area-center-frame-content').html(data[1]);
                     colorpickerInit($template);
 
