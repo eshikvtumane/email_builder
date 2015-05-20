@@ -66,11 +66,6 @@ $(".sim-row-edit").hover(
 	big_parent = $(this).parent().parent();
 
 
-
-	
-	console.log('!!!')
-	console.log(typeof(big_parent.attr("data-type")))
-	console.log(big_parent.attr("data-type"))
 	//edit image
 	if(big_parent.attr("data-type")=='image'){
 	
