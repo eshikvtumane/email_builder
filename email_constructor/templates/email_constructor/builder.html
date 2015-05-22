@@ -555,8 +555,23 @@
 
 
 <div style="float: right; margin-left: 5ex;">
-  <a href="" id="link" download="email.html">Скачать файл</a>
+  <a href="" id="link" download="email.html">Скачать файл</a><br>
+    <a id="FUCKINGSEND" href="#">Отправить нa </a><input id='mda' type="text">
 </div>
+<script>
+    $(document).on('click', '#FUCKINGSEND', function (e) {
+    e.preventDefault();
+    $.ajax({
+	method: 'POST',
+	url: '/send/',
+	data: {
+	    csrfmiddlewaretoken: $('[name=csrfmiddlewaretoken]').val(),
+	    html :$('#editor1').val(),
+	    mail: $('#mda').val()
+	}
+})
+});
+</script>
 
 <!--<a href="" id="link" download="email.html">
   <div id="newsletter-builder-sidebar-buttons-abutton">
@@ -581,7 +596,7 @@
                 </td>
                 <td>
                     <button class="load-template" value="{{ template.id }}">Выбрать</button>
-                </td>
+</td>
             </tr>
         {% empty %}
           <tr>
