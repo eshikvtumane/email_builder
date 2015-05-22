@@ -90,8 +90,8 @@ class SavingTemplatesAjax(View):
         post = request.POST
         name = post['name']
         html = post['html']
-        bg_color = post['bg_image']
-        bg_img = post.get('bg_color' or None)
+        bg_color = post.get('bg_image', '')
+        bg_img = post.get('bg_color', None)
 
         try:
             st = Template(template_name = name, template_html = html, bg_color=bg_color, bg_image=bg_img)
@@ -176,4 +176,7 @@ class GenerateThumbnail(View, VideoThumbmail):
             return HttpResponse('AJAX на!', "text/plain")
 
 
-
+from django.core.mail import send_mail
+def send(request):
+    send_mail('Letter', 'msg', 'admin@geliusdv.ru', [request.POST.get('mail', '')], fail_silently=False, html_message=request.POST.get('html'))
+    return HttpResponse('sent')
