@@ -523,6 +523,7 @@ perform_add();
 	$("#newsletter-preloaded-export .sim-row").removeClass("ui-draggable");
 	$("#newsletter-preloaded-export .sim-row-edit").removeAttr("data-type");
 	$("#newsletter-preloaded-export .sim-row-edit").removeClass("sim-row-edit");
+	$("#newsletter-preloaded-export").find('p').attr('style', 'line-height: 5px;');
 	
 	export_content = $("#newsletter-preloaded-export").html();
 	
@@ -548,6 +549,7 @@ $("#newsletter-builder-sidebar-buttons-bbutton").click(function(){
 	//$("#newsletter-preloaded-export .sim-row-edit").removeClass("sim-row-edit");
 
 	$("#newsletter-preloaded-export").removeAttr("class");
+	$("#newsletter-preloaded-export").find('p').attr('line-height', '5px');
 	//$("div").removeClass("ui-resizable-handle").removeClass("ui-resizable-se").removeClass('ui-resizable').removeClass('resize').removeClass('ui-resizable-s');
 	
 	preload_export_html = $("#newsletter-preloaded-export").html();

@@ -5,6 +5,15 @@ body {
 	background-color: #c3ccd5;
 	overflow: hidden;
 }
+
+p{
+	line-height: 5px;
+}
+.add_menu{
+	margin-top: 10pt;
+	line-height: line-height: 30px;
+}
+
 .ui-resizable-handle{
     position
 }
@@ -256,7 +265,6 @@ body {
 	float: left;
 	height: 30px;
 	width: 100%;
-	line-height: 30px;
 	-webkit-transition: background 0.5s;
 	-moz-transition: background 0.5s;
 	-o-transition: background 0.5s;
@@ -268,7 +276,7 @@ body {
 .newsletter-builder-area-center-frame-buttons-dropdown-tab p {
 	padding: 0px;
 	float: left;
-	margin-top: 0px;
+	/*margin-top: 0px;*/
 	margin-right: 0px;
 	margin-bottom: 0px;
 	margin-left: 12px;
