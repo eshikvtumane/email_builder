@@ -709,7 +709,7 @@ body {
 .sim-row-content8-center-tab{
 	float: left;
 	width: 285px;
-	background-color: rgba(255,255,255,1);
+	/*background-color: rgba(255,255,255,1);*/
 	margin-right: 30px;
 	padding-bottom: 15px;
 }

@@ -74,6 +74,7 @@ $(".sim-row-edit").hover(
 	$("#sim-edit-image .sim-edit-box").slideDown(500);
 
 	var $div_content = $(this).parent().parent();
+	console.log($div_content.attr('class'))
 	var $img = $div_content.find('img');
 	var path = $(this).parent().parent().find('img').attr('src');
 	//document.getElementById('input_load_image').src = path;
@@ -111,10 +112,12 @@ $(".sim-row-edit").hover(
       var input = document.getElementById('input_load_image');
       var img_size = ($('#input_load_image'))[0].files.length
 
+      // объект изображения
+      var $img_children = big_parent.children('img');
       // если размеры не изменены
       if (img_size != 0) {
         console.log('upload')
-    	big_parent.children('img').attr("src", '/media/ajax-loader.gif');
+    	$img_children.attr("src", '/media/ajax-loader.gif');
 		fn = function(data){
 	            var code = data[0];
 	            if(code == '200'){
@@ -133,13 +136,15 @@ $(".sim-row-edit").hover(
       	if(digit_exp.test($width_image.val()) && digit_exp.test($height_image.val())){
 	  		if($('#proportion').prop('checked')){
 	  			// если необходимо пропорционально изменить картинку
-	  			$img.width($width_image.val());
+	  			$img_children.width($width_image.val());
+	  			
+	  			//$img.width($width_image.val());
 	  			var proportion = $width_image.val() / default_img_width;
-	  			$img.height($height_image.val() * proportion);
+	  			$img_children.height($height_image.val() * proportion);
 	  		}
 	  		else{
-	  			$img.width($width_image.val());
-	    		$img.height($height_image.val());
+	  			$img_children.width($width_image.val());
+	    		$img_children.height($height_image.val());
 	  		}
 
 	  		// изменяем размеры всплывающего синего окна с кнопками редактирования и уж=даления контента
@@ -412,12 +417,17 @@ $("#add-without-title").hover(function() {
 
 	var data_id = $(this).parent().attr("data-id");
 	var current_header = $("#newsletter-builder-area-center-frame-content .sim-row [class*='header']").attr('class');
+	var footer = $("#newsletter-builder-area-center-frame-content .sim-row [class*='footer']").attr('class');
 	
 	// если header уже добавлен, то выдавать ошибку
 	if(current_header != undefined && $("#newsletter-preloaded-rows .sim-row[data-id='"+data_id+"'] [class*='header']").attr('class') != undefined){
 		alert('header уже добавлен');
 	}
-	else{		
+	else{	
+	console.log('RRR', footer)
+		if(footer){
+			alert('footer')
+		}
 		var $res_clone = $("#newsletter-builder-area-center-frame-content").prepend($("#newsletter-preloaded-rows .sim-row[data-id='"+data_id+"']").clone());
 
 	    var draggable_classes = [
