@@ -41,6 +41,9 @@ class EmailConstructorView(View):
         rc = RequestContext(request, args)
         return render_to_response(self.template, rc)
 
+class TestView(EmailConstructorView):
+    template = 'email_constructor/test.html'
+
 
 # сохранение изображений на сервер
 class SavingImages():

@@ -6,12 +6,8 @@ body {
 	overflow: hidden;
 }
 
-p{
-	line-height: 5px;
-}
 .add_menu{
-	margin-top: 10pt;
-	line-height: line-height: 30px;
+	line-height: 5px;
 }
 
 .ui-resizable-handle{

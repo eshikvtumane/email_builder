@@ -645,7 +645,6 @@ body {
 .sim-row-content7-center-tab{
 	float: left;
 	width: 180px;
-	background-color: rgba(242,244,250,1);
 	margin-right: 30px;
 	padding-bottom: 15px;
 }
@@ -722,7 +721,6 @@ body {
 	height: 180px;
 	width: 285px;
 	text-align: center;
-	background-color: rgba(130,207,204,1);
 	overflow: hidden;
 }
 .sim-row-content8-center-tab-image img {

@@ -1,11 +1,12 @@
 #-*- coding:utf-8 -*-
 from django.conf.urls import patterns, include, url
-from views import EmailConstructorView, SavingImageAjax, SavingTinyMCEImage, SavingTemplatesAjax, LoadTemplateAjax, GenerateThumbnail
+from views import EmailConstructorView, SavingImageAjax, SavingTinyMCEImage, SavingTemplatesAjax, LoadTemplateAjax, GenerateThumbnail, TestView
 from django.contrib.admin.views.decorators import staff_member_required
 
 
 urlpatterns = patterns('',
     url(r'^$', staff_member_required(EmailConstructorView.as_view()), name='create_email'),
+    url(r'^test/$', staff_member_required(TestView.as_view()), name='test'),
 
     # сохранение загруженного изображения на сервере
     url(r'^send/$', 'email_constructor.views.send'),
