@@ -141,10 +141,13 @@ $(".sim-row-edit").hover(
 	  			//$img.width($width_image.val());
 	  			var proportion = $width_image.val() / default_img_width;
 	  			$img_children.height($height_image.val() * proportion);
+	  			console.log($img_children.attr('src'));
 	  		}
 	  		else{
 	  			$img_children.width($width_image.val());
 	    		$img_children.height($height_image.val());
+
+	    		console.log($img_children.attr('src'));
 	  		}
 
 	  		// изменяем размеры всплывающего синего окна с кнопками редактирования и уж=даления контента
@@ -226,8 +229,17 @@ $(".sim-row-edit").hover(
 	$("#sim-edit-text").fadeIn(500);
 	$("#sim-edit-text .sim-edit-box").slideDown(500);
 
-	big_parent.children('div').remove('div');
-	console.log(big_parent.html())
+
+    // удаляем блоки, которые связаны с элементами растяжения и с кнопками "Редактировать" и "Удалить".
+    var $div = big_parent.children('div');
+	$div.remove('.ui-resizable-handle');
+	$div.remove('.sim-row-edit-hover');
+	$div.remove('.sim-row-remove-div-hover');
+	$div.parent().remove('.ui-resizable-handle');
+
+
+
+	console.log('TEST', big_parent.html())
 	// удаление дефолтного текста
     if(big_parent.html().indexOf('Lorem') == -1){
     	tinyMCE.activeEditor.setContent(big_parent.html());
@@ -244,7 +256,11 @@ $(".sim-row-edit").hover(
 	  $(this).parent().parent().parent().fadeOut(500)
 	  $(this).parent().parent().slideUp(500)
 
-	    big_parent.html(tinyMCE.get('editor2').getContent());
+
+        var text = tinyMCE.get('editor2').getContent();
+        text = text.replace('<div', '<p').replace('</div', '</p');
+
+	    big_parent.html(text);
         big_parent.children('.sim-row-edit-hover').remove();
 
         big_parent.resizable('destroy');
@@ -417,19 +433,23 @@ $("#add-without-title").hover(function() {
 
 	var data_id = $(this).parent().attr("data-id");
 	var current_header = $("#newsletter-builder-area-center-frame-content .sim-row [class*='header']").attr('class');
-	var footer = $("#newsletter-builder-area-center-frame-content .sim-row [class*='footer']").attr('class');
+	var footer = $("#newsletter-preloaded-rows .footer").attr('class');
 	
 	// если header уже добавлен, то выдавать ошибку
 	if(current_header != undefined && $("#newsletter-preloaded-rows .sim-row[data-id='"+data_id+"'] [class*='header']").attr('class') != undefined){
 		alert('header уже добавлен');
 	}
 	else{	
-	console.log('RRR', footer)
-		if(footer){
-			alert('footer')
+        // если выбран футер, то добавить его в конец шаблона
+		/*if(footer){
+			console.log('footer');
+			var $res_clone = $("#newsletter-builder-area-center-frame-content").append($("#newsletter-preloaded-rows .sim-row[data-id='"+data_id+"']").clone());
 		}
-		var $res_clone = $("#newsletter-builder-area-center-frame-content").prepend($("#newsletter-preloaded-rows .sim-row[data-id='"+data_id+"']").clone());
+		else{
+		    var $res_clone = $("#newsletter-builder-area-center-frame-content").prepend($("#newsletter-preloaded-rows .sim-row[data-id='"+data_id+"']").clone());
+		}*/
 
+        var $res_clone = $("#newsletter-builder-area-center-frame-content").prepend($("#newsletter-preloaded-rows .sim-row[data-id='"+data_id+"']").clone());
 	    var draggable_classes = [
 	        "sim-row-header1-nav-logo",
 	        "sim-row-edit",
