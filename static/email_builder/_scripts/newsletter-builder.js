@@ -23,7 +23,7 @@ $(document).ready(function(){
 		
 		hover_edit();
 		console.log($type)
-		class_name.css('height', class_name.css('height') + 30)
+		//class_name.css('height', class_name.css('height') + 30)
 		elem_init = class_name.find('[class*="sim-row-content"]');
 		elem_init.draggable();
 		elem_init.resizable();
@@ -433,23 +433,24 @@ $("#add-without-title").hover(function() {
 
 	var data_id = $(this).parent().attr("data-id");
 	var current_header = $("#newsletter-builder-area-center-frame-content .sim-row [class*='header']").attr('class');
-	var footer = $("#newsletter-preloaded-rows .footer").attr('class');
+	var footer = $("#newsletter-preloaded-rows .sim-row").attr('type');
 	
 	// если header уже добавлен, то выдавать ошибку
 	if(current_header != undefined && $("#newsletter-preloaded-rows .sim-row[data-id='"+data_id+"'] [class*='header']").attr('class') != undefined){
-		alert('header уже добавлен');
+		$.notify('Header уже добавлен');
 	}
-	else{	
+	else{
+	    var $block = $("#newsletter-preloaded-rows .sim-row[data-id='"+data_id+"']");
         // если выбран футер, то добавить его в конец шаблона
-		/*if(footer){
-			console.log('footer');
-			var $res_clone = $("#newsletter-builder-area-center-frame-content").append($("#newsletter-preloaded-rows .sim-row[data-id='"+data_id+"']").clone());
+		if($block.attr('class').search('footer') != '-1'){
+			$.notify('Footer добавлен в конец шаблона', 'success');
+			var $res_clone = $("#newsletter-builder-area-center-frame-content").append($block.clone());
 		}
 		else{
-		    var $res_clone = $("#newsletter-builder-area-center-frame-content").prepend($("#newsletter-preloaded-rows .sim-row[data-id='"+data_id+"']").clone());
-		}*/
+		    var $res_clone = $("#newsletter-builder-area-center-frame-content").prepend($block.clone());
+		}
 
-        var $res_clone = $("#newsletter-builder-area-center-frame-content").prepend($("#newsletter-preloaded-rows .sim-row[data-id='"+data_id+"']").clone());
+        //var $res_clone = $("#newsletter-builder-area-center-frame-content").prepend($block.clone());
 	    var draggable_classes = [
 	        "sim-row-header1-nav-logo",
 	        "sim-row-edit",
@@ -486,16 +487,28 @@ $("#add-without-title").hover(function() {
 	    for(var i=0; i<resize_classes.length; i++){
 	        $res_clone.find('[class*="' + resize_classes[i] + '"]').resizable();
 	    }
+	    /*console.log($res_clone.find('[class*="sim-row-content*-*-text"]'))
+	    $res_clone.find('[class*="sim-row-content*-*-text"]').resizable();
+	    $res_clone.find('[class*="sim-row-content*-text"]').resizable();
+	    $res_clone.find('[class*="sim-row-content*-*-*"]').resizable();*/
 
+  //$res_clone.find('[class="sim-row-content*-*-text"]').resizable();
 	    for(var i=0; i<draggable_classes.length; i++){
 	        $res_clone.find('[class*="' + draggable_classes[i] + '"]').draggable();
 	    }
-	    for(var i=0; i<resize_south_classes.length; i++){
+	    /*for(var i=0; i<resize_south_classes.length; i++){
 	        $res_clone.find('[class="' + resize_south_classes[i] + '"]').resizable({
 	        handles: 's'
-	    });
+	    });*/
 
-	    }
+	    $res_clone.find('[class="sim-row-content*-*-text"]').resizable({
+	        handles: 's'
+        });
+        $res_clone.find('[class="sim-row-content8-center-tab-text"]').resizable({
+	        handles: 's'
+        });
+
+
 
 		hover_edit();
 		perform_delete();
