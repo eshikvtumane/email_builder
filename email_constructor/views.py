@@ -122,8 +122,18 @@ class LoadTemplateAjax(View):
         try:
             template = Template.objects.get(pk=request.GET['id'])
             result = json.dumps(['200', template.template_html, template.bg_color, template.bg_image])
-        except:
+        except Exception, e:
             result = json.dumps(['500'])
+        return HttpResponse(result, content_type='application/json')
+
+# удаление шаблона из списка
+class DeleteTemplateAjax(View):
+    def get(self, request):
+        try:
+            Template.objects.get(pk=request.GET['id']).delete()
+            result = json.dumps(['200'])
+        except Exception, e:
+            result = json.dumps(['500', e.message])
         return HttpResponse(result, content_type='application/json')
 
 

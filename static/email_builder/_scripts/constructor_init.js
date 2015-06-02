@@ -154,8 +154,14 @@ $(document).ready(function(){
                     success: function(data){
                         var code = data[0];
                         if(code == '200'){
-                            var cells = '<td width="80%">' + name + '</td>' + '<td><button class="get-template-html" value="' + data[1] + '">Выбрать</button></td>'
+                            var cells = '<td width="80%">' + name + '</td>' + '<td><button class="load-template" value="' + data[1] + '">Выбрать</button></td>'
                             $("#tbl_templates tr:last").after('<tr>' + cells + '</tr>');
+
+                            // загрузка выбранного шаблона
+                            $('.load-template').click(function(){
+                                loadTemplate(this);
+                            });
+
                             alert('Шаблон успешно добавлен');
                         }
                         else{
@@ -173,7 +179,39 @@ $(document).ready(function(){
 
     // загрузка выбранного шаблона
     $('.load-template').click(function(){
+        loadTemplate(this);
+    });
+
+    // удаление выбранного шаблона
+    $('.delete-template').click(function(){
         var template_id = $(this).val();
+        $.ajax({
+            type: 'GET',
+            url: '/delete_template/',
+            data: { 'id': template_id },
+            success: function(data){
+                var code = data[0];
+                if(code == '200'){
+                    $('#load_template_' + template_id).remove();
+                }
+                else{
+                    alert('Произошла ошибка при удалении');
+                    console.log('Error', data[1])
+                }
+            },
+            error: function(data){
+                console.log('Error', data);
+            }
+        });
+    });
+
+
+
+});
+
+// функция
+function loadTemplate(obj){
+        var template_id = $(obj).val();
 
         $.ajax({
             type: 'GET',
@@ -184,9 +222,9 @@ $(document).ready(function(){
                 if(code == '200'){
                     // смена фона письма
                     // установка цвета
-                    $('#newsletter-builder-area').css('background', data[3]); 
-                    // установка изображения 
-                    $('#newsletter-builder-area').css('background-image', data[2]); 
+                    $('#newsletter-builder-area').css('background', data[3]);
+                    // установка изображения
+                    $('#newsletter-builder-area').css('background-image', data[2]);
 
                     // установка значений для экспорта шаблона
                     // если установлено изображение, то записываем его
@@ -197,8 +235,8 @@ $(document).ready(function(){
                         $('#inp_bg_color').val(data[3]);
                         bg_url = 'background-color: ' + data[3] + ';';
                     }
-                    
-                    
+
+
 
                     // отображение кода на странице и инициализация drop and resize
                     var $template = $('#newsletter-builder-area-center-frame-content').html(data[1]);
@@ -265,7 +303,7 @@ $(document).ready(function(){
                             $(this).resizable();
                         });
                     }*/
-                    
+
 
                     hover_edit();
                     add_delete();
@@ -282,8 +320,9 @@ $(document).ready(function(){
                 }
             }
         });
-    });
-});
+    }
+
+
 
 var bg_url = 'background-color: #C3CCD5';
 

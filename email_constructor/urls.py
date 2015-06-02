@@ -1,6 +1,6 @@
 #-*- coding:utf-8 -*-
 from django.conf.urls import patterns, include, url
-from views import EmailConstructorView, SavingImageAjax, SavingTinyMCEImage, SavingTemplatesAjax, LoadTemplateAjax, GenerateThumbnail, TestView
+from views import EmailConstructorView, SavingImageAjax, SavingTinyMCEImage, SavingTemplatesAjax, LoadTemplateAjax, DeleteTemplateAjax, GenerateThumbnail, TestView
 from django.contrib.admin.views.decorators import staff_member_required
 
 
@@ -18,6 +18,9 @@ urlpatterns = patterns('',
 
     # загрузка выбранного шаблона
     url(r'^load_template/$', LoadTemplateAjax.as_view(), name='load_template'),
+
+    # удаление выбранного шаблона
+    url(r'^delete_template/$', DeleteTemplateAjax.as_view(), name='delete_template'),
 
     # генерирование эскиза для видео
     url(r'^generate_thumbnail/$', GenerateThumbnail.as_view(), name='generate_thumbnail'),

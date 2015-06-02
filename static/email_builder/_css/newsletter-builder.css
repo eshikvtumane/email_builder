@@ -427,7 +427,7 @@ body {
 
 /* стили для изменения фона у блока */
 .sim-row-palette {
-	height: 40px;
+	height: 0px;
 	width: 40px;
 	margin-top: 40px;
 	top: 0px;

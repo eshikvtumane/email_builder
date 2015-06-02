@@ -86,6 +86,7 @@
                   <div class="sim-row-header1-nav-logo sim-row-edit draggable-block" data-type="image" style=" float: left;text-align: center;
                   margin-left: 50px;margin-top: 10px; margin-bottom: 10px;overflow: hidden;width: 200px;height:auto;">
                       <img src="http://{{ domain }}/media/logo.png" style="width: 180px;">
+                      <img src="http://{{ domain }}/media/logo.png" style="width: 180px;">
                   </div>
 
 
@@ -641,13 +642,16 @@
       <div style="overflow-y: scroll; height: 500px;">
         <table id='tbl_templates'>
         {% for template in templates %}
-            <tr>
-                <td width="80%">
+            <tr id="load_template_{{ template.id }}">
+                <td width="60%">
                   {{ template.template_name }}
                 </td>
                 <td>
                     <button class="load-template" value="{{ template.id }}">Выбрать</button>
-</td>
+                </td>
+                <td>
+                    <button class="delete-template" value="{{ template.id }}"><i class="fa fa-close" style="color:red;"></i></button>
+                </td>
             </tr>
         {% empty %}
           <tr>
