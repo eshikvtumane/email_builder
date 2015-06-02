@@ -106,6 +106,30 @@ $(".sim-row-edit").hover(
 			$height_image.prop('disabled', false);
 		}
 
+    // Загрузка изображений при мзменении file input
+    $('#input_load_image').on('change', function(){
+    console.log('111')
+    var input = document.getElementById('input_load_image');
+      var img_size = ($('#input_load_image'))[0].files.length
+      var $img_children = big_parent.children('img');
+        if (img_size != 0) {
+            console.log('upload')
+            $img_children.attr("src", '/media/ajax-loader.gif');
+            fn = function(data){
+                var code = data[0];
+                if(code == '200'){
+                    big_parent.children('img').attr("src",data[1]);
+                }
+                else{
+                    alert('Произошла ошибка при загрузке изображения.');
+                    var message = 'Произошла ошибка при загрузке изображения.';
+                }
+            }
+            saveImageOnServer('input_load_image', fn);
+        }
+    });
+
+
 	$("#sim-edit-image .sim-edit-box-buttons-save").click(function() {
 	  
 
@@ -115,42 +139,26 @@ $(".sim-row-edit").hover(
       // объект изображения
       var $img_children = big_parent.children('img');
       // если размеры не изменены
-      if (img_size != 0) {
-        console.log('upload')
-    	$img_children.attr("src", '/media/ajax-loader.gif');
-		fn = function(data){
-	            var code = data[0];
-	            if(code == '200'){
-	                big_parent.children('img').attr("src",data[1]);
-	            }
-	            else{
-	            	alert('Произошла ошибка при загрузке изображения.');
-	                var message = 'Произошла ошибка при загрузке изображения.';
-	            }
-	        }
-    	saveImageOnServer('input_load_image', fn);
-      }
-      else{
-      	// проверка на число
-      	var digit_exp = /^\d+$/;
+
+
+      var digit_exp = /^\d+$/;
       	if(digit_exp.test($width_image.val()) && digit_exp.test($height_image.val())){
 	  		if($('#proportion').prop('checked')){
 	  			// если необходимо пропорционально изменить картинку
 	  			$img_children.width($width_image.val());
-	  			
-	  			//$img.width($width_image.val());
-	  			var proportion = $width_image.val() / default_img_width;
-	  			$img_children.height($height_image.val() * proportion);
+	  			// автоматический расчёт ширины изображения
+	  			$img_children.height('auto');
 	  			console.log($img_children.attr('src'));
 	  		}
 	  		else{
+	  		    // присвоение введённых значений длины и ширины
 	  			$img_children.width($width_image.val());
 	    		$img_children.height($height_image.val());
 
 	    		console.log($img_children.attr('src'));
 	  		}
 
-	  		// изменяем размеры всплывающего синего окна с кнопками редактирования и уж=даления контента
+	  		// изменяем размеры всплывающего синего окна с кнопками редактирования и удаления контента
 	  		$div_content.css('height', $img.height());
 	  		$div_content.css('width', $img.width());
 	  	}
@@ -158,7 +166,6 @@ $(".sim-row-edit").hover(
 	  		alert('Введите корректные размеры');
 	  		return;
 	  	}
-      }
 
       $(this).parent().parent().parent().fadeOut(500);
 	  $(this).parent().parent().slideUp(500);
