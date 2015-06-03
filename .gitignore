@@ -2,3 +2,4 @@
 db.sqlite3
 email_builder/settings.py
 email_builder/wsgi.py
+static_debug
