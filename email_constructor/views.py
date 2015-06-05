@@ -28,6 +28,7 @@ import urllib, cStringIO
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 
+
 # Create your views here.
 class EmailConstructorView(View):
     template = 'email_constructor/builder.html'
@@ -38,9 +39,11 @@ class EmailConstructorView(View):
         args.update(csrf(request))
         # получение доменного имени
         args['domain'] = get_current_site(request).domain
-        args['templates'] = Template.objects.all().values('id', 'template_name')
+        # args['templates'] = Template.objects.all().values('id', 'template_name')
+        args['templates'] = Template.objects.all()
         rc = RequestContext(request, args)
         return render_to_response(self.template, rc)
+
 
 # страница для тестирования
 class TestView(EmailConstructorView):
@@ -75,6 +78,7 @@ class SavingImages():
         image_url = os.path.join(path, save_path)
         return image_url
 
+
 # сохранение изображений с локальной машины
 class SavingImageAjax(View, SavingImages):
     def post(self, request):
@@ -83,6 +87,7 @@ class SavingImageAjax(View, SavingImages):
             full_url = ''.join(['http://', get_current_site(request).domain, url])
             result = json.dumps(['200', full_url])
             return HttpResponse(result, content_type='application/json')
+
 
 # сохранение изображений с локальной машины через редактор TinyMCE
 class SavingTinyMCEImage(View, SavingImages):
@@ -96,6 +101,7 @@ class SavingTinyMCEImage(View, SavingImages):
             serialized_instance = json.dumps(['500', e.message])
 
         return HttpResponse(serialized_instance, content_type='application/json')
+
 
 # сохранение шаблона письма
 class SavingTemplatesAjax(View):
@@ -116,6 +122,7 @@ class SavingTemplatesAjax(View):
 
         return HttpResponse(result, content_type='application/json')
 
+
 # загрузка шаблона
 class LoadTemplateAjax(View):
     def get(self, request):
@@ -125,6 +132,7 @@ class LoadTemplateAjax(View):
         except Exception, e:
             result = json.dumps(['500'])
         return HttpResponse(result, content_type='application/json')
+
 
 # удаление шаблона из списка
 class DeleteTemplateAjax(View):
@@ -200,6 +208,7 @@ class VideoThumbmail():
         img_path = "/media/email_images/video-%s-%s.jpg" % (str(randint(0, 100000)), datetime.now().strftime('%Y-%m-%d-%H-%M-%S'))
         bg.save(settings.BASE_DIR + img_path, "JPEG")
         return img_path
+
 
 # генерирование шаблона по ссылке, полученной с клиента
 class GenerateThumbnail(View, VideoThumbmail):
