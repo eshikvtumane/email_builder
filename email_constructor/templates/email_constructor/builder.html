@@ -641,10 +641,21 @@
     <h2>Шаблоны</h2>
       <div style="overflow-y: scroll; height: 500px;">
         <table id='tbl_templates'>
+            <tr>
+                <td width="40%">Название</td>
+                <td width="22%">Дата создания</td>
+                <td width="24%">Последние изменения</td>
+            </tr>
         {% for template in templates %}
             <tr id="load_template_{{ template.id }}">
-                <td width="60%">
+                <td width="40%">
                   {{ template.template_name }}
+                </td>
+                <td>
+                    {{ template.created }}
+                </td>
+                <td>
+                    {{ template.modified }}
                 </td>
                 <td>
                     <button class="load-template" value="{{ template.id }}">Выбрать</button>
