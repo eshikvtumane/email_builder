@@ -16,6 +16,9 @@
 <link href="{% static 'email_builder/_css/newsletter-builder.css' %}" rel="stylesheet" type="text/css">
 <link href="{% static 'email_builder/_css/newsletter.css' %}" rel="stylesheet" type="text/css">
 <link href="{% static 'email_builder/_scripts/jquery-ui/jquery-ui.min.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'email_builder/_scripts/jquery-ui/jquery-ui.structure.min.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'email_builder/_scripts/jquery-ui/jquery-ui.theme.min.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'email_builder/_css/dialog.css' %}" rel="stylesheet" type="text/css">
 
 
 
@@ -46,6 +49,16 @@
 
 </head>
 <body style="margin: 0px;padding: 0px;font-family: 'Source Sans Pro', sans-serif;">
+
+<input id='current_template_id' type="hidden">
+<input id='current_bg_image' type="hidden">
+
+<div id="saving-template-dialog" title="Сохранение шаблона">
+    <p>
+        <span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>
+        Куда сохранить изменения?
+    </p>
+</div>
 
 {% csrf_token %}
 
@@ -652,10 +665,14 @@
                   {{ template.template_name }}
                 </td>
                 <td>
-                    {{ template.created }}
+                    {% if template.created %}
+                        {{ template.created }}
+                    {% endif %}
                 </td>
                 <td>
-                    {{ template.modified }}
+                    {% if template.modified %}
+                        {{ template.modified }}
+                    {% endif %}
                 </td>
                 <td>
                     <button class="load-template" value="{{ template.id }}">Выбрать</button>
@@ -2366,7 +2383,6 @@
   </div>
 </div>
 </div>
-
 
 </body>
 

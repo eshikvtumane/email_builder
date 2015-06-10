@@ -6,6 +6,8 @@ from django.template import RequestContext
 from django.core.context_processors import csrf
 from django.conf import settings
 
+DATETIME_FORMAT = settings.DATETIME_INPUT_FORMATS[0]
+
 
 from datetime import datetime
 import json
@@ -107,19 +109,44 @@ class SavingTinyMCEImage(View, SavingImages):
 class SavingTemplatesAjax(View):
     def post(self, request):
         post = request.POST
+        make_new_template = bool(int(post['make_new_template']))
         name = post['name']
         html = post['html']
-        bg_color = post.get('bg_image', '')
-        bg_img = post.get('bg_color', None)
+        bg_color = post.get('bg_color', '')
+        bg_img = post.get('bg_image', None)
 
-        try:
-            st = Template(template_name = name, template_html = html, bg_color=bg_color, bg_image=bg_img)
-            st.save()
-
-            result = json.dumps(['200', st.id])
-        except:
-            result = json.dumps(['500'])
-
+        if make_new_template:
+            try:
+                if bg_color:
+                    st = Template(template_name=name, template_html=html, bg_color=bg_color, bg_image=bg_img)
+                else:
+                    st = Template(template_name=name, template_html=html, bg_image=bg_img)
+                st.save()
+                result = json.dumps({
+                    'code': '200_new',
+                    'template_id': st.id,
+                    'creation_date': st.created.strftime(DATETIME_FORMAT),
+                    'changing_date': st.modified.strftime(DATETIME_FORMAT)
+                })
+            except:
+                result = json.dumps({'code': '500'})
+        else:
+            try:
+                template_id = post['template_id']
+                temp = Template.objects.get(pk=template_id)
+                temp.template_name = name
+                temp.template_html = html
+                temp.bg_color = bg_color
+                temp.bg_image = bg_img
+                temp.save()
+                result = json.dumps({
+                    'code': '200_old',
+                    'template_id': temp.id,
+                    'name': temp.template_name,
+                    'changing_date': temp.modified.strftime(DATETIME_FORMAT)
+                    })
+            except Exception, e:
+                result = json.dumps({'code': '500'})
         return HttpResponse(result, content_type='application/json')
 
 
@@ -128,9 +155,22 @@ class LoadTemplateAjax(View):
     def get(self, request):
         try:
             template = Template.objects.get(pk=request.GET['id'])
-            result = json.dumps(['200', template.template_html, template.bg_color, template.bg_image])
+            # result = json.dumps([
+            #     '200',
+            #     template.template_html,
+            #     template.bg_color,
+            #     template.bg_image,
+            #     template.template_name
+            # ])
+            result = json.dumps({
+                'code': '200',
+                'html': template.template_html,
+                'color': template.bg_color,
+                'image': template.bg_image,
+                'name': template.template_name
+            })
         except Exception, e:
-            result = json.dumps(['500'])
+            result = json.dumps({'code': '500'})
         return HttpResponse(result, content_type='application/json')
 
 

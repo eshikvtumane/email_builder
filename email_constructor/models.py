@@ -8,7 +8,7 @@ class Template(models.Model):
     template_name = models.CharField(verbose_name='Название', max_length=50)
     template_html = models.TextField(verbose_name='Шаблон')
 
-    bg_color = models.CharField(verbose_name='Цвет фона', max_length=7, default='#C3CCD5')
+    bg_color = models.CharField(verbose_name='Цвет фона', max_length=7, default='#C3CCD5', blank=True, null=True)
     bg_image = models.TextField(verbose_name='Изображения для фона', blank=True, null=True)
 
     created = models.DateTimeField(verbose_name='дата создания', blank=True, null=True)
@@ -24,15 +24,12 @@ class Template(models.Model):
         if not self.id or not self.created:
             self.created = now
         self.modified = now
-        template = super(Template, self).save(*args, **kwargs)
 
-        # templates = Template.objects.all()
-        # for temp in templates:
-        #     if not temp.created:
-        #         temp.created = now
-        #     if not temp.modified:
-        #         temp.modified = now
-        #     temp.save()
+        # автозаполнения bg_color
+        if not self.bg_color:
+            self.bg_color = '#C3CCD5'
+
+        template = super(Template, self).save(*args, **kwargs)
 
         # сжатие картинки
         # if self.image:
