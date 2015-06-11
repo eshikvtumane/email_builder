@@ -10,9 +10,9 @@ body {
 	line-height: 5px;
 }
 
-.ui-resizable-handle{
-    position
-}
+/*.ui-resizable-handle{*/
+    /*position*/
+/*}*/
 
 #header{
 	background-color: #3f8dbf;
@@ -117,7 +117,7 @@ body {
 	position: relative;
 	overflow: hidden;
 	width: 100%;
-	float: left;
+	/*float: left;*/
 }
 #newsletter-builder-sidebar{
 	float: left;

@@ -53,13 +53,6 @@
 <input id='current_template_id' type="hidden">
 <input id='current_bg_image' type="hidden">
 
-<div id="saving-template-dialog" title="Сохранение шаблона">
-    <p>
-        <span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>
-        Куда сохранить изменения?
-    </p>
-</div>
-
 {% csrf_token %}
 
 
@@ -2382,6 +2375,13 @@
    
   </div>
 </div>
+</div>
+
+<div id="saving-template-dialog" title="Сохранение шаблона">
+    <p>
+        <span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>
+        Куда сохранить изменения?
+    </p>
 </div>
 
 </body>
