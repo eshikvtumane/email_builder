@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="331b121e-eb6d-4d3d-939c-c8eb06a3fb8b" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/email_constructor/templates/email_constructor/builder.html" afterPath="$PROJECT_DIR$/email_constructor/templates/email_constructor/builder.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/email_builder/_scripts/constructor_init.js" afterPath="$PROJECT_DIR$/static/email_builder/_scripts/constructor_init.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -86,8 +84,8 @@
       <file leaf-file-name="constructor_init.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static_debug/email_builder/_scripts/constructor_init.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6637168" vertical-offset="3240" max-vertical-offset="7260">
-              <caret line="241" column="9" selection-start-line="241" selection-start-column="9" selection-end-line="241" selection-end-column="9" />
+            <state vertical-scroll-proportion="0.82300884" vertical-offset="2580" max-vertical-offset="7110">
+              <caret line="203" column="69" selection-start-line="203" selection-start-column="69" selection-end-line="203" selection-end-column="69" />
               <folding />
             </state>
           </provider>
@@ -512,7 +510,13 @@
       <option name="project" value="LOCAL" />
       <updated>1433987419774</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="add confirmation on removing template">
+      <created>1433991795456</created>
+      <option name="number" value="00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1433991795456</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TodoView" selected-index="3">
@@ -583,7 +587,8 @@
     <MESSAGE value="datefields &quot;created&quot; and &quot;modified&quot; added and was output to template" />
     <MESSAGE value="1) media files was added to gitignore; 2) posibility to change chosen template was added; 3) fix some little bugs" />
     <MESSAGE value="add static files for last commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="add static files for last commit" />
+    <MESSAGE value="add confirmation on removing template" />
+    <option name="LAST_COMMIT_MESSAGE" value="add confirmation on removing template" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -993,8 +998,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static_debug/email_builder/_scripts/constructor_init.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6637168" vertical-offset="3240" max-vertical-offset="7260">
-          <caret line="241" column="9" selection-start-line="241" selection-start-column="9" selection-end-line="241" selection-end-column="9" />
+        <state vertical-scroll-proportion="0.82300884" vertical-offset="2580" max-vertical-offset="7110">
+          <caret line="203" column="69" selection-start-line="203" selection-start-column="69" selection-end-line="203" selection-end-column="69" />
           <folding />
         </state>
       </provider>

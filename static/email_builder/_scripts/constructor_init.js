@@ -188,16 +188,6 @@ $(document).ready(function(){
                     // запихиваем айдишник нового шаблона в глобальное поле для текущего выбранного шаблона
                     $('#current_template_id').val(data[1]);
 
-                    // загрузка выбранного шаблона
-                    $('.load-template').click(function(){
-                        loadTemplate(this);
-                    });
-
-                    // инициализация кнопки удалить шаблон для нового элемента
-                    $('.delete-template').click(function(){
-                        delete_template(this);
-                    });
-
                     // закрытие диалогового окна
                     $('#saving-template-dialog').dialog('close');
 
@@ -230,12 +220,12 @@ $(document).ready(function(){
     });
 
     // загрузка выбранного шаблона
-    $('.load-template').click(function(){
+    $(document).on('click', '.load-template', function(){
         loadTemplate(this);
     });
 
     // удаление выбранного шаблона
-    $('.delete-template').click(function(){
+    $(document).on('click', '.delete-template', function(){
         var template_name = $(this).parent().siblings().first().text();
         if (confirm('Вы действительно хотите безвозвратно удалить шаблон "' + template_name + '"?')) {
             delete_template(this);
