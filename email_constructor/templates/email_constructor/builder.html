@@ -654,19 +654,9 @@
             </tr>
         {% for template in templates %}
             <tr id="load_template_{{ template.id }}">
-                <td width="40%">
-                  {{ template.template_name }}
-                </td>
-                <td>
-                    {% if template.created %}
-                        {{ template.created }}
-                    {% endif %}
-                </td>
-                <td>
-                    {% if template.modified %}
-                        {{ template.modified }}
-                    {% endif %}
-                </td>
+                <td width="40%">{{ template.template_name }}</td>
+                <td>{% if template.created %}{{ template.created }}{% endif %}</td>
+                <td>{% if template.modified %}{{ template.modified }}{% endif %}</td>
                 <td>
                     <button class="load-template" value="{{ template.id }}">Выбрать</button>
                 </td>

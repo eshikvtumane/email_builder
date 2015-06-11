@@ -236,7 +236,10 @@ $(document).ready(function(){
 
     // удаление выбранного шаблона
     $('.delete-template').click(function(){
-        delete_template(this);
+        var template_name = $(this).parent().siblings().first().text();
+        if (confirm('Вы действительно хотите безвозвратно удалить шаблон "' + template_name + '"?')) {
+            delete_template(this);
+        }
     });
 });
 

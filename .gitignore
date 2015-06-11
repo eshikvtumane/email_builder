@@ -5,4 +5,4 @@ email_builder/wsgi.py
 static_debug
 media
 email_constructor/migrations
-.idea/*
+real_static
