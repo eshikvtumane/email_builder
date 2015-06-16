@@ -1,10 +1,13 @@
 # -*- coding: utf-8 -*-
 from django.db import models
+from django.contrib.auth.models import User
 import datetime
 
 
 # Create your models here.
 class Template(models.Model):
+    user = models.ForeignKey(User, verbose_name='пользователь', blank=True, null=True)
+
     template_name = models.CharField(verbose_name='Название', max_length=50)
     template_html = models.TextField(verbose_name='Шаблон')
 
@@ -40,3 +43,15 @@ class Template(models.Model):
         db_table = 'Templates'
         verbose_name = 'Шаблон'
         verbose_name_plural = 'Шаблоны'
+
+
+class UserEmail(models.Model):
+    user = models.ForeignKey(User)
+    email = models.EmailField(verbose_name='Электронная почта')
+
+    def __unicode__(self):
+        return u'E-mail'
+
+    class Meta:
+        verbose_name = 'Электронная почта для отправки шаблонов'
+        verbose_name_plural = 'Электронные почты для отправки шаблонов'

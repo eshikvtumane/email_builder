@@ -19,7 +19,7 @@ from django.core.files.base import ContentFile
 
 from django.contrib.sites.models import get_current_site
 
-from models import Template
+from models import Template, UserEmail
 
 from random import randint
 import re
@@ -272,5 +272,18 @@ class GenerateThumbnail(View, VideoThumbmail):
 
 from django.core.mail import send_mail
 def send(request):
+    email = request.POST.get('mail', None)
+    if email:
+        user_emails = UserEmail.objects.filter(email=email)
+        if user_emails.count() == 0:
+            user_email = UserEmail(user=request.user, email=email)
+            user_email.save()
     send_mail('Letter', 'msg', 'admin@geliusdv.ru', [request.POST.get('mail', '')], fail_silently=False, html_message=request.POST.get('html'))
     return HttpResponse('sent')
+
+
+def email_autocomplete(request):
+    query = request.GET.get('query')
+    user = request.user
+    emails = UserEmail.objects.filter(user=user, email__istartswith=query).values_list('email', flat=True)
+    return HttpResponse(json.dumps(list(emails)), content_type='application/json')

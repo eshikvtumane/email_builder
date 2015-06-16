@@ -15,20 +15,21 @@
 <link href="{% static 'email_builder/_css/Icomoon/style.css' %}" rel="stylesheet" type="text/css">
 <link href="{% static 'email_builder/_css/newsletter-builder.css' %}" rel="stylesheet" type="text/css">
 <link href="{% static 'email_builder/_css/newsletter.css' %}" rel="stylesheet" type="text/css">
-<link href="{% static 'email_builder/_scripts/jquery-ui/jquery-ui.min.css' %}" rel="stylesheet" type="text/css">
-<link href="{% static 'email_builder/_scripts/jquery-ui/jquery-ui.structure.min.css' %}" rel="stylesheet" type="text/css">
-<link href="{% static 'email_builder/_scripts/jquery-ui/jquery-ui.theme.min.css' %}" rel="stylesheet" type="text/css">
+{#<link href="{% static 'email_builder/_scripts/jquery-ui/jquery-ui.min.css' %}" rel="stylesheet" type="text/css">#}
+{#<link href="{% static 'email_builder/_scripts/jquery-ui/jquery-ui.structure.min.css' %}" rel="stylesheet" type="text/css">#}
+{#<link href="{% static 'email_builder/_scripts/jquery-ui/jquery-ui.theme.min.css' %}" rel="stylesheet" type="text/css">#}
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 <link href="{% static 'email_builder/_css/dialog.css' %}" rel="stylesheet" type="text/css">
-
-
+<link href="{% static 'email_builder/_css/autocomplete.css' %}" rel="stylesheet" type="text/css">
 
 <script type="text/javascript" src="{% static 'email_builder/_scripts/jquery/jquery-2.0.2.min.js' %}"></script>
-<script type="text/javascript" src="{% static 'email_builder/_scripts/jquery/jquery-ui-1.10.4.min.js' %}"></script>
-
+{#<script type="text/javascript" src="{% static 'email_builder/_scripts/jquery/jquery-ui-1.10.4.min.js' %}"></script>#}
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
     <script type="text/javascript" src="{% static 'email_builder/_scripts/jquery-ui/jquery-ui.min.js' %}"></script>
 
 <script type="text/javascript" src="{% static 'email_builder/_scripts/newsletter-builder.js' %}"></script>
+<script type="text/javascript" src="{% static 'email_builder/_scripts/email-sending.js' %}"></script>
 
 
 
@@ -616,20 +617,6 @@
   <a href="" id="link" download="email.html">Скачать файл</a><br>
     <a id="FUCKINGSEND" href="#">Отправить нa </a><input id='mda' type="text">
 </div>
-<script>
-    $(document).on('click', '#FUCKINGSEND', function (e) {
-    e.preventDefault();
-    $.ajax({
-	method: 'POST',
-	url: '/send/',
-	data: {
-	    csrfmiddlewaretoken: $('[name=csrfmiddlewaretoken]').val(),
-	    html :$('#editor1').val(),
-	    mail: $('#mda').val()
-	}
-})
-});
-</script>
 
 <!--<a href="" id="link" download="email.html">
   <div id="newsletter-builder-sidebar-buttons-abutton">
