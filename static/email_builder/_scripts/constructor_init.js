@@ -226,7 +226,7 @@ $(document).ready(function(){
 
     // удаление выбранного шаблона
     $(document).on('click', '.delete-template', function(){
-        var template_name = $(this).parent().siblings().first().text();
+        var template_name = $(this).parent().siblings().eq(1).text();
         if (confirm('Вы действительно хотите безвозвратно удалить шаблон "' + template_name + '"?')) {
             delete_template(this);
         }

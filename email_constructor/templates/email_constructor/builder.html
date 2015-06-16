@@ -21,6 +21,7 @@
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 <link href="{% static 'email_builder/_css/dialog.css' %}" rel="stylesheet" type="text/css">
 <link href="{% static 'email_builder/_css/autocomplete.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'email_builder/_css/templates-list.css' %}" rel="stylesheet" type="text/css">
 
 <script type="text/javascript" src="{% static 'email_builder/_scripts/jquery/jquery-2.0.2.min.js' %}"></script>
 {#<script type="text/javascript" src="{% static 'email_builder/_scripts/jquery/jquery-ui-1.10.4.min.js' %}"></script>#}
@@ -629,39 +630,7 @@
 </div>
 </div>
 
-<div class="easy_modal" id="modal1">
-  <div class="easy-modal-inner" style="width: 900px; background-color: #FFFFFF; padding: 30px 30px 30px 30px;" align="center">
-    <h2>Шаблоны</h2>
-      <div style="overflow-y: scroll; height: 500px;">
-        <table id='tbl_templates'>
-            <tr>
-                <td width="40%">Название</td>
-                <td width="22%">Дата создания</td>
-                <td width="24%">Последние изменения</td>
-            </tr>
-        {% for template in templates %}
-            <tr id="load_template_{{ template.id }}">
-                <td width="40%">{{ template.template_name }}</td>
-                <td>{% if template.created %}{{ template.created }}{% endif %}</td>
-                <td>{% if template.modified %}{{ template.modified }}{% endif %}</td>
-                <td>
-                    <button class="load-template" value="{{ template.id }}">Выбрать</button>
-                </td>
-                <td>
-                    <button class="delete-template" value="{{ template.id }}"><i class="fa fa-close" style="color:red;"></i></button>
-                </td>
-            </tr>
-        {% empty %}
-          <tr>
-          <h3>Нет шаблонов</h3>
-          </tr>
-        {% endfor %}
-      </table>
-    </div>
-
-    <button class="easy-modal-close">Закрыть</button>
-  </div>
-</div>
+{% include 'email_constructor/templates_list.html' %}
 
 <div class="easy_modal" id="modal2">
   <div class="easy-modal-inner" style="width: 400px; background-color: #FFFFFF; padding: 30px 30px 30px 30px;" align="center">

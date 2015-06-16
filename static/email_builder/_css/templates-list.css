@@ -1,0 +1,11 @@
+.templates-list td, th {
+    border: 1px solid black;
+}
+
+.templates-list table {
+    border-collapse: collapse;
+}
+
+.templates-list .easy-modal-close {
+    margin-top: 10px;
+}
