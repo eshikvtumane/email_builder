@@ -179,9 +179,9 @@ $(document).ready(function(){
             success: function(data){
                 //var code = data[0];
                 if(data['code'] == '200_new'){
-                    var cells = '<td width="40%">' + name + '</td>' + '<td>' + data['creation_date'] + '</td>' +
-                        '<td>' + data['changing_date'] + '</td>' + '<td><button class="load-template" value="' +
-                        data['template_id'] + '">Выбрать</button></td>' + '<td><button class="delete-template" value="' +
+                    var cells = '<td><button class="load-template" value="' + data['template_id'] +
+                        '">Выбрать</button></td>' + '<td>' + name + '</td>' + '<td>' + data['creation_date'] + '</td>' +
+                        '<td>' + data['changing_date'] + '</td>' + '<td><button class="delete-template" value="' +
                         data['template_id'] + '"><i class="fa fa-close" style="color:red;"></i></button></td>';
                     $("#tbl_templates tr:last").after('<tr id="load_template_'+ data['template_id'] + '">' + cells + '</tr>');
 
@@ -195,8 +195,8 @@ $(document).ready(function(){
                 } else if (data['code'] == '200_old') {
                     // выводим изменения в текущий шаблон в списке шаблонов
                     var tr = $('#load_template_' + data['template_id']).children();
-                    tr.eq(0).text(data['name']);
-                    tr.eq(2).text(data['changing_date']);
+                    tr.eq(1).text(data['name']);
+                    tr.eq(3).text(data['changing_date']);
                     // закрытие диалогового окна
                     $('#saving-template-dialog').dialog('close');
                     alert('Шаблон успешно изменен');
