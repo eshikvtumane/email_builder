@@ -8,8 +8,8 @@ $(document).ready(function(){
         e.preventDefault();
     });
     $('.easy-modal-close').click(function(e) {
-            $('.easy_modal').trigger('closeModal');
-        });
+        $('.easy_modal').trigger('closeModal');
+    });
 
     colorpickerClassInit();
 
@@ -100,6 +100,7 @@ $(document).ready(function(){
         });
     });
 
+
     $('.resize').resizable({
         handles: 's'
     });
@@ -129,7 +130,7 @@ $(document).ready(function(){
                     $('#newsletter-builder-area').css('background-image', url);
                     bg_url = 'background-image: ' + url;
 
-                    console.log($('#newsletter-builder-area').css('background-image'))
+                    console.log($('#newsletter-builder-area').css('background-image'));
                     $('#div_load_bg_message').html('');
                 }
             };
@@ -142,7 +143,9 @@ $(document).ready(function(){
     // диалоговое окно при нажатии кнопки "сохранить шаблон"
     $( "#saving-template-dialog" ).dialog({
         autoOpen: false,
+        draggable: false,
         resizable: false,
+        width: 580,
         //height:140,
         modal: true,
         buttons: {
@@ -157,56 +160,6 @@ $(document).ready(function(){
             }
         }
     });
-
-    function save_template(make_new) {
-        var change_template;
-        var html = $('#newsletter-builder-area-center-frame-content').html();
-        var name = $('#template_name').val();
-
-        $.ajax({
-            type: 'POST',
-            url: '/save_template/',
-            data: {
-                'template_id': $('#current_template_id').val(),
-                'make_new_template': make_new,
-                'change_template': change_template,
-                'name': name,
-                'html': html,
-                'bg_image': bg_img_url,
-                'bg_color': $('#inp-bg-color').val()
-            },
-            dataType: 'json',
-            success: function(data){
-                //var code = data[0];
-                if(data['code'] == '200_new'){
-                    var cells = '<td><button class="load-template" value="' + data['template_id'] +
-                        '">Выбрать</button></td>' + '<td>' + name + '</td>' + '<td>' + data['creation_date'] + '</td>' +
-                        '<td>' + data['changing_date'] + '</td>' + '<td><button class="delete-template" value="' +
-                        data['template_id'] + '"><i class="fa fa-close" style="color:red;"></i></button></td>';
-                    $("#tbl_templates tr:last").after('<tr id="load_template_'+ data['template_id'] + '">' + cells + '</tr>');
-
-                    // запихиваем айдишник нового шаблона в глобальное поле для текущего выбранного шаблона
-                    $('#current_template_id').val(data[1]);
-
-                    // закрытие диалогового окна
-                    $('#saving-template-dialog').dialog('close');
-
-                    alert('Шаблон успешно добавлен');
-                } else if (data['code'] == '200_old') {
-                    // выводим изменения в текущий шаблон в списке шаблонов
-                    var tr = $('#load_template_' + data['template_id']).children();
-                    tr.eq(1).text(data['name']);
-                    tr.eq(3).text(data['changing_date']);
-                    // закрытие диалогового окна
-                    $('#saving-template-dialog').dialog('close');
-                    alert('Шаблон успешно изменен');
-                } else {
-                    alert('Произошла ошибка при добавлении шаблона');
-                }
-
-            }
-        });
-    }
 
     // сохранение шаблона
     $('#btn_save_template').click(function(){
@@ -232,6 +185,57 @@ $(document).ready(function(){
         }
     });
 });
+
+// функция сохранения шаблона
+function save_template(make_new) {
+    var change_template;
+    var html = $('#newsletter-builder-area-center-frame-content').html();
+    var name = $('#template_name').val();
+
+    $.ajax({
+        type: 'POST',
+        url: '/save_template/',
+        data: {
+            'template_id': $('#current_template_id').val(),
+            'make_new_template': make_new,
+            'change_template': change_template,
+            'name': name,
+            'html': html,
+            'bg_image': bg_img_url,
+            'bg_color': $('#inp-bg-color').val()
+        },
+        dataType: 'json',
+        success: function(data){
+            //var code = data[0];
+            if(data['code'] == '200_new'){
+                var cells = '<td><button class="load-template" value="' + data['template_id'] +
+                    '">Выбрать</button></td>' + '<td>' + name + '</td>' + '<td>' + data['creation_date'] + '</td>' +
+                    '<td>' + data['changing_date'] + '</td>' + '<td><button class="delete-template" value="' +
+                    data['template_id'] + '"><i class="fa fa-close" style="color:red;"></i></button></td>';
+                $("#tbl_templates tr:last").after('<tr id="load_template_'+ data['template_id'] + '">' + cells + '</tr>');
+
+                // запихиваем айдишник нового шаблона в глобальное поле для текущего выбранного шаблона
+                $('#current_template_id').val(data[1]);
+
+                // закрытие диалогового окна
+                $('#saving-template-dialog').dialog('close');
+
+                alert('Шаблон успешно добавлен');
+            } else if (data['code'] == '200_old') {
+                // выводим изменения в текущий шаблон в списке шаблонов
+                var tr = $('#load_template_' + data['template_id']).children();
+                tr.eq(1).text(data['name']);
+                tr.eq(3).text(data['changing_date']);
+                // закрытие диалогового окна
+                $('#saving-template-dialog').dialog('close');
+                alert('Шаблон успешно изменен');
+            } else {
+                alert('Произошла ошибка при добавлении шаблона');
+            }
+
+        }
+    });
+}
 
 
 // функция удаления шаблона
@@ -374,7 +378,6 @@ function loadTemplate(obj){
 }
 
 
-
 var bg_url = 'background-color: #C3CCD5';
 
 // функция сохранения выбранного изображения на сервере
@@ -396,52 +399,6 @@ function saveImageOnServer(img, fn){
     }
 }
 
-
-// функция сохранения шаблона
-function saveTemplates(){
-    var $name = $('#template_name').val();
-
-    $("#newsletter-preloaded-export").html($("#newsletter-builder-area-center-frame-content").html());
-    $("#newsletter-preloaded-export .sim-row-delete").remove();
-    $("#newsletter-preloaded-export .sim-row-palette").remove();
-
-    var id= document.getElementById('newsletter-preloaded-export');
-    var class_remove = ' resize';
-    var d;
-    d=document.getElementById(id);
-    d.className=d.className.replace(myClassName,"");
-
-    active.classList.remove("resize");
-
-    //$(".sim-row div .resize").removeClass('resize');
-    $(".sim-row").removeClass("ui-resizable");
-    $(".sim-row").removeClass("ui-draggable");
-
-
-
-
-    $.ajax({
-        type: 'POST',
-        url: '/save_template/',
-        data: {
-            'name': $name,
-            'html': $html
-        },
-        dataType: 'json',
-        success: function(data){
-            var code = data[0];
-            if(code == '200'){
-                var cells = '<td width="80%">' + name + '</td>' + '<td><button class="get-template-html" value="' + data[1] + '">Выбрать</button></td>'
-                $("#tbl_templates tr:last").after('<tr>' + cells + '</tr>');
-                alert('Шаблон успешно добавлен');
-            }
-            else{
-                alert('Произошла ошибка при добавлении шаблона');
-            }
-
-        }
-    });
-}
 
 function colorpickerInit(el){
     colorpicker(el.find('.color'));
