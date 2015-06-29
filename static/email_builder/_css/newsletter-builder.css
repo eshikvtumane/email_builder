@@ -115,14 +115,14 @@ body {
 	}
 #newsletter-builder {
 	position: relative;
-	overflow: hidden;
+	/*overflow: hidden;*/
 	width: 100%;
 	/*float: left;*/
 }
 #newsletter-builder-sidebar{
 	float: left;
 	width: 250px;
-	position: absolute;
+	/*position: absolute;*/
 	left: 0px;
 	top: 0px;
 	background-color: #FFFFFF;

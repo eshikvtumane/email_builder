@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="331b121e-eb6d-4d3d-939c-c8eb06a3fb8b" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/email_builder/_scripts/newsletter-builder.js" afterPath="$PROJECT_DIR$/static/email_builder/_scripts/newsletter-builder.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/email_builder/_css/newsletter-builder.css" afterPath="$PROJECT_DIR$/static/email_builder/_css/newsletter-builder.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="email_builder.iws" />
@@ -54,11 +54,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="newsletter-builder.css" pinned="false" current-in-tab="false">
+      <file leaf-file-name="newsletter-builder.css" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static_debug/email_builder/_css/newsletter-builder.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.1714287" vertical-offset="8754" max-vertical-offset="11655">
-              <caret line="598" column="14" selection-start-line="598" selection-start-column="14" selection-end-line="598" selection-end-column="14" />
+            <state vertical-scroll-proportion="0.67578125" vertical-offset="1559" max-vertical-offset="11655">
+              <caret line="127" column="30" selection-start-line="127" selection-start-column="30" selection-end-line="127" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -120,10 +120,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="newsletter-builder.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="newsletter-builder.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static_debug/email_builder/_scripts/newsletter-builder.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6581353" vertical-offset="2835" max-vertical-offset="9555">
+            <state vertical-scroll-proportion="0.0" vertical-offset="2835" max-vertical-offset="9555">
               <caret line="213" column="74" selection-start-line="213" selection-start-column="74" selection-end-line="213" selection-end-column="74" />
               <folding />
             </state>
@@ -186,8 +186,8 @@
         <option value="$PROJECT_DIR$/static_debug/email_builder/_css/dialog.css" />
         <option value="$PROJECT_DIR$/static_debug/email_builder/_scripts/constructor_init.js" />
         <option value="$PROJECT_DIR$/email_constructor/templates/email_constructor/builder.html" />
-        <option value="$PROJECT_DIR$/static_debug/email_builder/_css/newsletter-builder.css" />
         <option value="$PROJECT_DIR$/static_debug/email_builder/_scripts/newsletter-builder.js" />
+        <option value="$PROJECT_DIR$/static_debug/email_builder/_css/newsletter-builder.css" />
       </list>
     </option>
   </component>
@@ -271,28 +271,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="email_builder" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="email_builder" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="email_builder" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static_debug" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="email_builder" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="_css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -673,7 +651,13 @@
       <option name="project" value="LOCAL" />
       <updated>1435537918740</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="some little fixes">
+      <created>1435557941333</created>
+      <option name="number" value="00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1435557941333</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TodoView" selected-index="3">
@@ -752,7 +736,8 @@
     <MESSAGE value="fix two logos in header" />
     <MESSAGE value="fix dialog css" />
     <MESSAGE value="can save in current template if only it was already&#10;chosen" />
-    <option name="LAST_COMMIT_MESSAGE" value="can save in current template if only it was already&#10;chosen" />
+    <MESSAGE value="some little fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="some little fixes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1142,14 +1127,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static_debug/email_builder/_css/newsletter-builder.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.1714287" vertical-offset="8754" max-vertical-offset="11655">
-          <caret line="598" column="14" selection-start-line="598" selection-start-column="14" selection-end-line="598" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static_debug/email_builder/_scripts/email-sending.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="570">
@@ -1162,8 +1139,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static_debug/email_builder/_scripts/newsletter-builder.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6581353" vertical-offset="2835" max-vertical-offset="9555">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2835" max-vertical-offset="9555">
           <caret line="213" column="74" selection-start-line="213" selection-start-column="74" selection-end-line="213" selection-end-column="74" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static_debug/email_builder/_css/newsletter-builder.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.67578125" vertical-offset="1559" max-vertical-offset="11655">
+          <caret line="127" column="30" selection-start-line="127" selection-start-column="30" selection-end-line="127" selection-end-column="30" />
           <folding />
         </state>
       </provider>
