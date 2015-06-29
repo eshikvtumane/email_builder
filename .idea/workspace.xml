@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="331b121e-eb6d-4d3d-939c-c8eb06a3fb8b" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/email_builder/_scripts/constructor_init.js" afterPath="$PROJECT_DIR$/static/email_builder/_scripts/constructor_init.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/email_builder/_scripts/newsletter-builder.js" afterPath="$PROJECT_DIR$/static/email_builder/_scripts/newsletter-builder.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="email_builder.iws" />
@@ -40,8 +40,25 @@
       <file leaf-file-name="builder.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/email_constructor/templates/email_constructor/builder.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-33.125" vertical-offset="3915" max-vertical-offset="35025">
-              <caret line="318" column="135" selection-start-line="318" selection-start-column="135" selection-end-line="318" selection-end-column="135" />
+            <state vertical-scroll-proportion="-4.0338984" vertical-offset="8282" max-vertical-offset="35025">
+              <caret line="572" column="81" selection-start-line="572" selection-start-column="81" selection-end-line="572" selection-end-column="81" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#5;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#0;n#div#5;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#23;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#12;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#12;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#1;n#div#12;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="newsletter-builder.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static_debug/email_builder/_css/newsletter-builder.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-6.1714287" vertical-offset="8754" max-vertical-offset="11655">
+              <caret line="598" column="14" selection-start-line="598" selection-start-column="14" selection-end-line="598" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -81,16 +98,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="autocomplete.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static_debug/email_builder/_css/autocomplete.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="15" max-vertical-offset="120">
-              <caret line="1" column="19" selection-start-line="1" selection-start-column="19" selection-end-line="1" selection-end-column="19" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="email-sending.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static_debug/email_builder/_scripts/email-sending.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -103,21 +110,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="constructor_init.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="constructor_init.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static_debug/email_builder/_scripts/constructor_init.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6855576" vertical-offset="2055" max-vertical-offset="6540">
-              <caret line="162" column="36" selection-start-line="162" selection-start-column="36" selection-end-line="162" selection-end-column="36" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1560" max-vertical-offset="6540">
+              <caret line="157" column="17" selection-start-line="157" selection-start-column="17" selection-end-line="157" selection-end-column="17" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="newsletter-builder.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="newsletter-builder.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static_debug/email_builder/_scripts/newsletter-builder.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="6589" max-vertical-offset="9810">
-              <caret line="460" column="18" selection-start-line="460" selection-start-column="12" selection-end-line="460" selection-end-column="18" />
+            <state vertical-scroll-proportion="0.6581353" vertical-offset="2835" max-vertical-offset="9555">
+              <caret line="213" column="74" selection-start-line="213" selection-start-column="74" selection-end-line="213" selection-end-column="74" />
               <folding />
             </state>
           </provider>
@@ -162,7 +169,6 @@
         <option value="$PROJECT_DIR$/static/email_builder/_css/newsletter-builder.css" />
         <option value="$PROJECT_DIR$/static/email_builder/_scripts/constructor_init.js" />
         <option value="$PROJECT_DIR$/email_builder/wsgi.py" />
-        <option value="$PROJECT_DIR$/static_debug/email_builder/_css/newsletter-builder.css" />
         <option value="$PROJECT_DIR$/email_builder/settings.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/email_constructor/admin.py" />
@@ -177,9 +183,11 @@
         <option value="$PROJECT_DIR$/static_debug/email_builder/_css/templates_list.css" />
         <option value="$PROJECT_DIR$/static_debug/email_builder/_css/templates-list.css" />
         <option value="$PROJECT_DIR$/email_constructor/templates/email_constructor/templates_list.html" />
-        <option value="$PROJECT_DIR$/email_constructor/templates/email_constructor/builder.html" />
         <option value="$PROJECT_DIR$/static_debug/email_builder/_css/dialog.css" />
         <option value="$PROJECT_DIR$/static_debug/email_builder/_scripts/constructor_init.js" />
+        <option value="$PROJECT_DIR$/email_constructor/templates/email_constructor/builder.html" />
+        <option value="$PROJECT_DIR$/static_debug/email_builder/_css/newsletter-builder.css" />
+        <option value="$PROJECT_DIR$/static_debug/email_builder/_scripts/newsletter-builder.js" />
       </list>
     </option>
   </component>
@@ -231,6 +239,60 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="email_builder" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="email_builder" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="email_builder" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static_debug" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="email_builder" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="email_builder" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static_debug" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="email_builder" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="email_builder" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="email_builder" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static_debug" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="email_builder" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="_css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -605,7 +667,13 @@
       <option name="project" value="LOCAL" />
       <updated>1435535920658</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="can save in current template if only it was already&#10;chosen">
+      <created>1435537918740</created>
+      <option name="number" value="00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1435537918740</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TodoView" selected-index="3">
@@ -640,8 +708,8 @@
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32928178" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3281768" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32928178" sideWeight="0.49957228" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34917128" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25235245" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34917128" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22583404" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32934132" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32928178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -683,7 +751,8 @@
     <MESSAGE value="fix some bugs" />
     <MESSAGE value="fix two logos in header" />
     <MESSAGE value="fix dialog css" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix dialog css" />
+    <MESSAGE value="can save in current template if only it was already&#10;chosen" />
+    <option name="LAST_COMMIT_MESSAGE" value="can save in current template if only it was already&#10;chosen" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -719,7 +788,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="41562" max-vertical-offset="42498">
           <caret line="2221" column="0" selection-start-line="2221" selection-start-column="0" selection-end-line="2221" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#5;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#5;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#23;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#12;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#12;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#1;n#div#12;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -884,13 +960,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static_debug/email_builder/_css/newsletter-builder.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="11655">
-          <caret line="10" column="1" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/lib/python2.7/importlib/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.76653695" vertical-offset="146" max-vertical-offset="660">
@@ -1050,18 +1119,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/email_constructor/templates/email_constructor/builder.html">
+    <entry file="file://$PROJECT_DIR$/static_debug/email_builder/_scripts/constructor_init.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-33.125" vertical-offset="3915" max-vertical-offset="35025">
-          <caret line="318" column="135" selection-start-line="318" selection-start-column="135" selection-end-line="318" selection-end-column="135" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1560" max-vertical-offset="6540">
+          <caret line="157" column="17" selection-start-line="157" selection-start-column="17" selection-end-line="157" selection-end-column="17" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static_debug/email_builder/_scripts/newsletter-builder.js">
+    <entry file="file://$PROJECT_DIR$/email_constructor/templates/email_constructor/builder.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="6589" max-vertical-offset="9810">
-          <caret line="460" column="18" selection-start-line="460" selection-start-column="12" selection-end-line="460" selection-end-column="18" />
+        <state vertical-scroll-proportion="-4.0338984" vertical-offset="8282" max-vertical-offset="35025">
+          <caret line="572" column="81" selection-start-line="572" selection-start-column="81" selection-end-line="572" selection-end-column="81" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#5;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#5;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#23;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#12;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#12;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#1;n#div#12;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static_debug/email_builder/_css/newsletter-builder.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.1714287" vertical-offset="8754" max-vertical-offset="11655">
+          <caret line="598" column="14" selection-start-line="598" selection-start-column="14" selection-end-line="598" selection-end-column="14" />
           <folding />
         </state>
       </provider>
@@ -1076,10 +1160,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static_debug/email_builder/_scripts/constructor_init.js">
+    <entry file="file://$PROJECT_DIR$/static_debug/email_builder/_scripts/newsletter-builder.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6855576" vertical-offset="2055" max-vertical-offset="6540">
-          <caret line="162" column="36" selection-start-line="162" selection-start-column="36" selection-end-line="162" selection-end-column="36" />
+        <state vertical-scroll-proportion="0.6581353" vertical-offset="2835" max-vertical-offset="9555">
+          <caret line="213" column="74" selection-start-line="213" selection-start-column="74" selection-end-line="213" selection-end-column="74" />
           <folding />
         </state>
       </provider>
