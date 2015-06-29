@@ -150,7 +150,12 @@ $(document).ready(function(){
         modal: true,
         buttons: {
             "В текущий шаблон": function() {
-                save_template(0)
+                if ($('#current_template_id').val() == '') {
+                    alert('Вы не выбрали шаблон!');
+                    $(this).dialog('close');
+                } else {
+                    save_template(0)
+                }
             },
             "В новый шаблон": function() {
                 save_template(1)
