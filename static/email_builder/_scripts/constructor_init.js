@@ -154,12 +154,18 @@ $(document).ready(function(){
                     success: function(data){
                         var code = data[0];
                         if(code == '200'){
-                            var cells = '<td width="80%">' + name + '</td>' + '<td><button class="load-template" value="' + data[1] + '">Выбрать</button></td>'
-                            $("#tbl_templates tr:last").after('<tr>' + cells + '</tr>');
+                            var cells = '<td width="60%">' + name + '</td>' + '<td><button class="load-template" value="' + data[1] + '">Выбрать</button></td>'
+                            cells += '<td><button class="delete-template" value="' + data[1] + '"><i class="fa fa-close" style="color:red;"></button></td>'
+                            $("#tbl_templates tr:last").after('<tr id="load_template_' + data[1] + '">' + cells + '</tr>');
 
                             // загрузка выбранного шаблона
                             $('.load-template').click(function(){
                                 loadTemplate(this);
+                            });
+
+                            // удаление выбранного шаблона
+                            $('.delete-template').click(function(){
+                                deleteTemplate(this);
                             });
 
                             alert('Шаблон успешно добавлен');
@@ -184,7 +190,15 @@ $(document).ready(function(){
 
     // удаление выбранного шаблона
     $('.delete-template').click(function(){
-        var template_id = $(this).val();
+        deleteTemplate(this);
+    });
+
+
+
+});
+// фугкция удаления выбранного шаблона
+function deleteTemplate(obj){
+    var template_id = $(obj).val();
         $.ajax({
             type: 'GET',
             url: '/delete_template/',
@@ -195,7 +209,6 @@ $(document).ready(function(){
                     $('#load_template_' + template_id).remove();
                 }
                 else{
-                    alert('Произошла ошибка при удалении');
                     console.log('Error', data[1])
                 }
             },
@@ -203,13 +216,9 @@ $(document).ready(function(){
                 console.log('Error', data);
             }
         });
-    });
+}
 
-
-
-});
-
-// функция
+// функция загрузки шаблона
 function loadTemplate(obj){
         var template_id = $(obj).val();
 
