@@ -15,17 +15,22 @@
 <link href="{% static 'email_builder/_css/Icomoon/style.css' %}" rel="stylesheet" type="text/css">
 <link href="{% static 'email_builder/_css/newsletter-builder.css' %}" rel="stylesheet" type="text/css">
 <link href="{% static 'email_builder/_css/newsletter.css' %}" rel="stylesheet" type="text/css">
-<link href="{% static 'email_builder/_scripts/jquery-ui/jquery-ui.min.css' %}" rel="stylesheet" type="text/css">
-
-
+{#<link href="{% static 'email_builder/_scripts/jquery-ui/jquery-ui.min.css' %}" rel="stylesheet" type="text/css">#}
+{#<link href="{% static 'email_builder/_scripts/jquery-ui/jquery-ui.structure.min.css' %}" rel="stylesheet" type="text/css">#}
+{#<link href="{% static 'email_builder/_scripts/jquery-ui/jquery-ui.theme.min.css' %}" rel="stylesheet" type="text/css">#}
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<link href="{% static 'email_builder/_css/dialog.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'email_builder/_css/autocomplete.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'email_builder/_css/templates-list.css' %}" rel="stylesheet" type="text/css">
 
 <script type="text/javascript" src="{% static 'email_builder/_scripts/jquery/jquery-2.0.2.min.js' %}"></script>
-<script type="text/javascript" src="{% static 'email_builder/_scripts/jquery/jquery-ui-1.10.4.min.js' %}"></script>
-
+{#<script type="text/javascript" src="{% static 'email_builder/_scripts/jquery/jquery-ui-1.10.4.min.js' %}"></script>#}
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
     <script type="text/javascript" src="{% static 'email_builder/_scripts/jquery-ui/jquery-ui.min.js' %}"></script>
 
 <script type="text/javascript" src="{% static 'email_builder/_scripts/newsletter-builder.js' %}"></script>
+<script type="text/javascript" src="{% static 'email_builder/_scripts/email-sending.js' %}"></script>
 
 
 
@@ -46,6 +51,9 @@
 
 </head>
 <body style="margin: 0px;padding: 0px;font-family: 'Source Sans Pro', sans-serif;">
+
+<input id='current_template_id' type="hidden">
+<input id='current_bg_image' type="hidden">
 
 {% csrf_token %}
 
@@ -86,7 +94,7 @@
                   <div class="sim-row-header1-nav-logo sim-row-edit draggable-block" data-type="image" style=" float: left;text-align: center;
                   margin-left: 50px;margin-top: 10px; margin-bottom: 10px;overflow: hidden;width: 200px;height:auto;">
                       <img src="http://{{ domain }}/media/logo.png" style="width: 180px;">
-                      <img src="http://{{ domain }}/media/logo.png" style="width: 180px;">
+{#                      <img src="http://{{ domain }}/media/logo.png" style="width: 180px;">#}
                   </div>
 
 
@@ -610,20 +618,6 @@
   <a href="" id="link" download="email.html">Скачать файл</a><br>
     <a id="FUCKINGSEND" href="#">Отправить нa </a><input id='mda' type="text">
 </div>
-<script>
-    $(document).on('click', '#FUCKINGSEND', function (e) {
-    e.preventDefault();
-    $.ajax({
-	method: 'POST',
-	url: '/send/',
-	data: {
-	    csrfmiddlewaretoken: $('[name=csrfmiddlewaretoken]').val(),
-	    html :$('#editor1').val(),
-	    mail: $('#mda').val()
-	}
-})
-});
-</script>
 
 <!--<a href="" id="link" download="email.html">
   <div id="newsletter-builder-sidebar-buttons-abutton">
@@ -636,34 +630,7 @@
 </div>
 </div>
 
-<div class="easy_modal" id="modal1">
-  <div class="easy-modal-inner" style="width: 900px; background-color: #FFFFFF; padding: 30px 30px 30px 30px;" align="center">
-    <h2>Шаблоны</h2>
-      <div style="overflow-y: scroll; height: 500px;">
-        <table id='tbl_templates'>
-        {% for template in templates %}
-            <tr id="load_template_{{ template.id }}">
-                <td width="60%">
-                  {{ template.template_name }}
-                </td>
-                <td>
-                    <button class="load-template" value="{{ template.id }}">Выбрать</button>
-                </td>
-                <td>
-                    <button class="delete-template" value="{{ template.id }}"><i class="fa fa-close" style="color:red;"></i></button>
-                </td>
-            </tr>
-        {% empty %}
-          <tr>
-          <h3>Нет шаблонов</h3>
-          </tr>
-        {% endfor %}
-      </table>
-    </div>
-
-    <button class="easy-modal-close">Закрыть</button>
-  </div>
-</div>
+{% include 'email_constructor/templates_list.html' %}
 
 <div class="easy_modal" id="modal2">
   <div class="easy-modal-inner" style="width: 400px; background-color: #FFFFFF; padding: 30px 30px 30px 30px;" align="center">
@@ -2356,6 +2323,12 @@
 </div>
 </div>
 
+<div id="saving-template-dialog" title="Сохранение шаблона">
+    <p>
+        <span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>
+        Куда сохранить изменения?
+    </p>
+</div>
 
 </body>
 

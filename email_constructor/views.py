@@ -6,6 +6,8 @@ from django.template import RequestContext
 from django.core.context_processors import csrf
 from django.conf import settings
 
+DATETIME_FORMAT = settings.DATETIME_INPUT_FORMATS[0]
+
 
 from datetime import datetime
 import json
@@ -17,7 +19,7 @@ from django.core.files.base import ContentFile
 
 from django.contrib.sites.models import get_current_site
 
-from models import Template
+from models import Template, UserEmail
 
 from random import randint
 import re
@@ -27,6 +29,7 @@ import urllib, cStringIO
 
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
+
 
 # Create your views here.
 class EmailConstructorView(View):
@@ -38,9 +41,11 @@ class EmailConstructorView(View):
         args.update(csrf(request))
         # получение доменного имени
         args['domain'] = get_current_site(request).domain
-        args['templates'] = Template.objects.all().values('id', 'template_name')
+        # args['templates'] = Template.objects.all().values('id', 'template_name')
+        args['templates'] = Template.objects.all()
         rc = RequestContext(request, args)
         return render_to_response(self.template, rc)
+
 
 # страница для тестирования
 class TestView(EmailConstructorView):
@@ -75,6 +80,7 @@ class SavingImages():
         image_url = os.path.join(path, save_path)
         return image_url
 
+
 # сохранение изображений с локальной машины
 class SavingImageAjax(View, SavingImages):
     def post(self, request):
@@ -83,6 +89,7 @@ class SavingImageAjax(View, SavingImages):
             full_url = ''.join(['http://', get_current_site(request).domain, url])
             result = json.dumps(['200', full_url])
             return HttpResponse(result, content_type='application/json')
+
 
 # сохранение изображений с локальной машины через редактор TinyMCE
 class SavingTinyMCEImage(View, SavingImages):
@@ -97,34 +104,77 @@ class SavingTinyMCEImage(View, SavingImages):
 
         return HttpResponse(serialized_instance, content_type='application/json')
 
+
 # сохранение шаблона письма
 class SavingTemplatesAjax(View):
     def post(self, request):
         post = request.POST
+        make_new_template = bool(int(post['make_new_template']))
         name = post['name']
         html = post['html']
-        bg_color = post.get('bg_image', '')
-        bg_img = post.get('bg_color', None)
+        print post['name']
+        print post['bg_color']
+        bg_color = post.get('bg_color', '')
+        bg_img = post.get('bg_image', None)
 
-        try:
-            st = Template(template_name = name, template_html = html, bg_color=bg_color, bg_image=bg_img)
-            st.save()
-
-            result = json.dumps(['200', st.id])
-        except:
-            result = json.dumps(['500'])
-
+        if make_new_template:
+            try:
+                if bg_color:
+                    st = Template(template_name=name, template_html=html, bg_color=bg_color, bg_image=bg_img)
+                else:
+                    st = Template(template_name=name, template_html=html, bg_image=bg_img)
+                st.save()
+                result = json.dumps({
+                    'code': '200_new',
+                    'template_id': st.id,
+                    'creation_date': st.created.strftime(DATETIME_FORMAT),
+                    'changing_date': st.modified.strftime(DATETIME_FORMAT)
+                })
+            except:
+                result = json.dumps({'code': '500'})
+        else:
+            try:
+                template_id = post['template_id']
+                temp = Template.objects.get(pk=template_id)
+                temp.template_name = name
+                temp.template_html = html
+                temp.bg_color = bg_color
+                temp.bg_image = bg_img
+                temp.save()
+                result = json.dumps({
+                    'code': '200_old',
+                    'template_id': temp.id,
+                    'name': temp.template_name,
+                    'changing_date': temp.modified.strftime(DATETIME_FORMAT)
+                    })
+            except Exception, e:
+                result = json.dumps({'code': '500'})
         return HttpResponse(result, content_type='application/json')
+
 
 # загрузка шаблона
 class LoadTemplateAjax(View):
     def get(self, request):
         try:
             template = Template.objects.get(pk=request.GET['id'])
-            result = json.dumps(['200', template.template_html, template.bg_color, template.bg_image])
+            # result = json.dumps([
+            #     '200',
+            #     template.template_html,
+            #     template.bg_color,
+            #     template.bg_image,
+            #     template.template_name
+            # ])
+            result = json.dumps({
+                'code': '200',
+                'html': template.template_html,
+                'color': template.bg_color,
+                'image': template.bg_image,
+                'name': template.template_name
+            })
         except Exception, e:
-            result = json.dumps(['500'])
+            result = json.dumps({'code': '500'})
         return HttpResponse(result, content_type='application/json')
+
 
 # удаление шаблона из списка
 class DeleteTemplateAjax(View):
@@ -201,6 +251,7 @@ class VideoThumbmail():
         bg.save(settings.BASE_DIR + img_path, "JPEG")
         return img_path
 
+
 # генерирование шаблона по ссылке, полученной с клиента
 class GenerateThumbnail(View, VideoThumbmail):
     def get(self, request):
@@ -223,5 +274,18 @@ class GenerateThumbnail(View, VideoThumbmail):
 
 from django.core.mail import send_mail
 def send(request):
+    email = request.POST.get('mail', None)
+    if email:
+        user_emails = UserEmail.objects.filter(email=email)
+        if user_emails.count() == 0:
+            user_email = UserEmail(user=request.user, email=email)
+            user_email.save()
     send_mail('Letter', 'msg', 'admin@geliusdv.ru', [request.POST.get('mail', '')], fail_silently=False, html_message=request.POST.get('html'))
     return HttpResponse('sent')
+
+
+def email_autocomplete(request):
+    query = request.GET.get('query')
+    user = request.user
+    emails = UserEmail.objects.filter(user=user, email__istartswith=query).values_list('email', flat=True)
+    return HttpResponse(json.dumps(list(emails)), content_type='application/json')

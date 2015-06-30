@@ -1,6 +1,7 @@
 #-*- coding:utf-8 -*-
 from django.conf.urls import patterns, include, url
-from views import EmailConstructorView, SavingImageAjax, SavingTinyMCEImage, SavingTemplatesAjax, LoadTemplateAjax, DeleteTemplateAjax, GenerateThumbnail, TestView
+from views import EmailConstructorView, SavingImageAjax, SavingTinyMCEImage, SavingTemplatesAjax, LoadTemplateAjax, \
+    DeleteTemplateAjax, GenerateThumbnail, TestView, email_autocomplete
 from django.contrib.admin.views.decorators import staff_member_required
 
 
@@ -24,4 +25,7 @@ urlpatterns = patterns('',
 
     # генерирование эскиза для видео
     url(r'^generate_thumbnail/$', GenerateThumbnail.as_view(), name='generate_thumbnail'),
+
+    # запоминание ранее введенных электронок
+    url(r'^email_autocomplete/$', email_autocomplete, name='email_autocomplete')
 )

@@ -1,0 +1,28 @@
+.ui-dialog .ui-widget-header {
+    /*border: 1px solid #3F8DBF;*/
+    background: #3F8DBF 50% 50% repeat-x;
+    color: #fff;
+    /*font-weight: bold;*/
+}
+
+.ui-dialog .ui-dialog-title {
+    /*display: block;*/
+    /*float: left;*/
+    /*margin: 10px;*/
+}
+
+.ui-dialog .ui-dialog-titlebar-close .ui-button-text {
+    /*display: none;*/
+}
+
+.ui-dialog .ui-dialog-titlebar-close {
+    /*float: right;*/
+    /*margin: 10px;*/
+    /*padding: 2px;*/
+}
+
+.ui-dialog .ui-button {
+    /*display: block;*/
+    /*margin: 10px;*/
+}
+

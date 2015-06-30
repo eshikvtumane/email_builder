@@ -6,24 +6,26 @@ $(document).ready(function(){
         e.preventDefault();
     });
     $('.easy-modal-close').click(function(e) {
-            $('.easy_modal').trigger('closeModal');
-        });
+        $('.easy_modal').trigger('closeModal');
+    });
 
     colorpickerClassInit();
 
     $('.bg-color').change(function(){
-        console.log($(this).val())
+        console.log($(this).val());
         var color = $(this).val();
         if(color){
             $('#newsletter-builder-area').css('background', '#' + color);
         }
     });
 
-    $('.sim-row-*').click(function(){
-        console.log('4')
-    })
+    var $sim_row = $('.sim-row-*');
 
-    $('.sim-row-*').droppable({
+    $sim_row.click(function(){
+        console.log('4')
+    });
+
+    $sim_row.droppable({
         accept: '.draggable-elem',
         drop: function(event, ui){
             $(this).append($(ui.droppable).clone());
@@ -96,6 +98,7 @@ $(document).ready(function(){
         });
     });
 
+
     $('.resize').resizable({
         handles: 's'
     });
@@ -108,10 +111,11 @@ $(document).ready(function(){
         $('#newsletter-builder-area').css('background', $(this).val());
         // запись значения для экспорта
         bg_url = 'background-color: ' + $(this).val() + ';';
+        bg_img_url = ''
     });
 
     // установить в качестве фона письма изображение
-    var bg_img_url = '';
+    //var bg_img_url = '';
     $('#inp_bg_img').change(function(){
         var img = 'inp_bg_img';
         $('#div_load_bg_message').html('Идёт загрузка ...');
@@ -124,7 +128,7 @@ $(document).ready(function(){
                     $('#newsletter-builder-area').css('background-image', url);
                     bg_url = 'background-image: ' + url;
 
-                    console.log($('#newsletter-builder-area').css('background-image'))
+                    console.log($('#newsletter-builder-area').css('background-image'));
                     $('#div_load_bg_message').html('');
                 }
             };
@@ -134,202 +138,251 @@ $(document).ready(function(){
         $('#div_load_bg_message').html('');
     });
 
-    // сохранение шаблона
-    $('#btn_save_template').click(function(){
-            var name = $('#template_name').val();
-
-            if(name != ''){
-                var html = $('#newsletter-builder-area-center-frame-content').html();
-
-                $.ajax({
-                    type: 'POST',
-                    url: '/save_template/',
-                    data: {
-                        'name': name,
-                        'html': html,
-                        'bg_image': bg_img_url,
-                        'bg_color': $('.bg-color').val()
-                    },
-                    dataType: 'json',
-                    success: function(data){
-                        var code = data[0];
-                        if(code == '200'){
-                            var cells = '<td width="60%">' + name + '</td>' + '<td><button class="load-template" value="' + data[1] + '">Выбрать</button></td>'
-                            cells += '<td><button class="delete-template" value="' + data[1] + '"><i class="fa fa-close" style="color:red;"></button></td>'
-                            $("#tbl_templates tr:last").after('<tr id="load_template_' + data[1] + '">' + cells + '</tr>');
-
-                            // загрузка выбранного шаблона
-                            $('.load-template').click(function(){
-                                loadTemplate(this);
-                            });
-
-                            // удаление выбранного шаблона
-                            $('.delete-template').click(function(){
-                                deleteTemplate(this);
-                            });
-
-                            alert('Шаблон успешно добавлен');
-                        }
-                        else{
-                            alert('Произошла ошибка при добавлении шаблона');
-                        }
-
-                    }
-                });
+    // диалоговое окно при нажатии кнопки "сохранить шаблон"
+    $( "#saving-template-dialog" ).dialog({
+        autoOpen: false,
+        draggable: false,
+        resizable: false,
+        width: 580,
+        //height:140,
+        modal: true,
+        buttons: {
+            "В текущий шаблон": function() {
+                if ($('#current_template_id').val() == '') {
+                    alert('Вы не выбрали шаблон!');
+                    $(this).dialog('close');
+                } else {
+                    save_template(0)
+                }
+            },
+            "В новый шаблон": function() {
+                save_template(1)
+            },
+            "Отменить": function() {
+                $( this ).dialog( "close" );
             }
-            else{
-                alert('Введите имя шаблона');
-            }
+        }
     });
 
+    // сохранение шаблона
+    $('#btn_save_template').click(function(){
+        var name = $('#template_name').val();
+        if (name != '') {
+            // открываем диалог сохранения
+            $("#saving-template-dialog").dialog('open');
+        } else {
+            alert('Введите имя шаблона');
+        }
+    });
 
     // загрузка выбранного шаблона
-    $('.load-template').click(function(){
+    $(document).on('click', '.load-template', function(){
         loadTemplate(this);
     });
 
     // удаление выбранного шаблона
-    $('.delete-template').click(function(){
-        deleteTemplate(this);
+    $(document).on('click', '.delete-template', function(){
+        var template_name = $(this).parent().siblings().eq(1).text();
+        if (confirm('Вы действительно хотите безвозвратно удалить шаблон "' + template_name + '"?')) {
+            delete_template(this);
+        }
     });
-
-
-
 });
-// фугкция удаления выбранного шаблона
-function deleteTemplate(obj){
-    var template_id = $(obj).val();
-        $.ajax({
-            type: 'GET',
-            url: '/delete_template/',
-            data: { 'id': template_id },
-            success: function(data){
-                var code = data[0];
-                if(code == '200'){
-                    $('#load_template_' + template_id).remove();
-                }
-                else{
-                    console.log('Error', data[1])
-                }
-            },
-            error: function(data){
-                console.log('Error', data);
+
+// функция сохранения шаблона
+function save_template(make_new) {
+    var change_template;
+    var html = $('#newsletter-builder-area-center-frame-content').html();
+    var name = $('#template_name').val();
+    console.log('bg', $('#inp_bg_color').val())
+    var bg_color = $('#inp_bg_color').val();
+
+    var data = {
+            'bg_color': bg_color,
+            'template_id': $('#current_template_id').val(),
+            'make_new_template': make_new,
+            'change_template': change_template,
+            'name': name,
+            'html': html,
+            'bg_image': bg_img_url
+        }
+    console.log(data)
+    $.ajax({
+        type: 'POST',
+        url: '/save_template/',
+        data: data,
+        dataType: 'json',
+        success: function(data){
+            //var code = data[0];
+            if(data['code'] == '200_new'){
+                var cells = '<td><button class="load-template" value="' + data['template_id'] +
+                    '">Выбрать</button></td>' + '<td>' + name + '</td>' + '<td>' + data['creation_date'] + '</td>' +
+                    '<td>' + data['changing_date'] + '</td>' + '<td><button class="delete-template" value="' +
+                    data['template_id'] + '"><i class="fa fa-close" style="color:red;"></i></button></td>';
+                $("#tbl_templates tr:last").after('<tr id="load_template_'+ data['template_id'] + '">' + cells + '</tr>');
+
+                // запихиваем айдишник нового шаблона в глобальное поле для текущего выбранного шаблона
+                $('#current_template_id').val(data[1]);
+
+                // закрытие диалогового окна
+                $('#saving-template-dialog').dialog('close');
+
+                alert('Шаблон успешно добавлен');
+            } else if (data['code'] == '200_old') {
+                // выводим изменения в текущий шаблон в списке шаблонов
+                var tr = $('#load_template_' + data['template_id']).children();
+                tr.eq(1).text(data['name']);
+                tr.eq(3).text(data['changing_date']);
+                // закрытие диалогового окна
+                $('#saving-template-dialog').dialog('close');
+                alert('Шаблон успешно изменен');
+            } else {
+                alert('Произошла ошибка при добавлении шаблона');
             }
-        });
+
+        }
+    });
+}
+
+
+// функция удаления шаблона
+function delete_template(obj) {
+    var template_id = $(obj).val();
+    $.ajax({
+        type: 'GET',
+        url: '/delete_template/',
+        data: { 'id': template_id },
+        success: function(data){
+            var code = data[0];
+            if(code == '200'){
+                $('#load_template_' + template_id).remove();
+            }
+            else{
+                alert('Произошла ошибка при удалении');
+                console.log('Error', data[1])
+            }
+        },
+        error: function(data){
+            console.log('Error', data);
+        }
+    });
 }
 
 // функция загрузки шаблона
 function loadTemplate(obj){
-        var template_id = $(obj).val();
+    var template_id = $(obj).val();
+    // передаем имя шаблона в поле
+    //$('#template_name').val($(obj).parent().siblings().first().text());
 
-        $.ajax({
-            type: 'GET',
-            url: '/load_template/',
-            data: { 'id': template_id },
-            success: function(data){
-                var code = data[0];
-                if(code == '200'){
-                    // смена фона письма
-                    // установка цвета
-                    $('#newsletter-builder-area').css('background', data[3]);
-                    // установка изображения
-                    $('#newsletter-builder-area').css('background-image', data[2]);
+    $.ajax({
+        type: 'GET',
+        url: '/load_template/',
+        data: { 'id': template_id },
+        success: function(data){
+            if(data['code'] == '200'){
+                // смена фона письма
+                // установка цвета
+                $('#newsletter-builder-area').css('background', data['color']);
+                // установка изображения
+                $('#newsletter-builder-area').css('background-image', data['image']);
 
-                    // установка значений для экспорта шаблона
-                    // если установлено изображение, то записываем его
-                    if(data[2]){
-                        bg_url = 'background-image: ' + data[2] + ';'
-                    }
-                    else{
-                        $('#inp_bg_color').val(data[3]);
-                        bg_url = 'background-color: ' + data[3] + ';';
-                    }
+                bg_img_url = data['image'];
 
+                $('#template_name').val(data['name']);
 
-
-                    // отображение кода на странице и инициализация drop and resize
-                    var $template = $('#newsletter-builder-area-center-frame-content').html(data[1]);
-                    colorpickerInit($template);
-
-
-                    var draggable_classes = [
-                        "sim-row-header1-nav-logo",
-                        "sim-row-edit",
-                        "sim-row-header1-nav-links"
-                    ]
-                    //"sim-row-header1-nav"
-                    var resize_south_classes = [
-                        "sim-row-header1",
-                        "sim-row-header2-nav"
-
-                    ]
-
-                    for(var i=1; i < 19; i++){
-                        resize_south_classes.push('sim-row-content' + i.toString());
-                    }
-
-                    var resize_classes = [
-                        "sim-row-header1-nav-links",
-                        "sim-row-header1-slider-left-text",
-                        "sim-row-edit",
-                        "sim-row-header2-nav-logo",
-                        "sim-row-content2-right-text",
-                        "sim-row-content4-title",
-                        "sim-row-content2-right-text",
-                        "sim-row-content2-right-text sim-row-edit ui-draggable",
-                        "sim-row-content3",
-                        'sim-row-content3-center-tab-image',
-                        "sim-row-content4-title",
-                        'sim-row-content4-content'
-                    ]
-
-
-
-                    for(var i=0; i<resize_south_classes.length; i++){
-                        console.log(resize_south_classes[i])
-                        $('#newsletter-builder-area-center-frame-content [class*="' + resize_south_classes[i] + '"]').find('.ui-resizable-handle').remove();
-                        $('#newsletter-builder-area-center-frame-content [class*="' + resize_south_classes[i] + '"]').resizable({
-                            handles: 's'
-                        });
-                    }
-
-                    for(var i=0; i<resize_classes.length; i++){
-                        $template.find('[class*="' + resize_classes[i] + '"]').resizable();
-                    }
-
-                    for(var i=0; i<draggable_classes.length; i++){
-                        $template.find('[class*="' + draggable_classes[i] + '"]').draggable();
-                    }
-
-                    /*$('#newsletter-builder-area-center-frame-content').find('div').each(function (index) {
-                            console.log($(this).children('div:first div'))
-                            $(this).children('div:first div').resizable({
-                                handles: 's'
-                            });
-                        });*/
-                    /*for(var i=0; i<resize_south_classes.length;i++){
-                        $('#newsletter-builder-area-center-frame-content .sim-row').find('div').each(function (index) {
-                            $(this).resizable();
-                        });
-                    }*/
-
-
-                    hover_edit();
-                    add_delete();
-                    perform_delete();
-                    perform_add();
-                    perform_change_color();
-                    colorpickerClassInit();
-
-                    $('.easy_modal').trigger('closeModal');
-                    console.log('Шаблон успешно скачан');
+                // установка значений для экспорта шаблона
+                // если установлено изображение, то записываем его
+                if(data['image']){
+                    $('inp_bg_image').val(data['image']);
+                    bg_url = 'background-image: ' + data['image'] + ';'
                 }
                 else{
-                    alert('Ошибка при загрузке');
+                    $('#inp_bg_color').val(data['color']);
+                    bg_url = 'background-color: ' + data['color'] + ';';
                 }
+
+                // отображение кода на странице и инициализация drop and resize
+                var $template = $('#newsletter-builder-area-center-frame-content').html(data['html']);
+                colorpickerInit($template);
+
+                var draggable_classes = [
+                    "sim-row-header1-nav-logo",
+                    "sim-row-edit",
+                    "sim-row-header1-nav-links"
+                ];
+                //"sim-row-header1-nav"
+                var resize_south_classes = [
+                    "sim-row-header1",
+                    "sim-row-header2-nav"
+
+                ];
+
+                for(var i=1; i < 19; i++){
+                    resize_south_classes.push('sim-row-content' + i.toString());
+                }
+
+                var resize_classes = [
+                    "sim-row-header1-nav-links",
+                    "sim-row-header1-slider-left-text",
+                    "sim-row-edit",
+                    "sim-row-header2-nav-logo",
+                    "sim-row-content2-right-text",
+                    "sim-row-content4-title",
+                    "sim-row-content2-right-text",
+                    "sim-row-content2-right-text sim-row-edit ui-draggable",
+                    "sim-row-content3",
+                    'sim-row-content3-center-tab-image',
+                    "sim-row-content4-title",
+                    'sim-row-content4-content'
+                ];
+
+                for(var i=0; i<resize_south_classes.length; i++){
+                    console.log(resize_south_classes[i])
+                    $('#newsletter-builder-area-center-frame-content [class*="' + resize_south_classes[i] + '"]').find('.ui-resizable-handle').remove();
+                    $('#newsletter-builder-area-center-frame-content [class*="' + resize_south_classes[i] + '"]').resizable({
+                        handles: 's'
+                    });
+                }
+
+                for(var i=0; i<resize_classes.length; i++){
+                    $template.find('[class*="' + resize_classes[i] + '"]').resizable();
+                }
+
+                for(var i=0; i<draggable_classes.length; i++){
+                    $template.find('[class*="' + draggable_classes[i] + '"]').draggable();
+                }
+
+                /*$('#newsletter-builder-area-center-frame-content').find('div').each(function (index) {
+                        console.log($(this).children('div:first div'))
+                        $(this).children('div:first div').resizable({
+                            handles: 's'
+                        });
+                    });*/
+                /*for(var i=0; i<resize_south_classes.length;i++){
+                    $('#newsletter-builder-area-center-frame-content .sim-row').find('div').each(function (index) {
+                        $(this).resizable();
+                    });
+                }*/
+
+
+                hover_edit();
+                add_delete();
+                perform_delete();
+                perform_add();
+                perform_change_color();
+                colorpickerClassInit();
+
+                $('.easy_modal').trigger('closeModal');
+                console.log('Шаблон успешно скачан');
+
+                $('#current_template_id').val(template_id);
             }
-        });
-    }
+            else{
+                alert('Ошибка при загрузке');
+            }
+        }
+    });
+}
 
 
 
@@ -354,52 +407,6 @@ function saveImageOnServer(img, fn){
     }
 }
 
-
-// функция сохранения шаблона
-function saveTemplates(){
-    var $name = $('#template_name').val();
-
-    $("#newsletter-preloaded-export").html($("#newsletter-builder-area-center-frame-content").html());
-    $("#newsletter-preloaded-export .sim-row-delete").remove();
-    $("#newsletter-preloaded-export .sim-row-palette").remove();
-
-    var id= document.getElementById('newsletter-preloaded-export');
-    var class_remove = ' resize';
-    var d;
-    d=document.getElementById(id);
-    d.className=d.className.replace(myClassName,"");
-
-    active.classList.remove("resize");
-
-    //$(".sim-row div .resize").removeClass('resize');
-    $(".sim-row").removeClass("ui-resizable");
-    $(".sim-row").removeClass("ui-draggable");
-
-
-
-
-    $.ajax({
-        type: 'POST',
-        url: '/save_template/',
-        data: {
-            'name': $name,
-            'html': $html
-        },
-        dataType: 'json',
-        success: function(data){
-            var code = data[0];
-            if(code == '200'){
-                var cells = '<td width="80%">' + name + '</td>' + '<td><button class="get-template-html" value="' + data[1] + '">Выбрать</button></td>'
-                $("#tbl_templates tr:last").after('<tr>' + cells + '</tr>');
-                alert('Шаблон успешно добавлен');
-            }
-            else{
-                alert('Произошла ошибка при добавлении шаблона');
-            }
-
-        }
-    });
-}
 
 function colorpickerInit(el){
     colorpicker(el.find('.color'));

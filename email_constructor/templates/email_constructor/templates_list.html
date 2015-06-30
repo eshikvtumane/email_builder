@@ -1,0 +1,35 @@
+<div class="easy_modal" id="modal1">
+  <div class="easy-modal-inner templates-list" style="width: 900px; background-color: #FFFFFF; padding: 30px 30px 30px 30px;" align="center">
+    <h2>Шаблоны</h2>
+      <div style="overflow-y: scroll; height: 500px;">
+        <table id='tbl_templates'>
+            <tr>
+                <td width="10%"></td>
+                <td width="25%">Название</td>
+                <td width="22%">Дата создания</td>
+                <td width="24%">Последние изменения</td>
+                <td></td>
+            </tr>
+        {% for template in templates %}
+            <tr id="load_template_{{ template.id }}">
+                <td>
+                    <button class="load-template" value="{{ template.id }}">Выбрать</button>
+                </td>
+                <td width="40%">{{ template.template_name }}</td>
+                <td>{% if template.created %}{{ template.created }}{% endif %}</td>
+                <td>{% if template.modified %}{{ template.modified }}{% endif %}</td>
+                <td>
+                    <button class="delete-template" value="{{ template.id }}"><i class="fa fa-close" style="color:red;"></i></button>
+                </td>
+            </tr>
+        {% empty %}
+          <tr>
+          <h3>Нет шаблонов</h3>
+          </tr>
+        {% endfor %}
+      </table>
+    </div>
+
+    <button class="easy-modal-close">Закрыть</button>
+  </div>
+</div>
