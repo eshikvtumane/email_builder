@@ -49,9 +49,10 @@ $(document).ready(function(){
         extended_valid_elements : "a[href|target=_blank]",
         lineheight_formats: "2pt 4pt 6pt 8pt 9pt 10pt 11pt 12pt 14pt 16pt 18pt 20pt 22pt 24pt 26pt 36pt",
         plugins: [
-             "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
-             "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
-             "save table contextmenu directionality emoticons template paste textcolor placeholder videothumbnail lineheight"
+            "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
+            "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+            "save table contextmenu directionality emoticons template paste textcolor videothumbnail lineheight",
+            //"placeholder"
        ],
         toolbar: [
             "undo redo | styleselect | bold italic | link image | imageupload | videothumbnail",

@@ -66,7 +66,7 @@ function hover_edit(){
 
             //edit image
             if(big_parent.attr("data-type")=='image'){
-            console.log('Image change test 1')
+            console.log('Image change test 1');
                 var $sim_edit_image = $("#sim-edit-image");
 
                 $sim_edit_image.find(".image").val(big_parent.children('img').attr("src"));
@@ -108,13 +108,13 @@ function hover_edit(){
                     }
 
 
-                console.log('Image change test 2')
+                console.log('Image change test 2');
 
                 // Загрузка изображений при мзменении file input
                 $('#input_load_image').on('change', function(){
-                    console.log('Image change test 3')
+                    console.log('Image change test 3');
                     var input = document.getElementById('input_load_image');
-                    var img_size = ($('#input_load_image'))[0].files.length
+                    var img_size = ($('#input_load_image'))[0].files.length;
                     var $img_children = big_parent.children('img');
                     if (img_size != 0) {
                         console.log('upload');
@@ -132,7 +132,7 @@ function hover_edit(){
                         saveImageOnServer('input_load_image', fn);
                     }
                 });
-            console.log('Image change test 4')
+            console.log('Image change test 4');
 
                 $sim_edit_image.find(".sim-edit-box-buttons-save").click(function() {
                     var input = document.getElementById('input_load_image');
