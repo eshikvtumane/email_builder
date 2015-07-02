@@ -120,6 +120,7 @@ $(document).ready(function(){
     //var bg_img_url = '';
     $('#inp_bg_img').change(function(){
         var img = 'inp_bg_img';
+
         $('#div_load_bg_message').html('Идёт загрузка ...');
         if(img){
             var fn = function(data){
@@ -127,10 +128,14 @@ $(document).ready(function(){
                 if(code == '200'){
                     var url = 'url(' + data[1] + ')';
                     bg_img_url = url;
-                    $('#newsletter-builder-area').css('background-image', url);
+                    var $bg = $('#newsletter-builder-area');
+                    $bg.css({
+                        'background-image': url,
+                        'background-size': 'cover'
+                    });
                     bg_url = 'background-image: ' + url;
 
-                    console.log($('#newsletter-builder-area').css('background-image'));
+                    console.log($bg.css('background-image'));
                     $('#div_load_bg_message').html('');
                 }
             };

@@ -38,6 +38,7 @@ $(document).ready(function(){
 function hover_edit(){
 
     $(".sim-row-edit").hover(function() {
+    //$(document).on("hover", ".sim-row-edit", function() {
         var count_image = 0;
         // если блок содержит изображение
 
@@ -61,6 +62,7 @@ function hover_edit(){
         });
 
         $(".sim-row-edit-hover i").click(function(e) {
+        //$(document).on('click', '.sim-row-edit-hover i', function(e) {
             e.preventDefault();
             big_parent = $(this).parent().parent();
 
@@ -173,26 +175,26 @@ function hover_edit(){
             //edit link
             if(big_parent.attr("data-type")=='link') {
 
-            // получаем объект кнопки
-            var $div_link = big_parent;
-            var $sim_edit_link = $("#sim-edit-link");
+                // получаем объект кнопки
+                var $div_link = big_parent;
+                var $sim_edit_link = $("#sim-edit-link");
 
-            $sim_edit_link.find(".title").val(big_parent.text());
-            $sim_edit_link.find(".url").val(big_parent.attr("href"));
-            $sim_edit_link.fadeIn(500);
-            $sim_edit_link.find(".sim-edit-box").slideDown(500);
+                $sim_edit_link.find(".title").val(big_parent.text());
+                $sim_edit_link.find(".url").val(big_parent.attr("href"));
+                $sim_edit_link.fadeIn(500);
+                $sim_edit_link.find(".sim-edit-box").slideDown(500);
 
-            $('#inp_color_btn_link').val(rgb2hex($div_link.css("background-color")));
+                $('#inp_color_btn_link').val(rgb2hex($div_link.css("background-color")));
 
-                $sim_edit_link.find(".sim-edit-box-buttons-save").click(function() {
-                    $(this).parent().parent().parent().fadeOut(500);
-                    $(this).parent().parent().slideUp(500);
+                    $sim_edit_link.find(".sim-edit-box-buttons-save").click(function() {
+                        $(this).parent().parent().parent().fadeOut(500);
+                        $(this).parent().parent().slideUp(500);
 
-                    big_parent.text($sim_edit_link.find(".title").val());
-                    big_parent.attr("href",$sim_edit_link.find(".url").val());
-                    big_parent.css("color",$("#inp_color_text_link").val());
-                    $div_link.css("background-color",$("#inp_color_btn_link").val());
-                });
+                        big_parent.text($sim_edit_link.find(".title").val());
+                        big_parent.attr("href",$sim_edit_link.find(".url").val());
+                        big_parent.css("color",$("#inp_color_text_link").val());
+                        $div_link.css("background-color",$("#inp_color_btn_link").val());
+                    });
 
             }
 
@@ -210,7 +212,7 @@ function hover_edit(){
                 //$sim_edit_title.find('iframe').contents().find('#tinymce').html(big_parent.html());
                 //if(big_parent.html().indexOf('Заголовок') == -1){
                     big_parent.children('div').remove('div');
-                    tinyMCE.activeEditor.setContent(big_parent.html());
+                    tinyMCE.get('editor').setContent(big_parent.html());
                 //}
                 //else{
                 //    tinyMCE.activeEditor.setContent('');
@@ -242,14 +244,21 @@ function hover_edit(){
                 $div.remove('.sim-row-remove-div-hover');
                 $div.parent().remove('.ui-resizable-handle');
 
+                // удаляем ненужные дивы, сохраняя остальные теги
+                big_parent.find('div').each(function() {
+                    var $this = $(this);
+                    var div_content = $this.html();
+                    $this.replaceWith(div_content);
+                });
+
                 //console.log('TEST', big_parent.html());
                 // Вставка текста в редактор из изменяемого элемента
                 $sim_edit_text.find('iframe').contents().find('#tinymce').html(big_parent.html());
-                if(big_parent.html().indexOf('Lorem') == -1){
-                    tinyMCE.activeEditor.setContent(big_parent.html());
-                } else {
-                    tinyMCE.activeEditor.setContent('');
-                }
+                //if(big_parent.html().indexOf('Lorem') == -1){
+                    tinyMCE.get('editor2').setContent(big_parent.html());
+                //} else {
+                //    tinyMCE.activeEditor.setContent('');
+                //}
 
                 $sim_edit_text.find(".text").val();
 
