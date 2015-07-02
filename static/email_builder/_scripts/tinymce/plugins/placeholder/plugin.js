@@ -31,11 +31,11 @@ tinymce.PluginManager.add('placeholder', function(editor) {
 
         attrs = {style: {position: 'absolute', top:'5px', left:0, color: '#888', padding: '1%', width:'98%', overflow: 'hidden'} };
         this.el = tinymce.DOM.add( this.contentAreaContainer, "label", attrs, this.text );
-    }
+    };
 
     Label.prototype.hide = function(){
         tinymce.DOM.setStyle( this.el, 'display', 'none' );
-    }
+    };
 
     Label.prototype.show = function(){
         tinymce.DOM.setStyle( this.el, 'display', '' );   

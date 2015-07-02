@@ -66,7 +66,6 @@ function hover_edit(){
 
             //edit image
             if(big_parent.attr("data-type")=='image'){
-            console.log('Image change test 1');
                 var $sim_edit_image = $("#sim-edit-image");
 
                 $sim_edit_image.find(".image").val(big_parent.children('img').attr("src"));
@@ -107,14 +106,11 @@ function hover_edit(){
                         $height_image.prop('disabled', false);
                     }
 
-
-                console.log('Image change test 2');
-
                 // Загрузка изображений при мзменении file input
-                $('#input_load_image').on('change', function(){
-                    console.log('Image change test 3');
-                    var input = document.getElementById('input_load_image');
-                    var img_size = ($('#input_load_image'))[0].files.length;
+                //$('#input_load_image').on('change', function(){
+                $(document).on('change', '#input_load_image', function(){
+                    var input = this;
+                    var img_size = this.files.length;
                     var $img_children = big_parent.children('img');
                     if (img_size != 0) {
                         console.log('upload');
@@ -132,7 +128,6 @@ function hover_edit(){
                         saveImageOnServer('input_load_image', fn);
                     }
                 });
-            console.log('Image change test 4');
 
                 $sim_edit_image.find(".sim-edit-box-buttons-save").click(function() {
                     var input = document.getElementById('input_load_image');
@@ -210,16 +205,16 @@ function hover_edit(){
                 $sim_edit_title.fadeIn(500);
                 $sim_edit_title.find(".sim-edit-box").slideDown(500);
 
-                // удаление дефолтного текста
-                if(big_parent.html().indexOf('Заголовок') == -1){
+                // Вставка текста в редактор из изменяемого элемента
+
+                //$sim_edit_title.find('iframe').contents().find('#tinymce').html(big_parent.html());
+                //if(big_parent.html().indexOf('Заголовок') == -1){
                     big_parent.children('div').remove('div');
-                    //$(tinyMCE.activeEditor.getElement()).attr('placeholder', '');
                     tinyMCE.activeEditor.setContent(big_parent.html());
-                    //tinyMCE.focusedEditor.setContent(big_parent.html());
-                }
-                else{
-                    tinyMCE.activeEditor.setContent('');
-                }
+                //}
+                //else{
+                //    tinyMCE.activeEditor.setContent('');
+                //}
 
                 $sim_edit_title.find(".sim-edit-box-buttons-save").click(function() {
                     $(this).parent().parent().parent().fadeOut(500);
@@ -247,8 +242,9 @@ function hover_edit(){
                 $div.remove('.sim-row-remove-div-hover');
                 $div.parent().remove('.ui-resizable-handle');
 
-                console.log('TEST', big_parent.html());
-                // удаление дефолтного текста
+                //console.log('TEST', big_parent.html());
+                // Вставка текста в редактор из изменяемого элемента
+                $sim_edit_text.find('iframe').contents().find('#tinymce').html(big_parent.html());
                 if(big_parent.html().indexOf('Lorem') == -1){
                     tinyMCE.activeEditor.setContent(big_parent.html());
                 } else {
@@ -393,30 +389,30 @@ $(function() {
 
 
     $("#add-header").hover(function() {
-        $(".newsletter-builder-area-center-frame-buttons-content-tab[data-type='header']").show()
-        $(".newsletter-builder-area-center-frame-buttons-content-tab[data-type='content']").hide()
-        $(".newsletter-builder-area-center-frame-buttons-content-tab[data-type='footer']").hide()
+        $(".newsletter-builder-area-center-frame-buttons-content-tab[data-type='header']").show();
+        $(".newsletter-builder-area-center-frame-buttons-content-tab[data-type='content']").hide();
+        $(".newsletter-builder-area-center-frame-buttons-content-tab[data-type='footer']").hide();
         $(".newsletter-builder-area-center-frame-buttons-content-tab[data-type='without-title']").hide()
     });
 
     $("#add-content").hover(function() {
-        $(".newsletter-builder-area-center-frame-buttons-content-tab[data-type='header']").hide()
-        $(".newsletter-builder-area-center-frame-buttons-content-tab[data-type='content']").show()
-        $(".newsletter-builder-area-center-frame-buttons-content-tab[data-type='footer']").hide()
+        $(".newsletter-builder-area-center-frame-buttons-content-tab[data-type='header']").hide();
+        $(".newsletter-builder-area-center-frame-buttons-content-tab[data-type='content']").show();
+        $(".newsletter-builder-area-center-frame-buttons-content-tab[data-type='footer']").hide();
         $(".newsletter-builder-area-center-frame-buttons-content-tab[data-type='without-title']").hide()
     });
 
     $("#add-footer").hover(function() {
-        $(".newsletter-builder-area-center-frame-buttons-content-tab[data-type='header']").hide()
-        $(".newsletter-builder-area-center-frame-buttons-content-tab[data-type='content']").hide()
-        $(".newsletter-builder-area-center-frame-buttons-content-tab[data-type='footer']").show()
+        $(".newsletter-builder-area-center-frame-buttons-content-tab[data-type='header']").hide();
+        $(".newsletter-builder-area-center-frame-buttons-content-tab[data-type='content']").hide();
+        $(".newsletter-builder-area-center-frame-buttons-content-tab[data-type='footer']").show();
         $(".newsletter-builder-area-center-frame-buttons-content-tab[data-type='without-title']").hide()
     });
 
     $("#add-without-title").hover(function() {
-        $(".newsletter-builder-area-center-frame-buttons-content-tab[data-type='header']").hide()
-        $(".newsletter-builder-area-center-frame-buttons-content-tab[data-type='content']").hide()
-        $(".newsletter-builder-area-center-frame-buttons-content-tab[data-type='footer']").hide()
+        $(".newsletter-builder-area-center-frame-buttons-content-tab[data-type='header']").hide();
+        $(".newsletter-builder-area-center-frame-buttons-content-tab[data-type='content']").hide();
+        $(".newsletter-builder-area-center-frame-buttons-content-tab[data-type='footer']").hide();
         $(".newsletter-builder-area-center-frame-buttons-content-tab[data-type='without-title']").show()
     });
 
@@ -617,11 +613,11 @@ function generateEmail(html){
     // bg_url - глобальная переменная из constructor_init.js
 
     var preload_export_html = html;
-    var doctype = '';
+    //var doctype = '';
 	var sim_wrapper_style = 'float: left;height: auto;width: 100%;margin: 0px;padding-top: 50px;padding-right: 0px;padding-bottom: 50px;padding-left: 0px;' + bg_url;
     var doctype = '<DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">';
     var export_content = doctype + '<html><body style="margin: 0px;padding: 0px;"><div id="sim-wrapper" style="' + sim_wrapper_style + '"><div id="sim-wrapper-newsletter" style="margin-right: auto;margin-left: auto;height: auto;width: 800px;">'+preload_export_html+'</div></div>';
-    export_content += '</body></html>'
+    export_content += '</body></html>';
 	
 	return export_content
 }

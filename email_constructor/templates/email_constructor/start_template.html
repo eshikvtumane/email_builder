@@ -1,0 +1,367 @@
+{% load staticfiles %}
+
+<div id="newsletter-builder-area" class="resize-height resize-width" style="z-index: 99999">
+    <div id="newsletter-builder-area-center" style="z-index: 99999">
+        <div id="newsletter-builder-area-center-frame" style="z-index: 99999">
+
+            <div id="newsletter-builder-area-center-frame-buttons" style="z-index: 99999">
+                <div id="newsletter-builder-area-center-frame-buttons-add" style="z-index: 99999">Добавить&nbsp;&nbsp;<i
+                        class="fa fa-caret-down"></i>
+
+                    <div id="newsletter-builder-area-center-frame-buttons-dropdown" style="width:20ex;">
+                        <div class="newsletter-builder-area-center-frame-buttons-dropdown-tab" id="add-header"><p
+                                class='add_menu'>Header</p><i class="fa fa-caret-right"></i></div>
+                        <div class="newsletter-builder-area-center-frame-buttons-dropdown-tab" id="add-content"><p
+                                class='add_menu'>Content</p><i class="fa fa-caret-right"></i></div>
+                        <div class="newsletter-builder-area-center-frame-buttons-dropdown-tab" id="add-footer"><p
+                                class='add_menu'>Footer</p><i class="fa fa-caret-right"></i></div>
+                        <!--
+                            <div class="newsletter-builder-area-center-frame-buttons-dropdown-tab" id="add-without-title"><p class='add_menu'>Без заголовка</p><i class="fa fa-caret-right"></i></div>
+                          -->
+                        <div class="newsletter-builder-area-center-frame-buttons-content" style="margin-left: 4ex;">
+                            <div class="newsletter-builder-area-center-frame-buttons-content-tab" data-type="header"
+                                 data-id="1"><img src="{% static 'email_builder/_row_thumbs/sim-row-thumb_1.png' %}">
+                            </div>
+                            <div class="newsletter-builder-area-center-frame-buttons-content-tab" data-type="header"
+                                 data-id="2"><img src="{% static 'email_builder/_row_thumbs/sim-row-thumb_2.png' %}">
+                            </div>
+                            <!--
+          <div class="newsletter-builder-area-center-frame-buttons-content-tab" data-type="header" data-id="3"><img src="{% static 'email_builder/_row_thumbs/sim-row-thumb_3.png' %}"></div>
+      -->
+                            <div class="newsletter-builder-area-center-frame-buttons-content-tab" data-type="content"
+                                 data-id="4"><img src="{% static 'email_builder/_row_thumbs/sim-row-thumb_4.png' %}">
+                            </div>
+                            <div class="newsletter-builder-area-center-frame-buttons-content-tab" data-type="content"
+                                 data-id="5"><img src="{% static 'email_builder/_row_thumbs/sim-row-thumb_5.png' %}">
+                            </div>
+                            <!--<div class="newsletter-builder-area-center-frame-buttons-content-tab" data-type="content" data-id="6"><img src="{% static 'email_builder/_row_thumbs/sim-row-thumb_6.png' %}"></div>-->
+                            <div class="newsletter-builder-area-center-frame-buttons-content-tab" data-type="content"
+                                 data-id="12"><img src="{% static 'email_builder/_row_thumbs/sim-row-thumb_12.png' %}">
+                            </div>
+                            <div class="newsletter-builder-area-center-frame-buttons-content-tab" data-type="content"
+                                 data-id="7"><img src="{% static 'email_builder/_row_thumbs/sim-row-thumb_7.png' %}">
+                            </div>
+                            <div class="newsletter-builder-area-center-frame-buttons-content-tab" data-type="content"
+                                 data-id="8"><img src="{% static 'email_builder/_row_thumbs/sim-row-thumb_8.png' %}">
+                            </div>
+                            <div class="newsletter-builder-area-center-frame-buttons-content-tab" data-type="content"
+                                 data-id="9"><img src="{% static 'email_builder/_row_thumbs/sim-row-thumb_9.png' %}">
+                            </div>
+                            <div class="newsletter-builder-area-center-frame-buttons-content-tab" data-type="content"
+                                 data-id="10"><img src="{% static 'email_builder/_row_thumbs/sim-row-thumb_10.png' %}">
+                            </div>
+                            <div class="newsletter-builder-area-center-frame-buttons-content-tab" data-type="content"
+                                 data-id="26"><img src="{% static 'email_builder/_row_thumbs/sim-row-thumb_26.png' %}">
+                            </div>
+                            <div class="newsletter-builder-area-center-frame-buttons-content-tab" data-type="content"
+                                 data-id="11"><img src="{% static 'email_builder/_row_thumbs/sim-row-thumb_11.png' %}">
+                            </div>
+
+                            <!--<div class="newsletter-builder-area-center-frame-buttons-content-tab" data-type="content" data-id="13"><img src="{% static 'email_builder/_row_thumbs/sim-row-thumb_13.png' %}"></div>-->
+                            <div class="newsletter-builder-area-center-frame-buttons-content-tab" data-type="content"
+                                 data-id="14"><img src="{% static 'email_builder/_row_thumbs/sim-row-thumb_14.png' %}">
+                            </div>
+                            <!--<div class="newsletter-builder-area-center-frame-buttons-content-tab" data-type="content" data-id="15"><img src="{% static 'email_builder/_row_thumbs/sim-row-thumb_15.png' %}"></div>-->
+                            <div class="newsletter-builder-area-center-frame-buttons-content-tab" data-type="footer"
+                                 data-id="16"><img src="{% static 'email_builder/_row_thumbs/sim-row-thumb_16.png' %}">
+                            </div>
+                            <div class="newsletter-builder-area-center-frame-buttons-content-tab" data-type="footer"
+                                 data-id="17"><img src="{% static 'email_builder/_row_thumbs/sim-row-thumb_17.png' %}">
+                            </div>
+                            <div class="newsletter-builder-area-center-frame-buttons-content-tab" data-type="footer"
+                                 data-id="18"><img src="{% static 'email_builder/_row_thumbs/sim-row-thumb_18.png' %}">
+                            </div>
+
+                            <!-- Without title -->
+                            <!--
+      <div class="newsletter-builder-area-center-frame-buttons-content-tab" data-type="without-title" data-id="20"><img src="{% static 'email_builder/_row_thumbs/sim-row-thumb_20.png' %}"></div>
+      <div class="newsletter-builder-area-center-frame-buttons-content-tab" data-type="without-title" data-id="21"><img src="{% static 'email_builder/_row_thumbs/sim-row-thumb_21.png' %}"></div>
+      <div class="newsletter-builder-area-center-frame-buttons-content-tab" data-type="without-title" data-id="22"><img src="{% static 'email_builder/_row_thumbs/sim-row-thumb_22.png' %}"></div>
+      <div class="newsletter-builder-area-center-frame-buttons-content-tab" data-type="without-title" data-id="23"><img src="{% static 'email_builder/_row_thumbs/sim-row-thumb_23.png' %}"></div>
+      <div class="newsletter-builder-area-center-frame-buttons-content-tab" data-type="without-title" data-id="24"><img src="{% static 'email_builder/_row_thumbs/sim-row-thumb_24.png' %}"></div>
+      <div class="newsletter-builder-area-center-frame-buttons-content-tab" data-type="without-title" data-id="25"><img src="{% static 'email_builder/_row_thumbs/sim-row-thumb_25.png' %}"></div>
+      -->
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!--<div id="newsletter-builder-area-center-frame-buttons-reset"><a href="index.html"><i class="icon-reload-CCW"></i>&nbsp;&nbsp;Сбросить шаблон</a></div>
+            </div>-->
+            <div id="newsletter-builder-area-center-frame-content">
+
+                <!-- header1 -->
+                <div class="sim-row"
+                     style="width: 800px;float: left;font-family: 'Source Sans Pro', sans-serif;position: relative;">
+                    <div class="sim-row-header1"
+                         style="width: 100%;float: left;background-color: rgba(255,255,255,1.00);">
+                        <div class="sim-row-header1-nav resize" style="width: 100%;float: left;height: auto;">
+
+
+                            <div class="sim-row-header1-nav-logo sim-row-edit draggable-block" data-type="image" style=" float: left;text-align: center;
+                  margin-left: 50px;margin-top: 10px; margin-bottom: 10px;overflow: hidden;width: 200px;height:auto;">
+                                <img src="http://{{ domain }}/media/logo.png" style="width: 180px;">
+                            </div>
+
+                            <div class="sim-row-header1-slider-left-text sim-row-edit draggable-block resize"
+                                 data-type="text"
+                                 style="color: #000000;float: right;width: 340px;margin-right: 50px;margin-top: 30px;font-size: 16px;line-height: 24px;font-weight: 300;">
+                                {{ temp_text }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="sim-row"
+                     style="width: 800px;float: left;font-family: 'Source Sans Pro', sans-serif;position: relative;">
+                    <div class="sim-row-content4 resize"
+                         style="float: left; height: auto;width: 100%;background-color: rgba(242,244,250,1);padding-bottom:30px;">
+                        <div class="sim-row-content4-title sim-row-edit draggable-block block-resize" data-type="title"
+                             style="float: left;width: 650px;margin-left: 75px;font-size: 26px;text-align: center;color: #1f4f69;margin-top: 30px;">{{ temp_title }} </div>
+                        <div class="sim-row-content4-content sim-row-edit draggable-block block-resize" data-type="text"
+                             style="float: left;width: 650px;margin-left: 75px;margin-top: 25px;color: #656565;font-size: 16px;font-weight: 300;text-align: center;">{{ temp_text }}</div>
+
+                    </div>
+                </div>
+
+
+                <!-- 3 -->
+                <div class="sim-row"
+                     style="width: 800px;float: left;font-family: 'Source Sans Pro', sans-serif;position: relative;">
+                    <div class="sim-row-content2 resize"
+                         style="height: auto;background-color: rgba(242,244,250,1);float: left;width: 100%;">
+                        <div class="sim-row-content2-left sim-row-edit draggable-block block-resiz" data-type="image"
+                             style="float: left;width: 350px;text-align: right;overflow: hidden;margin-top: 30px; margin-left:30px;">
+                            <img src="/static/email_builder/img/placeholder.png" style="height: auto;width: 350px;">
+                        </div>
+
+                        <div class="sim-row-content2-right"
+                             style="float: left;width: 400px;height: auto; padding-bottom: 30px;">
+                            <div class="sim-row-content2-right-title sim-row-edit draggable-block block-resize"
+                                 data-type="title"
+                                 style="float: left;width: 300px;margin-top: 30px;font-size: 26px;color: #1f4f69;margin-left: 50px;">{{ temp_title }}</div>
+                            <div class="sim-row-content2-right-text sim-row-edit draggable-block block-resize"
+                                 data-type="text"
+                                 style="color: #656565;float: left;width: 300px;margin-left: 50px;margin-top: 25px;font-size: 16px;font-weight: 300;">{{ temp_text }}</div>
+                            <div class="sim-row-content2-right-button draggable-block block-resize"
+                                 style="float: left;margin-top: 25px;width: 300px;margin-left: 50px;"><a href="#"
+                                                                                                         class="sim-row-edit"
+                                                                                                         data-type="link"
+                                                                                                         style="float: left;background-color: rgba(150,111,177,1);-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;-webkit-transition: background 0.5s;-moz-transition: background 0.5s;-o-transition: background 0.5s;transition: background 0.5s;color: rgba(255,255,255,1);font-size: 15px;text-decoration: none;padding-right: 15px;padding-left: 15px;display: block;">Читать
+                                далее</a></div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- 4 -->
+
+
+                <div class="sim-row"
+                     style="width: 800px;float: left;font-family: 'Source Sans Pro', sans-serif;position: relative;">
+                    <div class="sim-row-content5 resize"
+                         style="background-color: rgba(255,255,255,1);float: left;width: 100%;heigth: 300px;padding-bottom: 30px;">
+                        <div class="sim-row-content5-left" style="float: left;width: 400px;height: auto;">
+                            <div class="sim-row-content5-left-title sim-row-edit draggable-block block-resize"
+                                 data-type="title"
+                                 style="float: left;width: 300px;margin-top: 30px;font-size: 26px;color: #1f4f69;margin-left: 50px;">{{ temp_title }}</div>
+                            <div class="sim-row-content5-left-text sim-row-edit draggable-block block-resize"
+                                 data-type="text"
+                                 style="color: #656565;float: left;width: 300px;margin-left: 50px;margin-top: 25px;font-size: 16px;font-weight: 300;">{{ temp_text }}</div>
+                            <div class="sim-row-content5-left-button draggable-block block-resize"
+                                 style="float: left;margin-top: 25px;width: 300px;margin-left: 50px;"><a href="#"
+                                                                                                         class="sim-row-edit"
+                                                                                                         data-type="link"
+                                                                                                         style="float: left;background-color: rgba(150,111,177,1);-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;-webkit-transition: background 0.5s;-moz-transition: background 0.5s;-o-transition: background 0.5s;transition: background 0.5s;color: rgba(255,255,255,1);font-size: 15px;text-decoration: none;padding-right: 15px;padding-left: 15px;display: block;">Читать
+                                далее</a></div>
+                        </div>
+                        <div class="sim-row-content5-right sim-row-edit draggable-block block-resize" data-type="image"
+                             style="float: left;width: 350px;height: auto; margin-top: 30px; margin-right:20px; text-align: left;overflow: hidden;">
+                            <img src="/static/email_builder/img/placeholder.png" style="height: auto;width: 350px;">
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="sim-row"
+                     style="width: 800px;float: left;font-family: 'Source Sans Pro', sans-serif;position: relative;">
+                    <div class="sim-row-content8"
+                         style="background-color: rgba(242,244,250,1);float: left;width: 100%;padding-top: 30px;padding-bottom: 30px;">
+                        <div class="sim-row-content8-title sim-row-edit" data-type="title"
+                             style="float: left;width: 700px;margin-left: 50px;font-size: 26px;text-align: center;color: #1f4f69;">{{ temp_title }}</div>
+                        <div class="sim-row-content8-center"
+                             style="float: left;width: 800px;margin-left: 30px;margin-top: 10px;">
+                            <div class="sim-row-content8-center-tab"
+                                 style="float: left;width: 360px;margin-right: 10px;padding-bottom: 15px;">
+                                <div class="sim-row-content8-center-tab-image sim-row-edit" data-type="image"
+                                     style="float: left;height: auto;width: 360px;text-align: center;overflow: hidden;">
+                                    <img src="/static/email_builder/img/placeholder.png"
+                                         style="height: auto;width: 360px;"></div>
+                                <div class="sim-row-content8-center-tab-title sim-row-edit" data-type="title"
+                                     style="float: left;width: 255px;color: #00ACCC;-webkit-transition: all 0.5s;-moz-transition: all 0.5s;-o-transition: all 0.5s;transition: all 0.5s;margin-top: 15px;margin-left: 15px;">{{ temp_title }}</div>
+                                <div class="sim-row-content8-center-tab-text sim-row-edit" data-type="text"
+                                     style="float: left;width: 300px;font-size: 14px;color: rgba(102,102,102,1);line-height: 24px;margin-top: 5px;margin-left: 15px;">{{ temp_text }}.
+                                </div>
+                            </div>
+                            <div class="sim-row-content8-center-tab"
+                                 style="float: left;width: 360px;margin-right: 0px;padding-left: 15px;padding-bottom: 15px;">
+                                <div class="sim-row-content8-center-tab-image sim-row-edit" data-type="image"
+                                     style="float: left;height: auto;width: 360px;text-align: center;overflow: hidden;">
+                                    <img src="/static/email_builder/img/placeholder.png"
+                                         style="height: auto;width: 360px;"></div>
+                                <div class="sim-row-content8-center-tab-title sim-row-edit" data-type="title"
+                                     style="float: left;width: 255px;color: #00ACCC;-webkit-transition: all 0.5s;-moz-transition: all 0.5s;-o-transition: all 0.5s;transition: all 0.5s;margin-top: 15px;margin-left: 15px;">{{ temp_title }}</div>
+                                <div class="sim-row-content8-center-tab-text sim-row-edit" data-type="text"
+                                     style="float: left;width: 300px;font-size: 14px;color: rgba(102,102,102,1);line-height: 24px;margin-top: 5px;margin-left: 15px;">{{ temp_text }}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="sim-row"
+                     style="width: 800px;float: left;font-family: 'Source Sans Pro', sans-serif;position: relative;">
+                    <div class="sim-row-content9 resize"
+                         style="float: left;width: 100%;background-color: rgba(255,255,255,1);">
+                        <div class="sim-row-content9-title sim-row-edit draggable-block block-resize" data-type="title"
+                             style="float: left;width: 650px;margin-left: 75px;font-size: 26px;text-align: center;color: #1f4f69;margin-top: 30px;">{{ temp_title }}</div>
+                        <div class="sim-row-content9-content sim-row-edit draggable-block block-resize" data-type="text"
+                             style="float: left;width: 650px;margin-left: 75px;margin-top: 25px;color: #656565;font-size: 16px;font-weight: 300;text-align: center;">{{ temp_text }}</div>
+                        <div class="sim-row-content9-images sim-row-edit draggable-block" data-type="image"
+                             style="float: left;width: 100%;margin-top: 30px;height: auto;overflow: hidden;"><img
+                                src="http://{{ domain }}/static/email_builder/img/placeholder.png"
+                                style="width: 800px;"></div>
+                    </div>
+                </div>
+
+
+                <div class="sim-row"
+                     style="width: 800px;float: left;font-family: 'Source Sans Pro', sans-serif;position: relative;">
+
+                    <div class="sim-row-content8"
+                         style="background-color: rgba(242,244,250,1);float: left;width: 100%;padding-top: 30px;padding-bottom: 30px;">
+                        <div class="sim-row-content8-title sim-row-edit" data-type="title"
+                             style="float: left;width: 700px;margin-left: 50px;font-size: 26px;text-align: center;color: #1f4f69;">{{ temp_title }}</div>
+                        <div class="sim-row-content8-center"
+                             style="float: left;width: 800px;margin-left: 30px;margin-top: 10px;">
+                            <div class="sim-row-content8-center-tab"
+                                 style="float: left;width: 360px;margin-right: 10px;padding-bottom: 15px;">
+                                <div class="sim-row-content8-center-tab-image sim-row-edit" data-type="image"
+                                     style="float: left;height: auto;width: 360px;text-align: center;overflow: hidden;">
+                                    <img src="/static/email_builder/img/placeholder.png"
+                                         style="height: auto;width: 360px;"></div>
+                                <div class="sim-row-content8-center-tab-title sim-row-edit" data-type="title"
+                                     style="float: left;width: 255px;color: #00ACCC;-webkit-transition: all 0.5s;-moz-transition: all 0.5s;-o-transition: all 0.5s;transition: all 0.5s;margin-top: 15px;margin-left: 15px;">{{ temp_title }}</div>
+                                <div class="sim-row-content8-text sim-row-edit" data-type="text"
+                                     style="float: left;width: 300px;font-size: 14px;color: rgba(102,102,102,1);line-height: 24px;margin-top: 5px;margin-left: 15px;">{{ temp_text }}</div>
+                                <div class="sim-row-content11-center-text-link"
+                                     style="float: left;width: 245px;margin-left: 20px;margin-top: 15px;"><a href="#"
+                                                                                                             class="sim-row-edit"
+                                                                                                             data-type="link"
+                                                                                                             style="float: left;background-color: rgba(150,111,177,1);-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;-webkit-transition: background 0.5s;-moz-transition: background 0.5s;-o-transition: background 0.5s;transition: background 0.5s;color: rgba(255,255,255,1);font-size: 14px;line-height: 25px;text-decoration: none;padding-right: 15px;padding-left: 15px;display: block;">Читать
+                                    далее</a></div>
+                            </div>
+                            <div class="sim-row-content8-center-tab"
+                                 style="float: left;width: 360px;margin-right: 0px;padding-left: 15px;padding-bottom: 15px;">
+                                <div class="sim-row-content8-center-tab-image sim-row-edit" data-type="image"
+                                     style="float: left;height: auto;width: 360px;text-align: center;overflow: hidden;">
+                                    <img src="/static/email_builder/img/placeholder.png"
+                                         style="height: auto;width: 360px;"></div>
+                                <div class="sim-row-content8-center-tab-title sim-row-edit" data-type="title"
+                                     style="float: left;width: 255px;color: #00ACCC;-webkit-transition: all 0.5s;-moz-transition: all 0.5s;-o-transition: all 0.5s;transition: all 0.5s;margin-top: 15px;margin-left: 15px;">{{ temp_title }}</div>
+                                <div class="sim-row-content8-text sim-row-edit" data-type="text"
+                                     style="float: left;width: 300px;font-size: 14px;color: rgba(102,102,102,1);line-height: 24px;margin-top: 5px;margin-left: 15px;">{{ temp_text }}</div>
+                                <div class="sim-row-content11-center-text-link"
+                                     style="float: left;width: 245px;margin-left: 20px;margin-top: 15px;"><a href="#"
+                                                                                                             class="sim-row-edit"
+                                                                                                             data-type="link"
+                                                                                                             style="float: left;background-color: rgba(150,111,177,1);-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;-webkit-transition: background 0.5s;-moz-transition: background 0.5s;-o-transition: background 0.5s;transition: background 0.5s;color: rgba(255,255,255,1);font-size: 14px;line-height: 25px;text-decoration: none;padding-right: 15px;padding-left: 15px;display: block;">Читать
+                                    далее</a></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="sim-row"
+                     style="width: 800px;float: left;font-family: 'Source Sans Pro', sans-serif;position: relative;">
+                    <div class="sim-row-content14 resize"
+                         style="float: left;width: 100%;background-color: rgba(53,57,70,1);padding-top: 25px;padding-bottom: 25px;">
+                        <div class="sim-row-content14-center" style="float: left;width: 600px;margin-left: 100px;">
+                            <div class="sim-row-content14-center-left" style="float: left;width: 290px;">
+
+                                <div class="sim-row-content14-center-left-text sim-row-edit draggable-block block-resize"
+                                     data-type="text"
+                                     style="color: #b9bcc5;font-size: 14px;margin-top: 30px;">{{ temp_text }}</div>
+                            </div>
+                            <div class="sim-row-content14-center-right sim-row-edit draggable-block" data-type="image"
+                                    style="float: right;text-align: center;
+                                    margin-right: 20px;overflow: hidden;width: 140px; height: auto;">
+                                <img src="http://{{ domain }}/media/logo.png" style="width: 140px;">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="sim-row"
+                     style="width: 800px;float: left;font-family: 'Source Sans Pro', sans-serif;position: relative;">
+                    <div class="sim-row-content14 resize"
+                         style="float: left;width: 100%;background-color: rgba(53,57,70,1);padding-top: 25px;padding-bottom: 25px;">
+                        <div class="sim-row-content14-center" style="float: left;width: 600px;margin-left: 100px;">
+                            <div class="sim-row-content14-center-left" style="float: left;width: 290px;">
+
+                                <div class="sim-row-content14-center-left-text sim-row-edit draggable-block block-resize"
+                                     data-type="text" style="color: #b9bcc5;font-size: 14px;">{{ temp_text }}</div>
+                            </div>
+
+                            <div class="sim-row-content14-center-right-text sim-row-edit draggable-block block-resize"
+                                 data-type="text"
+                                 style="color: #b9bcc5;font-size: 14px;width: 200px; height: 50px; float: right; margin-left: 50px;">
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <a href="#" title="ВКонтакте"><img style="width: 30px"
+                                                                               src="/media/social/vk.png"></a>
+                                        </td>
+                                        <td>
+                                            <a href="#" title="Одноклассники"><img style="width: 30px"
+                                                                                   src="/media/social/ok.png"></a>
+                                        </td>
+                                        <td>
+                                            <a href="#" title="Twitter"><img style="width: 30px"
+                                                                             src="/media/social/tw.png"></a>
+                                        </td>
+                                        <td>
+                                            <a href="#" title="Instagram"><img style="width: 30px"
+                                                                               src="/media/social/im.png"></a>
+                                        </td>
+                                        <td>
+                                            <a href="#" title="Google+"><img style="width: 30px"
+                                                                             src="/media/social/gp.png"></a>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <!--<div class="sim-row-content14-center-right" style="float: right;width: 250px;">
+                                <div class="sim-row-header1-nav-links" style="float: right;height: 80px;margin-right: 20px;">
+                                    <a href="#" class="sim-row-edit" style="color: rgba(63,141,191,1);text-decoration: none;margin-top: 30px;float: left;margin-right: 25px;font-size: 15px;" data-type="link">ВК</i></i></a>
+                                    <a href="#" class="sim-row-edit" style="color: rgba(63,141,191,1);text-decoration: none;margin-top: 30px;float: left;margin-right: 25px;font-size: 15px;" data-type="link">ОК</i></a>
+
+                                </div>
+                            </div>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+</div>

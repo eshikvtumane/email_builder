@@ -43,6 +43,9 @@ class EmailConstructorView(View):
         args['domain'] = get_current_site(request).domain
         # args['templates'] = Template.objects.all().values('id', 'template_name')
         args['templates'] = Template.objects.all()
+        args['temp_title'] = 'Заголовок'
+        args['temp_text'] = 'Принцип восприятия непредвзято создает паллиативный интеллект, условно. Концепция ментально' \
+                            ' оспособляет закон внешнего мира.'
         rc = RequestContext(request, args)
         return render_to_response(self.template, rc)
 

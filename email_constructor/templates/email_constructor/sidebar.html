@@ -1,0 +1,45 @@
+  <div id="newsletter-builder-sidebar">
+    <div id="newsletter-builder-sidebar-logo" class="resizable">
+        <img src="/media/logo.png" width="150" alt="">
+        <br>
+        <label><b>EMAIL-конструктор</b></label>
+    </div>
+    <div id="newsletter-builder-sidebar-buttons">
+      <!--<div id="newsletter-builder-sidebar-buttons-abutton">Download Template</div>-->
+        <div style="margin-left: 5ex;">
+            <div>
+                <a target="_blank" href="{% url 'email_constructor:create_email' %}">Новый шаблон</a>
+            </div>
+
+            <div style="margin-top: 2ex;">
+                Цвет фона: <input class="bg-color" type="color" id="inp_bg_color" value="#C3CCD5">
+            </div>
+            <div style="margin-top: 2ex;">
+                Изображение для фона: <input type="file" id="inp_bg_img" accept="image/*">
+                <div id='div_load_bg_message' style="margin-top: 2ex;">
+
+                </div>
+            </div>
+
+            <div style="margin-top: 2ex;">
+              <div>
+                <label>Название шаблона:</label>
+                <input type="text" id="template_name">
+              </div>
+              <div style="margin-top: 2ex;">
+                <button id="btn_save_template">Сохранить шаблон</button>
+              </div>
+
+
+            </div>
+            <div style="margin-top: 2ex;">
+              <button class="easy-modal-open" href="#modal1">Все шаблоны</button>
+            </div>
+        </div>
+      <div id="newsletter-builder-sidebar-buttons-bbutton" style="margin-top: 2ex;">
+          Экспорт
+      </div>
+
+
+    </div>
+  </div>

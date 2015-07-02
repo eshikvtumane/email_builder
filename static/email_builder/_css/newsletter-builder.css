@@ -383,6 +383,9 @@ body {
 	-o-transition: box-shadow 0.5s;
 	transition: box-shadow 0.5s;
 	}
+.sim-row p {
+    margin: 0;
+}
 .sim-row:hover {
 	cursor: move;
 	-webkit-box-shadow:  0px 0px 20px 0px rgba(0,0,0,0.2);
