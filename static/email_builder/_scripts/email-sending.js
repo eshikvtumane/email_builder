@@ -29,6 +29,9 @@ $(function() {
                     callback(emails)
                 }
             })
-        }
+        },
+        minLength: 0
+    }).bind('focus', function(){
+        $(this).autocomplete("search");
     });
 });

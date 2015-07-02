@@ -290,5 +290,8 @@ def send(request):
 def email_autocomplete(request):
     query = request.GET.get('query')
     user = request.user
-    emails = UserEmail.objects.filter(user=user, email__istartswith=query).values_list('email', flat=True)
+    if query:
+        emails = UserEmail.objects.filter(user=user, email__istartswith=query).values_list('email', flat=True)
+    else:
+        emails = UserEmail.objects.filter(user=user).values_list('email', flat=True)[:5]
     return HttpResponse(json.dumps(list(emails)), content_type='application/json')
