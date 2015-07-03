@@ -283,8 +283,18 @@ def send(request):
         if user_emails.count() == 0:
             user_email = UserEmail(user=request.user, email=email)
             user_email.save()
-    send_mail('Letter', 'msg', 'admin@geliusdv.ru', [request.POST.get('mail', '')], fail_silently=False, html_message=request.POST.get('html'))
-    return HttpResponse('sent')
+    try:
+        send_mail(
+            'Letter',
+            'msg',
+            'admin@geliusdv.ru',
+            [request.POST.get('mail', '')],
+            fail_silently=False,
+            html_message=request.POST.get('html')
+        )
+        return HttpResponse('200')
+    except:
+        return HttpResponse('500')
 
 
 def email_autocomplete(request):

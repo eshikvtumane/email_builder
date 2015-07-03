@@ -12,9 +12,17 @@ $(document).on('click', '#FUCKINGSEND', function (e) {
             csrfmiddlewaretoken: $('[name=csrfmiddlewaretoken]').val(),
             html :$('#editor1').val(),
             mail: $('#mda').val()
+        },
+        success: function(data) {
+            if (data == '200') {
+                alert('Письмо отправлено')
+            } else {
+                alert('Возникла ошибка при отправлении письма')
+            }
         }
     })
 });
+
 
 // autocompleting email
 $(function() {
