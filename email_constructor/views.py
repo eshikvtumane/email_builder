@@ -1,4 +1,4 @@
-#-*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 from django.shortcuts import render_to_response
 from django.http import HttpResponse
 from django.views.generic import View
@@ -7,7 +7,6 @@ from django.core.context_processors import csrf
 from django.conf import settings
 
 DATETIME_FORMAT = settings.DATETIME_INPUT_FORMATS[0]
-
 
 from datetime import datetime
 import json
@@ -44,8 +43,9 @@ class EmailConstructorView(View):
         # args['templates'] = Template.objects.all().values('id', 'template_name')
         args['templates'] = Template.objects.all()
         args['temp_title'] = 'Заголовок'
-        args['temp_text'] = 'Принцип восприятия непредвзято создает паллиативный интеллект, условно. Концепция ментально' \
-                            ' оспособляет закон внешнего мира.'
+        args[
+            'temp_text'] = 'Принцип восприятия непредвзято создает паллиативный интеллект, условно. Концепция ментально' \
+                           ' оспособляет закон внешнего мира.'
         rc = RequestContext(request, args)
         return render_to_response(self.template, rc)
 
@@ -100,7 +100,7 @@ class SavingTinyMCEImage(View, SavingImages):
         try:
             url = self.savingImage(request.FILES['image'], 'email_images')
             full_url = ''.join(['http://', get_current_site(request).domain, url])
-            result_dict = {"error":False,"path":full_url}
+            result_dict = {"error": False, "path": full_url}
             serialized_instance = json.dumps(['200', full_url])
         except Exception, e:
             serialized_instance = json.dumps(['500', e.message])
@@ -115,8 +115,7 @@ class SavingTemplatesAjax(View):
         make_new_template = bool(int(post['make_new_template']))
         name = post['name']
         html = post['html']
-        print post['name']
-        print post['bg_color']
+
         bg_color = post.get('bg_color', '')
         bg_img = post.get('bg_image', None)
 
@@ -149,7 +148,7 @@ class SavingTemplatesAjax(View):
                     'template_id': temp.id,
                     'name': temp.template_name,
                     'changing_date': temp.modified.strftime(DATETIME_FORMAT)
-                    })
+                })
             except Exception, e:
                 result = json.dumps({'code': '500'})
         return HttpResponse(result, content_type='application/json')
@@ -210,7 +209,7 @@ class VideoThumbmail():
         elif 'vimeo' in url:
             # получаем id видео
             result = url.split('/')
-            return self.vimeo(result[len(result)-1])
+            return self.vimeo(result[len(result) - 1])
         else:
             return False
 
@@ -243,14 +242,17 @@ class VideoThumbmail():
     # скачиваем изображение
     def __getThumb(self, url):
         return urllib.urlopen(url).read()
+
     # получаем объект изображения
     def __imageOpen(self, img):
         return Image.open(cStringIO.StringIO(img))
+
     # накладывание изображений
     def __pasteImages(self, bg, watermark):
         width, height = bg.size
-        bg.paste(watermark, ((width/2) - (watermark.size[0] / 2), (height/2) - (watermark.size[1] / 2) ), watermark)
-        img_path = "/media/email_images/video-%s-%s.jpg" % (str(randint(0, 100000)), datetime.now().strftime('%Y-%m-%d-%H-%M-%S'))
+        bg.paste(watermark, ((width / 2) - (watermark.size[0] / 2), (height / 2) - (watermark.size[1] / 2) ), watermark)
+        img_path = "/media/email_images/video-%s-%s.jpg" % (
+            str(randint(0, 100000)), datetime.now().strftime('%Y-%m-%d-%H-%M-%S'))
         bg.save(settings.BASE_DIR + img_path, "JPEG")
         return img_path
 
@@ -276,6 +278,8 @@ class GenerateThumbnail(View, VideoThumbmail):
 
 
 from django.core.mail import send_mail
+
+
 def send(request):
     email = request.POST.get('mail', None)
     if email:
