@@ -599,7 +599,7 @@ body {
 	height: 100%;
 	width: 100%;
 	position: fixed;
-	z-index: 2;
+	z-index: 110;
 	display: none;
 	background-image: url(../_assets/background.png);
 	background-repeat: repeat;

@@ -594,7 +594,7 @@ $(function() {
         //$("#newsletter-preloaded-export .sim-row-edit").removeClass("sim-row-edit");
 
         $newsletter_export.removeAttr("class");
-        $newsletter_export.find('p').attr('line-height', '5px');
+        $newsletter_export.find('p').attr('line-height', '5px').css('margin', '0');
         //$("div").removeClass("ui-resizable-handle").removeClass("ui-resizable-se").removeClass('ui-resizable').removeClass('resize').removeClass('ui-resizable-s');
 
         preload_export_html = $newsletter_export.html();

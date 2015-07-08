@@ -57,5 +57,18 @@ class UserEmail(models.Model):
         verbose_name_plural = 'Электронные почты для отправки шаблонов'
 
 
+# class Sending(models.Model):
+#     template = models.ForeignKey('Template', verbose_name='шаблон')
+#     email = models.EmailField(verbose_name='Электронная почта')
+#     date = models.DateTimeField(verbose_name='время отправки')
+#
+#     def __unicode__(self):
+#         return u'отправка шаблона'
+#
+#     class Meta:
+#         verbose_name = 'Транзакция'
+#         verbose_name_plural = 'Транзакции'
+
+
 # todo: реализовать сохранение в базе записей о каждой отправке шаблона (выводить как для каждого шаблона, так и для
 # todo: каждого юзера)

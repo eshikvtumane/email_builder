@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="820fcedc-3228-4317-b390-63b737578125" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/email_constructor/models.py" afterPath="$PROJECT_DIR$/email_constructor/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/email_builder/_css/newsletter-builder.css" afterPath="$PROJECT_DIR$/static/email_builder/_css/newsletter-builder.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/email_builder/_scripts/newsletter-builder.js" afterPath="$PROJECT_DIR$/static/email_builder/_scripts/newsletter-builder.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/email_constructor/templates/email_constructor/start_template.html" afterPath="$PROJECT_DIR$/email_constructor/templates/email_constructor/start_template.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/email_constructor/views.py" afterPath="$PROJECT_DIR$/email_constructor/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="email_builder.iws" />
@@ -36,7 +38,7 @@
         <entry file="file://$PROJECT_DIR$/email_constructor/templates/email_constructor/builder.html">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-0.0" vertical-offset="2340" max-vertical-offset="2670">
-              <caret line="156" column="44" selection-start-line="156" selection-start-column="44" selection-end-line="156" selection-end-column="44" />
+              <caret line="156" column="43" selection-start-line="156" selection-start-column="43" selection-end-line="156" selection-end-column="43" />
               <folding />
             </state>
           </provider>
@@ -45,8 +47,20 @@
       <file leaf-file-name="start_template.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/email_constructor/templates/email_constructor/start_template.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.25" vertical-offset="0" max-vertical-offset="5610">
-              <caret line="18" column="60" selection-start-line="18" selection-start-column="60" selection-end-line="18" selection-end-column="60" />
+            <state vertical-scroll-proportion="-6.875" vertical-offset="0" max-vertical-offset="5610">
+              <caret line="11" column="94" selection-start-line="11" selection-start-column="94" selection-end-line="11" selection-end-column="94" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="constructor_init.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static_debug/email_builder/_scripts/constructor_init.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="4.0" vertical-offset="740" max-vertical-offset="6660">
+              <caret line="40" column="53" selection-start-line="40" selection-start-column="53" selection-end-line="40" selection-end-column="53" />
               <folding />
             </state>
           </provider>
@@ -56,17 +70,27 @@
         <entry file="file://$PROJECT_DIR$/static_debug/email_builder/_scripts/email-sending.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="765">
-              <caret line="12" column="21" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="29" />
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="constructor_init.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static_debug/email_builder/_scripts/constructor_init.js">
+      <file leaf-file-name="newsletter-builder.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static_debug/email_builder/_scripts/newsletter-builder.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="6159" max-vertical-offset="6660">
-              <caret line="421" column="1" selection-start-line="421" selection-start-column="1" selection-end-line="421" selection-end-column="1" />
+            <state vertical-scroll-proportion="-5.857143" vertical-offset="8735" max-vertical-offset="9690">
+              <caret line="596" column="83" selection-start-line="596" selection-start-column="83" selection-end-line="596" selection-end-column="83" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="newsletter-builder.css" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/static_debug/email_builder/_css/newsletter-builder.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.01010101" vertical-offset="9040" max-vertical-offset="11700">
+              <caret line="603" column="53" selection-start-line="603" selection-start-column="53" selection-end-line="603" selection-end-column="53" />
               <folding />
             </state>
           </provider>
@@ -82,11 +106,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/email_constructor/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="2.4690266" vertical-offset="360" max-vertical-offset="4755">
-              <caret line="117" column="0" selection-start-line="117" selection-start-column="0" selection-end-line="117" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="315" max-vertical-offset="4755">
+              <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
               <folding>
                 <element signature="e#24#71#0" expanded="true" />
               </folding>
@@ -97,21 +121,25 @@
       <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/email_constructor/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="960">
-              <caret line="41" column="15" selection-start-line="41" selection-start-column="15" selection-end-line="41" selection-end-column="15" />
-              <folding />
+            <state vertical-scroll-proportion="0.0" vertical-offset="403" max-vertical-offset="1155">
+              <caret line="59" column="0" selection-start-line="59" selection-start-column="2" selection-end-line="69" selection-end-column="44" />
+              <folding>
+                <marker date="1436324006691" expanded="true" signature="1556:1862" placeholder="..." />
+                <marker date="1436324006691" expanded="true" signature="1725:1862" placeholder="..." />
+                <marker date="1436324006691" expanded="true" signature="1895:2409" placeholder="..." />
+                <marker date="1436324006691" expanded="true" signature="2127:2164" placeholder="..." />
+                <marker date="1436324006691" expanded="true" signature="2184:2409" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="admin.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/email_constructor/admin.py">
+      <file leaf-file-name="preloaded_templates.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/email_constructor/templates/email_constructor/preloaded_templates.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="270" max-vertical-offset="570">
-              <caret line="18" column="66" selection-start-line="18" selection-start-column="66" selection-end-line="18" selection-end-column="66" />
-              <folding>
-                <element signature="e#0#32#0" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="7785">
+              <caret line="17" column="91" selection-start-line="17" selection-start-column="91" selection-end-line="17" selection-end-column="91" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -134,18 +162,18 @@
         <option value="$PROJECT_DIR$/static/email_builder/_scripts/newsletter-builder.js" />
         <option value="$PROJECT_DIR$/static_debug/email_builder/_scripts/tinymce/plugins/placeholder/plugin.js" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/static_debug/email_builder/_css/newsletter-builder.css" />
         <option value="$PROJECT_DIR$/email_constructor/templates/email_constructor/preloaded_templates.html" />
         <option value="$PROJECT_DIR$/email_constructor/templates/email_constructor/sim_edit_windows.html" />
         <option value="$PROJECT_DIR$/email_constructor/templates/email_constructor/sidebar.html" />
         <option value="$PROJECT_DIR$/email_constructor/templates/email_constructor/builder.html" />
-        <option value="$PROJECT_DIR$/static_debug/email_builder/_scripts/newsletter-builder.js" />
         <option value="$PROJECT_DIR$/static/email_builder/_scripts/constructor_init.js" />
-        <option value="$PROJECT_DIR$/static_debug/email_builder/_scripts/constructor_init.js" />
-        <option value="$PROJECT_DIR$/email_constructor/models.py" />
         <option value="$PROJECT_DIR$/static_debug/email_builder/_scripts/email-sending.js" />
-        <option value="$PROJECT_DIR$/email_constructor/templates/email_constructor/start_template.html" />
         <option value="$PROJECT_DIR$/email_constructor/views.py" />
+        <option value="$PROJECT_DIR$/email_constructor/templates/email_constructor/start_template.html" />
+        <option value="$PROJECT_DIR$/static_debug/email_builder/_css/newsletter-builder.css" />
+        <option value="$PROJECT_DIR$/email_constructor/models.py" />
+        <option value="$PROJECT_DIR$/static_debug/email_builder/_scripts/constructor_init.js" />
+        <option value="$PROJECT_DIR$/static_debug/email_builder/_scripts/newsletter-builder.js" />
       </list>
     </option>
   </component>
@@ -154,9 +182,9 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="65" />
-    <option name="y" value="24" />
-    <option name="width" value="1215" />
-    <option name="height" value="1000" />
+    <option name="y" value="-4" />
+    <option name="width" value="1535" />
+    <option name="height" value="904" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -219,6 +247,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/static_debug/email_builder/_scripts" />
       <recent name="$PROJECT_DIR$/static_debug" />
     </key>
   </component>
@@ -507,7 +536,13 @@
       <option name="project" value="LOCAL" />
       <updated>1435890249156</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="print 'name' removed from view to fix saving template">
+      <created>1435904149624</created>
+      <option name="number" value="00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1435904149624</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -531,7 +566,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="24" width="1215" height="1000" extended-state="6" />
+    <frame x="65" y="-4" width="1535" height="904" extended-state="6" />
     <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32928178" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -541,12 +576,12 @@
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32928178" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32928178" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32928178" sideWeight="0.49957228" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24379812" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3290653" sideWeight="0.49957228" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25184688" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39948782" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -577,7 +612,8 @@
     <MESSAGE value="1) delete all div tags from text in editor on save; 2) set background-size: cover on save image" />
     <MESSAGE value="autocomplete effect added on focus on email input" />
     <MESSAGE value="added alert with message about sending or unsending email" />
-    <option name="LAST_COMMIT_MESSAGE" value="added alert with message about sending or unsending email" />
+    <MESSAGE value="print 'name' removed from view to fix saving template" />
+    <option name="LAST_COMMIT_MESSAGE" value="print 'name' removed from view to fix saving template" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -586,22 +622,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/email_constructor/templates/email_constructor/start_template.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="100">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static_debug/email_builder/_scripts/email-sending.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="285" max-vertical-offset="765">
-          <caret line="19" column="63" selection-start-line="19" selection-start-column="63" selection-end-line="19" selection-end-column="63" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/email_constructor/templates/email_constructor/sidebar.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="210" max-vertical-offset="750">
@@ -624,7 +644,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="97" max-vertical-offset="960">
           <caret line="41" column="15" selection-start-line="41" selection-start-column="15" selection-end-line="41" selection-end-column="15" />
-          <folding />
+          <folding>
+            <marker date="1436324006691" expanded="true" signature="1556:1862" placeholder="..." />
+            <marker date="1436324006691" expanded="true" signature="1725:1862" placeholder="..." />
+            <marker date="1436324006691" expanded="true" signature="1895:2409" placeholder="..." />
+            <marker date="1436324006691" expanded="true" signature="2127:2164" placeholder="..." />
+            <marker date="1436324006691" expanded="true" signature="2184:2409" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -633,7 +659,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="270" max-vertical-offset="570">
           <caret line="18" column="66" selection-start-line="18" selection-start-column="66" selection-end-line="18" selection-end-column="66" />
           <folding>
-            <element signature="e#0#32#0" expanded="true" />
+            <element signature="e#0#32#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -642,14 +668,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1410" max-vertical-offset="2670">
           <caret line="94" column="87" selection-start-line="94" selection-start-column="81" selection-end-line="94" selection-end-column="87" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static_debug/email_builder/_scripts/email-sending.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="86" max-vertical-offset="645">
-          <caret line="34" column="39" selection-start-line="34" selection-start-column="39" selection-end-line="34" selection-end-column="39" />
           <folding />
         </state>
       </provider>
@@ -669,20 +687,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static_debug/email_builder/_scripts/newsletter-builder.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="3630" max-vertical-offset="9690">
-          <caret line="242" column="51" selection-start-line="242" selection-start-column="51" selection-end-line="242" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static_debug/email_builder/_scripts/constructor_init.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="6660">
-          <caret line="17" column="73" selection-start-line="17" selection-start-column="73" selection-end-line="17" selection-end-column="73" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/email_constructor/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="3607" max-vertical-offset="4470">
@@ -697,7 +701,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="960">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1436324006691" expanded="true" signature="1556:1862" placeholder="..." />
+            <marker date="1436324006691" expanded="true" signature="1725:1862" placeholder="..." />
+            <marker date="1436324006691" expanded="true" signature="1895:2409" placeholder="..." />
+            <marker date="1436324006691" expanded="true" signature="2127:2164" placeholder="..." />
+            <marker date="1436324006691" expanded="true" signature="2184:2409" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -713,7 +723,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="270" max-vertical-offset="570">
           <caret line="18" column="66" selection-start-line="18" selection-start-column="66" selection-end-line="18" selection-end-column="66" />
           <folding>
-            <element signature="e#0#32#0" expanded="true" />
+            <element signature="e#0#32#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -730,7 +740,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1800" max-vertical-offset="5580">
           <caret line="120" column="69" selection-start-line="120" selection-start-column="67" selection-end-line="120" selection-end-column="69" />
-          <folding />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -763,20 +775,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static_debug/email_builder/_scripts/newsletter-builder.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="3630" max-vertical-offset="9690">
-          <caret line="242" column="51" selection-start-line="242" selection-start-column="51" selection-end-line="242" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static_debug/email_builder/_scripts/constructor_init.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1935" max-vertical-offset="6690">
-          <caret line="124" column="16" selection-start-line="124" selection-start-column="16" selection-end-line="124" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/email_constructor/templates/email_constructor/templates_list.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="600">
@@ -806,20 +804,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="5575" max-vertical-offset="11700">
           <caret line="385" column="12" selection-start-line="385" selection-start-column="12" selection-end-line="385" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static_debug/email_builder/_scripts/newsletter-builder.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2490" max-vertical-offset="9555">
-          <caret line="215" column="47" selection-start-line="215" selection-start-column="47" selection-end-line="215" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static_debug/email_builder/_scripts/constructor_init.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="6615">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -877,19 +861,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static_debug/email_builder/_css/newsletter-builder.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="5575" max-vertical-offset="11700">
-          <caret line="385" column="12" selection-start-line="385" selection-start-column="12" selection-end-line="385" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/email_constructor/admin.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="570">
           <caret line="18" column="66" selection-start-line="18" selection-start-column="66" selection-end-line="18" selection-end-column="66" />
           <folding>
-            <element signature="e#0#32#0" expanded="true" />
+            <element signature="e#0#32#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -908,13 +885,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/email_constructor/templates/email_constructor/preloaded_templates.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9426987" vertical-offset="0" max-vertical-offset="7725">
-          <caret line="36" column="16" selection-start-line="36" selection-start-column="16" selection-end-line="36" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/email_constructor/templates/email_constructor/sim_edit_windows.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="2.3012938" vertical-offset="0" max-vertical-offset="20730">
@@ -930,18 +900,67 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/email_constructor/templates/email_constructor/builder.html">
+    <entry file="file://$PROJECT_DIR$/email_constructor/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2340" max-vertical-offset="2670">
-          <caret line="156" column="44" selection-start-line="156" selection-start-column="44" selection-end-line="156" selection-end-column="44" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="315" max-vertical-offset="4755">
+          <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
+          <folding>
+            <element signature="e#24#71#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/lib/python2.7/importlib/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2626459" vertical-offset="0" max-vertical-offset="660">
+          <caret line="9" column="22" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/email_constructor/templates/email_constructor/preloaded_templates.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="7785">
+          <caret line="17" column="91" selection-start-line="17" selection-start-column="91" selection-end-line="17" selection-end-column="91" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static_debug/email_builder/_scripts/newsletter-builder.js">
+    <entry file="file://$PROJECT_DIR$/email_constructor/templates/email_constructor/builder.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.021459227" vertical-offset="3620" max-vertical-offset="9690">
-          <caret line="242" column="51" selection-start-line="242" selection-start-column="51" selection-end-line="242" selection-end-column="51" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="2340" max-vertical-offset="2670">
+          <caret line="156" column="43" selection-start-line="156" selection-start-column="43" selection-end-line="156" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/email_constructor/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="403" max-vertical-offset="1155">
+          <caret line="59" column="0" selection-start-line="59" selection-start-column="2" selection-end-line="69" selection-end-column="44" />
+          <folding>
+            <marker date="1436324006691" expanded="true" signature="1556:1862" placeholder="..." />
+            <marker date="1436324006691" expanded="true" signature="1725:1862" placeholder="..." />
+            <marker date="1436324006691" expanded="true" signature="1895:2409" placeholder="..." />
+            <marker date="1436324006691" expanded="true" signature="2127:2164" placeholder="..." />
+            <marker date="1436324006691" expanded="true" signature="2184:2409" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/email_constructor/templates/email_constructor/start_template.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.875" vertical-offset="0" max-vertical-offset="5610">
+          <caret line="11" column="94" selection-start-line="11" selection-start-column="94" selection-end-line="11" selection-end-column="94" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static_debug/email_builder/_scripts/constructor_init.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="4.0" vertical-offset="740" max-vertical-offset="6660">
+          <caret line="40" column="53" selection-start-line="40" selection-start-column="53" selection-end-line="40" selection-end-column="53" />
           <folding />
         </state>
       </provider>
@@ -949,42 +968,24 @@
     <entry file="file://$PROJECT_DIR$/static_debug/email_builder/_scripts/email-sending.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="765">
-          <caret line="12" column="21" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="29" />
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static_debug/email_builder/_scripts/constructor_init.js">
+    <entry file="file://$PROJECT_DIR$/static_debug/email_builder/_scripts/newsletter-builder.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="6159" max-vertical-offset="6660">
-          <caret line="421" column="1" selection-start-line="421" selection-start-column="1" selection-end-line="421" selection-end-column="1" />
+        <state vertical-scroll-proportion="-5.857143" vertical-offset="8735" max-vertical-offset="9690">
+          <caret line="596" column="83" selection-start-line="596" selection-start-column="83" selection-end-line="596" selection-end-column="83" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/email_constructor/models.py">
+    <entry file="file://$PROJECT_DIR$/static_debug/email_builder/_css/newsletter-builder.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="97" max-vertical-offset="960">
-          <caret line="41" column="15" selection-start-line="41" selection-start-column="15" selection-end-line="41" selection-end-column="15" />
+        <state vertical-scroll-proportion="0.01010101" vertical-offset="9040" max-vertical-offset="11700">
+          <caret line="603" column="53" selection-start-line="603" selection-start-column="53" selection-end-line="603" selection-end-column="53" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/email_constructor/templates/email_constructor/start_template.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.25" vertical-offset="0" max-vertical-offset="5610">
-          <caret line="18" column="60" selection-start-line="18" selection-start-column="60" selection-end-line="18" selection-end-column="60" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/email_constructor/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.4690266" vertical-offset="360" max-vertical-offset="4755">
-          <caret line="117" column="0" selection-start-line="117" selection-start-column="0" selection-end-line="117" selection-end-column="0" />
-          <folding>
-            <element signature="e#24#71#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
