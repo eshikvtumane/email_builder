@@ -283,7 +283,7 @@ body {
 	margin-right: 10px;
 }
 .newsletter-builder-area-center-frame-buttons-content {
-    z-index: 99999;
+    /*z-index: 99999;*/
 	height: 500px;
 	width: 690px;
 	background-color: rgba(70,70,70,1);

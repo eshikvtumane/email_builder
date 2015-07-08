@@ -1,3 +1,4 @@
 .ui-autocomplete {
     font-size: 1em;
+    z-index: 111;
 }
