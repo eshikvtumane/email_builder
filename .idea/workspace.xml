@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="820fcedc-3228-4317-b390-63b737578125" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/email_builder/_css/autocomplete.css" afterPath="$PROJECT_DIR$/static/email_builder/_css/autocomplete.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/email_builder/_css/newsletter-builder.css" afterPath="$PROJECT_DIR$/static/email_builder/_css/newsletter-builder.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/email_builder/_scripts/newsletter-builder.js" afterPath="$PROJECT_DIR$/static/email_builder/_scripts/newsletter-builder.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="email_builder.iws" />
@@ -42,10 +41,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="start_template.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="start_template.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/email_constructor/templates/email_constructor/start_template.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.360262" vertical-offset="0" max-vertical-offset="5610">
+            <state vertical-scroll-proportion="-6.875" vertical-offset="0" max-vertical-offset="5610">
               <caret line="11" column="118" selection-start-line="11" selection-start-column="118" selection-end-line="11" selection-end-column="118" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
@@ -74,11 +73,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="newsletter-builder.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="newsletter-builder.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static_debug/email_builder/_scripts/newsletter-builder.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.857143" vertical-offset="8735" max-vertical-offset="9690">
-              <caret line="596" column="83" selection-start-line="596" selection-start-column="83" selection-end-line="596" selection-end-column="83" />
+            <state vertical-scroll-proportion="0.6846473" vertical-offset="8805" max-vertical-offset="9885">
+              <caret line="609" column="83" selection-start-line="609" selection-start-column="83" selection-end-line="609" selection-end-column="83" />
               <folding />
             </state>
           </provider>
@@ -169,10 +168,10 @@
         <option value="$PROJECT_DIR$/email_constructor/views.py" />
         <option value="$PROJECT_DIR$/email_constructor/models.py" />
         <option value="$PROJECT_DIR$/static_debug/email_builder/_scripts/constructor_init.js" />
-        <option value="$PROJECT_DIR$/static_debug/email_builder/_scripts/newsletter-builder.js" />
         <option value="$PROJECT_DIR$/static_debug/email_builder/_css/newsletter-builder.css" />
         <option value="$PROJECT_DIR$/static_debug/email_builder/_css/autocomplete.css" />
         <option value="$PROJECT_DIR$/email_constructor/templates/email_constructor/start_template.html" />
+        <option value="$PROJECT_DIR$/static_debug/email_builder/_scripts/newsletter-builder.js" />
       </list>
     </option>
   </component>
@@ -595,7 +594,13 @@
       <option name="project" value="LOCAL" />
       <updated>1436325447572</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="fix autocomplete z-index">
+      <created>1436327251819</created>
+      <option name="number" value="00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1436327251819</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -667,7 +672,8 @@
     <MESSAGE value="added alert with message about sending or unsending email" />
     <MESSAGE value="print 'name' removed from view to fix saving template" />
     <MESSAGE value="fix some export css, change z-indexes" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix some export css, change z-indexes" />
+    <MESSAGE value="fix autocomplete z-index" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix autocomplete z-index" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1009,14 +1015,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static_debug/email_builder/_scripts/newsletter-builder.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.857143" vertical-offset="8735" max-vertical-offset="9690">
-          <caret line="596" column="83" selection-start-line="596" selection-start-column="83" selection-end-line="596" selection-end-column="83" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/email_constructor/templates/email_constructor/builder.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-97.5" vertical-offset="0" max-vertical-offset="2670">
@@ -1043,11 +1041,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/email_constructor/templates/email_constructor/start_template.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.360262" vertical-offset="0" max-vertical-offset="5610">
+        <state vertical-scroll-proportion="-6.875" vertical-offset="0" max-vertical-offset="5610">
           <caret line="11" column="118" selection-start-line="11" selection-start-column="118" selection-end-line="11" selection-end-column="118" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static_debug/email_builder/_scripts/newsletter-builder.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6846473" vertical-offset="8805" max-vertical-offset="9885">
+          <caret line="609" column="83" selection-start-line="609" selection-start-column="83" selection-end-line="609" selection-end-column="83" />
+          <folding />
         </state>
       </provider>
     </entry>

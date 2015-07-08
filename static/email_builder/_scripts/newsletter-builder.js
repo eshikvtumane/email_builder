@@ -590,7 +590,20 @@ $(function() {
         $newsletter_export.find(".sim-row-delete").remove();
         $newsletter_export.find(".sim-row-palette").remove();
         //$("#newsletter-preloaded-export .sim-row").removeClass("ui-draggable");
-        $newsletter_export.find(".sim-row-edit").removeAttr("data-type");
+        $newsletter_export.find(".sim-row-edit")
+            .removeAttr("data-type")
+            .each(function(){
+                // смотрим, если есть отступ сверху, то записываем его в маргин топ
+                var $elem = $(this);
+                var margin_top = $elem.css('margin-top');
+                var top = $elem.css('top');
+                var res_margin_top = top;
+                if (margin_top != '0px') {
+                    res_margin_top = (Number(margin_top.replace('px', '')) + Number(top.replace('px', ''))).toString() + 'px'
+                }
+                $elem.css('margin-top', res_margin_top)
+            });
+
         //$("#newsletter-preloaded-export .sim-row-edit").removeClass("sim-row-edit");
 
         $newsletter_export.removeAttr("class");
